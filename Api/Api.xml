@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api</name>
+    </assembly>
+    <members>
+        <member name="M:Api.Identity.Controllers.AuthController.Register(Api.Identity.ViewModels.RegisterViewModel)">
+            <summary>
+            Register an account
+            </summary>
+            <param name="model">RegisterViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.AuthController.Login(Api.Identity.ViewModels.LoginViewModel)">
+            <summary>
+            Log into account
+            </summary>
+            <param name="model">LoginViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.RoleController.Get">
+            <summary>
+            Get all roles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.RoleController.Post(Api.Identity.ViewModels.RoleViewModel)">
+            <summary>
+            Insert a role
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.RoleController.Put(System.String,Api.Identity.ViewModels.RoleViewModel)">
+            <summary>
+            Update a role
+            </summary>
+            <param name="Id">Role Id</param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.RoleController.Delete(System.String)">
+            <summary>
+            Delete a role
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.UserRolesController.Get(System.String)">
+            <summary>
+            Get a user roles
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.UserRolesController.Post(Api.Identity.ViewModels.UserViewModel)">
+            <summary>
+            Add a user to existing role
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Identity.Controllers.UserRolesController.Delete(System.String,System.String)">
+            <summary>
+            Delete a user from an existing role
+            </summary>
+            <param name="Id"></param>
+            <param name="RoleId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
