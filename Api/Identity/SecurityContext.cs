@@ -33,5 +33,6 @@ namespace Api.Identity
         public DbSet<Supplier> Supplier { set; get; }
         public DbSet<Transaction> Transaction { set; get; }
         public DbSet<TransactionDetail> TransactionDetail { set; get; }
+        public DbSet<SystemParameter> SystemParameter { set; get; }
     }
 }

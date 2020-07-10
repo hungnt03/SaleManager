@@ -12,6 +12,8 @@ namespace Api.Entities
         GenericRepository<Supplier> SupplierRepository { get; }
         GenericRepository<Customer> CustomerRepository { get; }
         GenericRepository<Product> ProductRepository { get; }
+
+        GenericRepository<Discount> DiscountRepository { get; }
         void Commit();
         void Rollback();
     }
@@ -23,6 +25,7 @@ namespace Api.Entities
         private GenericRepository<Supplier> supplierRepository;
         private GenericRepository<Customer> customerRepository;
         private GenericRepository<Product> productRepository;
+        private GenericRepository<Discount> discountRepository;
 
         public UnitOfWork(SecurityContext context)
         {
@@ -64,10 +67,20 @@ namespace Api.Entities
                 return productRepository;
             }
         }
+        public GenericRepository<Discount> DiscountRepository
+        {
+            get
+            {
+                if (this.discountRepository == null)
+                    this.discountRepository = new GenericRepository<Discount>(context);
+                return discountRepository;
+            }
+        }
 
         GenericRepository<Category> IUnitOfWork.CategoryRepository => CategoryRepository;
         GenericRepository<Supplier> IUnitOfWork.SupplierRepository => SupplierRepository;
         GenericRepository<Product> IUnitOfWork.ProductRepository => ProductRepository;
+        GenericRepository<Discount> IUnitOfWork.DiscountRepository => DiscountRepository;
 
         public void Commit()
         {

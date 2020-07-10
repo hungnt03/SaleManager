@@ -113,6 +113,19 @@ namespace Api.Entities
             return await context.Set<T>().Where<T>(predicate).AsQueryable<T>().ToListAsync();
         }
 
+        public virtual  IQueryable<T> GetMultiQueryable(Expression<Func<T, bool>> predicate, string[] includes = null)
+        {
+            //HANDLE INCLUDES FOR ASSOCIATED OBJECTS IF APPLICABLE
+            if (includes != null && includes.Count() > 0)
+            {
+                var query = context.Set<T>().Include(includes.First());
+                foreach (var include in includes.Skip(1))
+                    query = query.Include(include);
+                return  query.Where<T>(predicate).AsQueryable<T>();
+            }
+            return  context.Set<T>().Where<T>(predicate).AsQueryable<T>();
+        }
+
         public virtual IAsyncEnumerable<T> GetMultiPaging(Expression<Func<T, bool>> filter, out int total, int index = 0, int size = 50, string[] includes = null)
         {
             int skipCount = index * size;
