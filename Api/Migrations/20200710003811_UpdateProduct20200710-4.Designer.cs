@@ -4,14 +4,16 @@ using Api.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Api.Migrations
 {
     [DbContext(typeof(SecurityContext))]
-    partial class SecurityContextModelSnapshot : ModelSnapshot
+    [Migration("20200710003811_UpdateProduct20200710-4")]
+    partial class UpdateProduct202007104
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,40 +53,6 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 38, DateTimeKind.Local).AddTicks(3993),
-                            CreatedBy = "administrator",
-                            Description = "Các loại hàng về Thực phẩm",
-                            Name = "Thực phẩm"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 39, DateTimeKind.Local).AddTicks(9686),
-                            CreatedBy = "administrator",
-                            Description = "Các loại hàng về Rượu bia",
-                            Name = "Rượu bia"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 39, DateTimeKind.Local).AddTicks(9714),
-                            CreatedBy = "administrator",
-                            Description = "Các loại hàng về Thuốc lá",
-                            Name = "Thuốc lá"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 39, DateTimeKind.Local).AddTicks(9716),
-                            CreatedBy = "administrator",
-                            Description = "Các loại hàng về Mỹ phẩm",
-                            Name = "Mỹ phẩm"
-                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Customer", b =>
@@ -123,35 +91,6 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customer");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "11b Cát Linh, Quốc Tử Giám, Đống Đa, Hà Nội",
-                            Contact = "02438267984",
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(3281),
-                            CreatedBy = "administrator",
-                            Name = "Nguyễn Hữu Hoà"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "59 Quang Trung, Nguyễn Du, Hai Bà Trưng, Hà Nội",
-                            Contact = "02438226676",
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(3347),
-                            CreatedBy = "administrator",
-                            Name = "Trần Danh Mạnh"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "35 Lô 1A, đường, Trung Yên 11B, Trung Hoà, Cầu Giấy, Hà Nội",
-                            Contact = "02436230311",
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(3349),
-                            CreatedBy = "administrator",
-                            Name = "Hoàng Tố Như"
-                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Discount", b =>
@@ -251,200 +190,6 @@ namespace Api.Migrations
                     b.HasKey("Barcode");
 
                     b.ToTable("Product");
-
-                    b.HasData(
-                        new
-                        {
-                            Barcode = "3110354325000",
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8435),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(5131),
-                            Img = "",
-                            Name = "Thuốc lá Thăng Long",
-                            Pin = false,
-                            Price = 10000,
-                            Quantity = 63,
-                            SupplierId = 1,
-                            Unit = "Bao"
-                        },
-                        new
-                        {
-                            Barcode = "8004800008152",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8541),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2021, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8475),
-                            Img = "",
-                            Name = "Bánh Sampa Balocco Savoiardi 200g",
-                            Pin = false,
-                            Price = 59000,
-                            Quantity = 20,
-                            SupplierId = 1,
-                            Unit = "Gói"
-                        },
-                        new
-                        {
-                            Barcode = "8934637514871",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8548),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8544),
-                            Img = "",
-                            Name = "Sốt ướp thịt nướng",
-                            Pin = false,
-                            Price = 16000,
-                            Quantity = 30,
-                            SupplierId = 1,
-                            Unit = "Gói"
-                        },
-                        new
-                        {
-                            Barcode = "8934752060109",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8552),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8550),
-                            Img = "",
-                            Name = "Dấm trung thành 500ml",
-                            Pin = false,
-                            Price = 10400,
-                            Quantity = 50,
-                            SupplierId = 1,
-                            Unit = "Chai"
-                        },
-                        new
-                        {
-                            Barcode = "8934804004044",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8555),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8553),
-                            Img = "",
-                            Name = "Dầu hào 350g",
-                            Pin = false,
-                            Price = 21000,
-                            Quantity = 30,
-                            SupplierId = 2,
-                            Unit = "Chai"
-                        },
-                        new
-                        {
-                            Barcode = "8934988021028",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8558),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8556),
-                            Img = "",
-                            Name = "Dầu ăn simply 2l",
-                            Pin = false,
-                            Price = 130000,
-                            Quantity = 10,
-                            SupplierId = 2,
-                            Unit = "Chai"
-                        },
-                        new
-                        {
-                            Barcode = "8935009922225",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8562),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8559),
-                            Img = "",
-                            Name = "Kẹo gấu thiên hồng 1kg",
-                            Pin = false,
-                            Price = 95000,
-                            Quantity = 15,
-                            SupplierId = 1,
-                            Unit = "Gói"
-                        },
-                        new
-                        {
-                            Barcode = "8936017364113",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8565),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8563),
-                            Img = "",
-                            Name = "Nước mắm Cá cốt ABC",
-                            Pin = false,
-                            Price = 12000,
-                            Quantity = 15,
-                            SupplierId = 2,
-                            Unit = "Chai"
-                        },
-                        new
-                        {
-                            Barcode = "8936017367046",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8568),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8566),
-                            Img = "",
-                            Name = "Tương cà chinsu 250g",
-                            Pin = false,
-                            Price = 12000,
-                            Quantity = 50,
-                            SupplierId = 1,
-                            Unit = "Chai"
-                        },
-                        new
-                        {
-                            Barcode = "8936028040426",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8571),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8569),
-                            Img = "",
-                            Name = "Sốt gia vị chinsu",
-                            Pin = false,
-                            Price = 15000,
-                            Quantity = 100,
-                            SupplierId = 1,
-                            Unit = "Gói"
-                        },
-                        new
-                        {
-                            Barcode = "8936124472008",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8574),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8572),
-                            Img = "",
-                            Name = "Đậu phộng nước cốt dừa Tân Tân gói 75g",
-                            Pin = false,
-                            Price = 10000,
-                            Quantity = 30,
-                            SupplierId = 1,
-                            Unit = "Gói"
-                        },
-                        new
-                        {
-                            Barcode = "8938503112147",
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8578),
-                            CreatedBy = "administrator",
-                            Enable = true,
-                            ExpirationDate = new DateTime(2022, 3, 10, 9, 39, 16, 41, DateTimeKind.Local).AddTicks(8575),
-                            Img = "",
-                            Name = "Mít sấy Vinamit gói 500g",
-                            Pin = false,
-                            Price = 143600,
-                            Quantity = 20,
-                            SupplierId = 1,
-                            Unit = "Gói"
-                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Supplier", b =>
@@ -487,25 +232,6 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Supplier");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "183 Hoàng Hoa Thám, Ngọc Hồ, Ba Đình, Hà Nội",
-                            Contact1 = "02437281476",
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 42, DateTimeKind.Local).AddTicks(751),
-                            CreatedBy = "administrator",
-                            Name = "Nguyễn Thị Thuỷ(bibica)"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "25 Văn Miếu, Đống Đa, Hà Nội, Vietnam",
-                            CreatedAt = new DateTime(2020, 7, 10, 9, 39, 16, 42, DateTimeKind.Local).AddTicks(758),
-                            CreatedBy = "administrator",
-                            Name = "Nguyễn Đức Cảnh(ĐL cấp 1)"
-                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Transaction", b =>

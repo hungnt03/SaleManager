@@ -11,12 +11,12 @@ namespace Api.Entities
     public class Product : Auditable
     {
         [Key]
-        [StringLength(10)]
+        [StringLength(16)]
         public string Barcode { get; set; }
         [StringLength(250)]
         public string Name { get; set; }
         public int Quantity { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public int CategoryId { get; set; }
         public int SupplierId { get; set; }
         public bool? Pin { get; set; }

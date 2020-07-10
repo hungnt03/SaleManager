@@ -1,4 +1,5 @@
 ﻿using Api.Entities;
+using Api.Entities.Inflastructor;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace Api.Identity
             builder.Entity<TransactionDetail>()
                 .HasKey(c => new { c.Barcode, c.TracsactionId });
             base.OnModelCreating(builder);
+            builder.Seed();
         }
 
         public DbSet<Category> Category { set; get; }
