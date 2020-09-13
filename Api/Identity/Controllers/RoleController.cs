@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Api.Identity.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Produces("application/json")]
     [Route("api/role")]
     [ApiController]

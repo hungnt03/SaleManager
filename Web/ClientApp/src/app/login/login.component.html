@@ -1,0 +1,29 @@
+<div class="container">
+    <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="inputUserName">Tên đăng nhập</label>
+            <input autofocus type="text" class="form-control" id="inputUserName" aria-describedby="UserNameHelp"
+                name="UserName" [(ngModel)]="LoginModel.UserName" maxlength="50" #refUserName="ngModel" id="UserName"
+                required>
+            <div *ngIf="!refUserName.valid  && (refUserName.dirty || refUserName.touched)" class="alert alert-danger">
+                <small [hidden]="!refUserName.errors.required" id="UserNameHelp" class="form-text text-muted">We'll
+                    never share your email with anyone else.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Mật khẩu</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="Password"
+                [(ngModel)]="LoginModel.Password" maxlength="50" #refPassword="ngModel" id="Password" required>
+            <div *ngIf="!refPassword.valid  && (refPassword.dirty || refPassword.touched)" class="alert alert-danger">
+                <div [hidden]="!refPassword.errors.required">
+                    Password is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary">Submit</button>
+    </form>
+</div>

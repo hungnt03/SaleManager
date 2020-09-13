@@ -59,8 +59,8 @@ namespace Api.Identity.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.Values.Select(x => x.Errors.FirstOrDefault().ErrorMessage));
-
-            var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+             
+            var user = new IdentityUser { UserName = model.UserName, Email = model.Email, EmailConfirmed=true };
             var result = await _userManager.CreateAsync(user, model.Password).ConfigureAwait(false);
 
             if (result.Succeeded)
@@ -88,13 +88,16 @@ namespace Api.Identity.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody]LoginViewModel model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email).ConfigureAwait(false);
+            //var user = await _userManager.FindByEmailAsync(model.Email).ConfigureAwait(false);
+            var user = await _userManager.FindByNameAsync(model.UserName).ConfigureAwait(false);            
             if (user == null)
                 return BadRequest(new string[] { "Invalid credentials." });
 
+            var roles = await _userManager.GetRolesAsync(user);
             var tokenModel = new TokenModel()
             {
-                HasVerifiedEmail = false
+                HasVerifiedEmail = false,
+                Role = roles.Contains("admin") ? 1 : roles.Contains("user") ? 2 : -1
             };
 
             // Only allow login if email is confirmed
