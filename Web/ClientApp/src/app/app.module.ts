@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminAuthGuardService } from './auth-guard/AdminAuthGuardService';
 import { UserAuthGuardService } from './auth-guard/UserAuthGuardService';
+import { CategoryService } from './categories/services/category.service';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -19,6 +20,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AdminLayoutComponent } from './_layout/admin-layout.component';
 import { UserLayoutComponent } from './_layout/user-layout.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryComponent } from './categories/category.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { UserLayoutComponent } from './_layout/user-layout.component';
     AdminDashboardComponent,
     UserDashboardComponent,
     AdminLayoutComponent,
-    UserLayoutComponent
+    UserLayoutComponent,
+    CategoriesComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -53,13 +58,26 @@ import { UserLayoutComponent } from './_layout/user-layout.component';
           { path: 'dashboard', component: UserDashboardComponent, canActivate: [UserAuthGuardService] }
         ]
       },
+      {
+        path: 'category',
+        component: CategoriesComponent,
+        children: [          
+          { path: 'all', component: CategoriesComponent, canActivate: [AdminAuthGuardService] },
+          { path: 'detail/:categoryId', component: CategoryComponent, canActivate: [AdminAuthGuardService] },
+          { path: 'add', component: CategoryComponent, canActivate: [AdminAuthGuardService] },          
+        ]
+      },
       { path: 'login', component: LoginComponent },
       { path: 'home', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [AdminAuthGuardService,UserAuthGuardService],
+  providers: [
+    AdminAuthGuardService,
+    UserAuthGuardService,
+    CategoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

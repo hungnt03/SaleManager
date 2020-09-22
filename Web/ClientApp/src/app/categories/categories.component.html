@@ -1,0 +1,40 @@
+<div class="container mt-3">
+    <div class="row">
+        <h3 class="col-3">Categories</h3>
+        <div class="col-7">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Filter</span>
+                </div>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" type="text" class="form-control"
+                    aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+        </div>
+        <div class="col-2">
+            <a [routerLink]="['/category/add']" class="btn btn-success" role="button">Add Category</a>
+        </div>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elm of categories; let i = index">
+                <td scope="row">{{i+1}}</td>
+                <td>
+                    <a [routerLink]="['/category/detail/',elm.id]">{{elm.name}}</a>
+                </td>
+                <td>{{elm.description}}</td>
+                <td>
+                    <button (click)="onDelete(elm.id)" type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

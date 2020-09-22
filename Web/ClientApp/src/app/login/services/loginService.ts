@@ -1,8 +1,8 @@
-import { Injectable,Component, Inject } from '@angular/core';
+import { Injectable, Component, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { LoginModel } from '../models/loginModel';
 import { Router } from '@angular/router';
-import{environment} from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { catchError, tap } from 'rxjs/operators'
 import { Observable, throwError } from 'rxjs'
 
@@ -10,23 +10,20 @@ import { Observable, throwError } from 'rxjs'
     providedIn: 'root'
 })
 
-export class LoginService{
+export class LoginService {
     public token: string;
-    private loginUrl: string = environment.apiEndpoint+"/api/auth/login";
+    private loginUrl: string = environment.apiEndpoint + "/api/auth/login";
 
-    constructor(private _http: HttpClient, private _Route: Router){
+    constructor(private _http: HttpClient, private _Route: Router) {
     }
 
-    public validateLoginUser(loginModel: LoginModel)
-    {
+    public validateLoginUser(loginModel: LoginModel) {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this._http.post<any>(this.loginUrl, loginModel, { headers: headers })
-            .pipe(tap(data =>
-            {
+            .pipe(tap(data => {
                 console.log(data);
 
-                if (data.token != null)
-                {
+                if (data.token != null) {
                     if (data.role == 2) {
                         // store username and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('currentUser', JSON.stringify({ username: loginModel.UserName, token: data.Token }));
