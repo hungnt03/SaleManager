@@ -30,7 +30,7 @@ export class LoginService {
                     }
                     else if (data.role == 1) {
                         // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('AdminUser', JSON.stringify({ username: loginModel.UserName, token: data.Token }));
+                        localStorage.setItem('adminUser', JSON.stringify({ username: loginModel.UserName, token: data.Token }));
                     }
                     // return true to indicate successful login
                     return data;

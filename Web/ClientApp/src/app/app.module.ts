@@ -22,6 +22,9 @@ import { AdminLayoutComponent } from './_layout/admin-layout.component';
 import { UserLayoutComponent } from './_layout/user-layout.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './categories/category.component';
+import { UserComponent } from './auths/user.component'
+import { UsersComponent } from './auths/users.component'
+import { UserEditComponent } from './auths/user-edit.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { CategoryComponent } from './categories/category.component';
     AdminLayoutComponent,
     UserLayoutComponent,
     CategoriesComponent,
-    CategoryComponent
+    CategoryComponent,
+    UserComponent,
+    UsersComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -61,10 +67,19 @@ import { CategoryComponent } from './categories/category.component';
       {
         path: 'category',
         component: CategoriesComponent,
-        children: [          
+        children: [
           { path: 'all', component: CategoriesComponent, canActivate: [AdminAuthGuardService] },
           { path: 'detail/:categoryId', component: CategoryComponent, canActivate: [AdminAuthGuardService] },
-          { path: 'add', component: CategoryComponent, canActivate: [AdminAuthGuardService] },          
+          { path: 'add', component: CategoryComponent, canActivate: [AdminAuthGuardService] },
+        ]
+      },
+      {
+        path: 'user',
+        component: AdminLayoutComponent,
+        children: [
+          { path: 'all', component: UsersComponent, canActivate: [AdminAuthGuardService]  },
+          { path: 'add', component: UserComponent, canActivate: [AdminAuthGuardService] },
+          { path: 'edit/:userId', component: UserEditComponent , canActivate: [AdminAuthGuardService] }
         ]
       },
       { path: 'login', component: LoginComponent },

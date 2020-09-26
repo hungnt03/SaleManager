@@ -1,0 +1,47 @@
+<div class="container mt-3">
+    <h3>Add/Edit User</h3>
+    <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Id</label>
+            <input class="form-control" type="text" placeholder="Readonly input here..." readonly>
+        </div>
+        <div class="form-group">
+            <label for="inputUserName">UserName</label>
+            <input type="text" name="name" class="form-control" id="inputUserName"
+                aria-describedby="UserNameHelp" [(ngModel)]="model.Username" maxlength="50"
+                #refUserName="ngModel" id="Username" required>
+            <small id="UserNameHelp" class="form-text text-muted"
+                [hidden]="!refUserName.errors.required">User is required
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="inputUserDescription">Email</label>
+            <input type="email" name="description" class="form-control" id="inputUserDescription"
+                aria-describedby="DescriptionNameHelp" [(ngModel)]="model.Email" maxlength="200"
+                #refEmail="ngModel" id="description">
+            <small id="UserDescriptionHelp" class="form-text text-muted"
+                [hidden]="!refEmail.errors.required">Email is required
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" name="password" class="form-control" id="inputPassword"
+                aria-describedby="PasswordHelp" [(ngModel)]="model.Password" maxlength="50"
+                #refPassword="ngModel" id="Password" required>
+            <small id="UserNameHelp" class="form-text text-muted"
+                [hidden]="!refPassword.errors.required">User is required
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="inputConfirmPassword">ConfirmPassword</label>
+            <input type="password" name="ConfirmPassword" class="form-control" id="inputConfirmPassword"
+                aria-describedby="ConfirmPasswordHelp" [(ngModel)]="model.ConfirmPassword" maxlength="50"
+                #refConfirmPassword="ngModel" id="ConfirmPassword" required>
+            <small id="UserNameHelp" class="form-text text-muted"
+                [hidden]="!refConfirmPassword.errors.required">User is required
+            </small>
+        </div>
+        <button type="submit" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+        <a class="btn btn-info" [routerLink]="['/User/all']">Back</a>
+    </form>
+</div>

@@ -18,7 +18,7 @@ export class CategoryService {
     username: any;
 
     constructor(private http: HttpClient) {
-        this.data = JSON.parse(localStorage.getItem('AdminUser'));
+        this.data = JSON.parse(localStorage.getItem('adminUser'));
         this.token = this.data.token;
     }
 
