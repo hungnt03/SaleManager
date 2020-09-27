@@ -8,7 +8,7 @@ export class AdminAuthGuardService implements CanActivate {
 
     canActivate()
     {
-        if (localStorage.getItem('AdminUser'))
+        if (localStorage.getItem('adminUser'))
         {
             // logged in so return true
             return true;

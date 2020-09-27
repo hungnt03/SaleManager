@@ -1,29 +1,24 @@
-<div class="container mt-3">
+<div class="container mt-3 row">
     <h3>Add/Edit Category</h3>
-    <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>Id</label>
-            <input class="form-control" type="text" placeholder="Readonly input here..." readonly>
-        </div>
-        <div class="form-group">
-            <label for="inputCategoryName">Category Name</label>
-            <input type="text" name="name" class="form-control" id="inputCategoryName"
-                aria-describedby="CategoryNameHelp" [(ngModel)]="category.name" maxlength="50"
-                #refCategoryName="ngModel" id="name" required>
-            <small id="CategoryNameHelp" class="form-text text-muted"
-                [hidden]="!refCategoryName.errors.required">Category is required
-            </small>
-        </div>
-        <div class="form-group">
-            <label for="inputCategoryDescription">Description</label>
-            <input type="text" name="description" class="form-control" id="inputCategoryDescription"
-                aria-describedby="DescriptionNameHelp" [(ngModel)]="category.description" maxlength="200"
-                #refCategoryDescription="ngModel" id="description">
-            <small id="CategoryDescriptionHelp" class="form-text text-muted"
-                [hidden]="!refCategoryDescription.errors.required">Description is required
-            </small>
-        </div>
-        <button type="submit" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
-        <a class="btn btn-info" [routerLink]="['/category/all']">Back</a>
-    </form>
+    <div class="col-md-6 col-md-offset-3">
+        <form [formGroup]="formGroup" (validSubmit)="onSubmit()">
+            <div *ngIf="category" class="form-group">
+                <label>Id</label>
+                <input [(ngModel)]="category.id" class="form-control" type="text" placeholder="Readonly input here...">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Category Name</label>
+                <input type="text" name="name" class="form-control" [(ngModel)]="category.name" formControlName="name">
+                <bfv-messages></bfv-messages>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <input type="text" name="description" class="form-control" [(ngModel)]="category.description"
+                    formControlName="description">
+                <bfv-messages></bfv-messages>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+            <a class="btn btn-info" [routerLink]="['/category/all']">Back</a>
+        </form>
+    </div>
 </div>

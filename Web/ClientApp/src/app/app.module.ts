@@ -1,13 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//https://www.npmjs.com/package/ng-bootstrap-form-validation
+import { NgBootstrapFormValidationModule, CUSTOM_ERROR_MESSAGES } from 'ng-bootstrap-form-validation';
 
 import { AdminAuthGuardService } from './auth-guard/AdminAuthGuardService';
 import { UserAuthGuardService } from './auth-guard/UserAuthGuardService';
 import { CategoryService } from './categories/services/category.service';
+
+import { CUSTOM_ERRORS } from "./_layout/custom-errors";
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -49,7 +53,10 @@ import { UserEditComponent } from './auths/user-edit.component'
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
+    NgBootstrapFormValidationModule.forRoot(),
+    NgBootstrapFormValidationModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       {
@@ -66,7 +73,7 @@ import { UserEditComponent } from './auths/user-edit.component'
       },
       {
         path: 'category',
-        component: CategoriesComponent,
+        component: AdminLayoutComponent,
         children: [
           { path: 'all', component: CategoriesComponent, canActivate: [AdminAuthGuardService] },
           { path: 'detail/:categoryId', component: CategoryComponent, canActivate: [AdminAuthGuardService] },
@@ -77,9 +84,9 @@ import { UserEditComponent } from './auths/user-edit.component'
         path: 'user',
         component: AdminLayoutComponent,
         children: [
-          { path: 'all', component: UsersComponent, canActivate: [AdminAuthGuardService]  },
-          { path: 'add', component: UserComponent, canActivate: [AdminAuthGuardService] },
-          { path: 'edit/:userId', component: UserEditComponent , canActivate: [AdminAuthGuardService] }
+          { path: 'all', component: UsersComponent },
+          { path: 'add', component: UserComponent },
+          { path: 'edit', component: UserEditComponent }
         ]
       },
       { path: 'login', component: LoginComponent },
@@ -91,7 +98,12 @@ import { UserEditComponent } from './auths/user-edit.component'
   providers: [
     AdminAuthGuardService,
     UserAuthGuardService,
-    CategoryService
+    CategoryService,
+    {
+      provide: CUSTOM_ERROR_MESSAGES,
+      useValue: CUSTOM_ERRORS,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

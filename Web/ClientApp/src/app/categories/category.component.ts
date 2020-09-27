@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { CategoryService } from './services/category.service';
 import { CategoryModel } from './models/categoryModel';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'category',
@@ -14,6 +15,7 @@ export class CategoryComponent implements OnInit {
   category: CategoryModel = new CategoryModel();
   errorMessage: any;
   categoryId: any;
+  formGroup: FormGroup;
 
   constructor(private _route: Router, private _routeParams: ActivatedRoute, private categoryService: CategoryService) {
     this._categoryService = categoryService;
@@ -31,6 +33,17 @@ export class CategoryComponent implements OnInit {
         error => this.errorMessage = <any>error
       );
     }
+
+    this.formGroup = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+      ]),
+      description: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(20)
+      ])
+    });
   }
 
   onSubmit() {
@@ -60,6 +73,9 @@ export class CategoryComponent implements OnInit {
           }
         });
     }
+  }
 
+  onReset() {
+    this.formGroup.reset();
   }
 }
