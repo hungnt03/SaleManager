@@ -8,6 +8,7 @@ namespace Api.Identity.ViewModels
 {
     public class RegisterViewModel
     {
+        [Required]
         public string UserName { get; set; }
 
         [Required]

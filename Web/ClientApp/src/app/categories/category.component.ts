@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { CategoryService } from './services/category.service';
-import { CategoryModel } from './models/categoryModel';
+import { CategoryModel } from './models/category.model';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -12,7 +12,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class CategoryComponent implements OnInit {
 
   private _categoryService;
-  category: CategoryModel = new CategoryModel();
+  model: CategoryModel = new CategoryModel();
   errorMessage: any;
   categoryId: any;
   formGroup: FormGroup;
@@ -24,11 +24,12 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     this.categoryId = +this._routeParams.snapshot.paramMap.get('categoryId');
     console.log(`this.route.snapshot.paramMap = ${JSON.stringify(this._routeParams.snapshot.paramMap)}`);
+    console.log(`categoryId = ${this.categoryId}`);
     //Get category
-    if (this.categoryId != null) {
+    if (this.categoryId != null && this.categoryId != 0) {
       this._categoryService.GetCategoryById(this.categoryId).subscribe(
         data => {
-          this.category = data
+          this.model = data
         },
         error => this.errorMessage = <any>error
       );
@@ -47,8 +48,8 @@ export class CategoryComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.categoryId == null) {
-      this._categoryService.AddCategory(this.category).subscribe(
+    if (this.categoryId == null || this.categoryId === 0) {
+      this._categoryService.AddCategory(this.model).subscribe(
         response => {
           if (response.status == "409") {
             alert('category Already Exists');
@@ -62,7 +63,7 @@ export class CategoryComponent implements OnInit {
           }
         });
     } else {
-      this._categoryService.UpdatePlan(this.category).subscribe(
+      this._categoryService.UpdatePlan(this.model).subscribe(
         response => {
           if (response.status == "200") {
             alert('category Saved Successfully');

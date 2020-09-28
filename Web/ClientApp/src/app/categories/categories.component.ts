@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from './services/category.service';
-import { CategoryModel } from './models/categoryModel';
+import { CategoryModel } from './models/category.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -41,6 +41,9 @@ export class CategoriesComponent implements OnInit {
         }
       );
     }
+  }
 
+  applyFilter(filterValue: string) {
+    
   }
 }

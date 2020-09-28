@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Api.Identity.Controllers
 {
-    //[Authorize]
     [Produces("application/json")]
     [Route("api/role")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Bearer", Roles = "admin")]
     public class RoleController : ControllerBase
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -35,6 +35,15 @@ namespace Api.Identity.Controllers
                 role.Id,
                 role.Name
             }));
+
+        [HttpGet]
+        [Route("get/{Id}")]
+        public async Task<IActionResult> Get(string id)
+        {
+            var data = await _roleManager.FindByIdAsync(id);
+            if (data == null) return BadRequest(new string[] { "Could not find role!" });
+            return Ok(data);
+        }
 
         /// <summary>
         /// Insert a role
@@ -70,13 +79,13 @@ namespace Api.Identity.Controllers
         /// <param name="Id">Role Id</param>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(typeof(IdentityResult), 200)]
         [ProducesResponseType(typeof(IEnumerable<string>), 400)]
-        [Route("update/{Id}")]
-        public async Task<IActionResult> Put(string Id, [FromBody]RoleViewModel model)
+        [Route("update")]
+        public async Task<IActionResult> Put([FromBody]RoleViewModel model)
         {
-            IdentityRole identityRole = await _roleManager.FindByIdAsync(Id).ConfigureAwait(false);
+            IdentityRole identityRole = await _roleManager.FindByIdAsync(model.Id).ConfigureAwait(false);
 
             identityRole.Name = model.Name;
 
@@ -91,18 +100,18 @@ namespace Api.Identity.Controllers
         /// <summary>
         /// Delete a role
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPost]
         [ProducesResponseType(typeof(IdentityResult), 200)]
         [ProducesResponseType(typeof(IEnumerable<string>), 400)]
-        [Route("delete/{Id}")]
-        public async Task<IActionResult> Delete(string Id)
+        [Route("delete")]
+        public async Task<IActionResult> Delete([FromBody]RoleViewModel model)
         {
-            if (String.IsNullOrEmpty(Id))
+            if (String.IsNullOrEmpty(model.Id))
                 return BadRequest(new string[] { "Could not complete request!" });
 
-            IdentityRole identityRole = await _roleManager.FindByIdAsync(Id).ConfigureAwait(false);
+            IdentityRole identityRole = await _roleManager.FindByIdAsync(model.Id).ConfigureAwait(false);
             if (identityRole == null)
                 return BadRequest(new string[] { "Could not find role!" });
 
