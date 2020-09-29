@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Identity.Controllers
@@ -14,5 +15,8 @@ namespace Api.Identity.Controllers
     [Authorize(AuthenticationSchemes = "Bearer", Roles = "admin,employee")]
     public class ManagerController : ControllerBase
     {
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
     }
 }
