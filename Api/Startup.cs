@@ -29,6 +29,7 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //https://github.com/shammelburg/CoreIdentity
             // Identity
             services.AddDbContext<Api.Identity.SecurityContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             // Tools->NuGet Package Manager -> Package Manager Console
@@ -55,6 +56,7 @@ namespace Api
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddControllers();
+            services.AddHttpContextAccessor();
 
             // Mapper
             services.AddAutoMapper(typeof(AutoMapping));

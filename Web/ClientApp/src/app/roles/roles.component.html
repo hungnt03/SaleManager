@@ -1,0 +1,27 @@
+<div class="container mt-3">
+    <div class="d-flex flex-row justify-content-between">
+        <h3>Roles</h3>
+        <button [routerLink]="['/role/add']" type="button" class="btn btn-success">Add Role</button>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Role Name</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elm of roles; let i = index">
+                <td scope="row">{{i+1}}</td>
+                <td>
+                    <a [routerLink]="['/role/detail/',elm.id]">{{elm.name}}</a>
+                </td>
+                <td>
+                    <button (click)="onDelete(elm.id)" type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

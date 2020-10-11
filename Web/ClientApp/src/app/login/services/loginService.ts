@@ -26,11 +26,11 @@ export class LoginService {
                 if (data.token != null) {
                     if (data.role == 2) {
                         // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('currentUser', JSON.stringify({ username: loginModel.UserName, token: data.Token }));
+                        localStorage.setItem('currentUser', JSON.stringify({ username: loginModel.UserName, token: data.token }));
                     }
                     else if (data.role == 1) {
                         // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('adminUser', JSON.stringify({ username: loginModel.UserName, token: data.Token }));
+                        localStorage.setItem('adminUser', JSON.stringify({ username: loginModel.UserName, token: data.token }));
                     }
                     // return true to indicate successful login
                     return data;

@@ -3,15 +3,15 @@ import { environment } from '../../../environments/environment';
 import { Observable, throwError } from 'rxjs'
 import { catchError, tap } from 'rxjs/operators'
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { CategoryModel } from '../models/category.model'
+import { RoleModel } from '../models/role.model'
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class CategoryService {
+export class RoleService {
     private data: any;
-    private apiUrl = environment.apiEndpoint + "/api/category";
+    private apiUrl = environment.apiEndpoint + "/api/role";
     token: any;
     username: any;
 
@@ -20,50 +20,46 @@ export class CategoryService {
         this.token = this.data.token;
     }
 
-    // Get All Plans
-    public GetAllCategory(): Observable<CategoryModel[]> {
+    public GetAll(): Observable<RoleModel[]> {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.get<CategoryModel[]>(this.apiUrl + "/get", { headers: headers }).pipe(tap(data => data),
+        return this.http.get<RoleModel[]>(this.apiUrl + "/get", { headers: headers }).pipe(tap(data => data),
             catchError(this.handleError)
         );
     }
 
-    // Get Plan by PlanId
-    public GetCategoryById(id: number): Observable<CategoryModel> {
+    public GetById(id: string): Observable<RoleModel> {
         var editurl = this.apiUrl + "/get/" + id;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.get<CategoryModel>(editurl, { headers: headers }).pipe(tap(data => data),
+        return this.http.get<RoleModel>(editurl, { headers: headers }).pipe(tap(data => data),
             catchError(this.handleError)
         );
     }
 
-    // Update Plan
-    public UpdatePlan(model: CategoryModel) {
+    public Update(model: RoleModel) {
         var updateurl = this.apiUrl + "/update";
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.post<any>(updateurl, model, { headers: headers, observe: "response"  })
+        return this.http.post<any>(updateurl, model, { headers: headers, observe: "response" })
             .pipe(
                 catchError(this.handleError)
             );
     }
 
-    public DeleteCategory(id: number) {
-        var model = new CategoryModel();
-        model.id = id;
+    public Delete(id: number) {
+        var data = new RoleModel();
+        data.id = id;
         var deleteUrl = this.apiUrl + '/delete'
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.post<any>(deleteUrl, model, { headers: headers, observe: "response" })
+        return this.http.post<any>(deleteUrl, data, { headers: headers, observe: "response" })
             .pipe(
                 catchError(this.handleError)
             );
     }
 
-    // Add Category
-    public AddCategory(model: CategoryModel) {
+    public Add(model: RoleModel) {
         var addurl = this.apiUrl + "/insert";
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);

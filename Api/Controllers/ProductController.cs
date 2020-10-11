@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Api.Entities;
 using Api.Entities.Inflastructor;
@@ -19,10 +18,12 @@ namespace Api.Controllers
     {
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
-        public ProductController(IUnitOfWork unitOfWork, IMapper mapper)
+        private string _userId;
+        public ProductController(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
 
         [HttpPost]

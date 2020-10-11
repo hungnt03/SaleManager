@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using System.Security.Claims;
 
 namespace Api.Controllers
 {
@@ -16,10 +17,12 @@ namespace Api.Controllers
     {
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
-        public CustomerController(IUnitOfWork unitOfWork, IMapper mapper)
+        private string _userId;
+        public CustomerController(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
 
         [HttpGet]
@@ -48,7 +51,7 @@ namespace Api.Controllers
 
             var customer = _mapper.Map<Customer>(model);
             customer.CreatedAt = DateTime.Now;
-            customer.CreatedBy = "administrator";
+            customer.CreatedBy = _userId;
             var data = _unitOfWork.CustomerRepository.Add(customer);
             if (data == null) return BadRequest(new string[] { "Insert fail!" });
             _unitOfWork.Commit();
@@ -69,7 +72,7 @@ namespace Api.Controllers
             customer.Address = model.Address;
             customer.Contact = model.Contact;
             customer.UpdatedAt = DateTime.Now;
-            customer.UpdatedBy = "administrator";
+            customer.UpdatedBy = _userId;
             _unitOfWork.CustomerRepository.Update(customer);
             _unitOfWork.Commit();
             return Ok();

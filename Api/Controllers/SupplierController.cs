@@ -1,9 +1,11 @@
 ﻿using Api.Entities;
 using Api.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Api.Controllers
@@ -15,10 +17,12 @@ namespace Api.Controllers
     {
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
-        public SupplierController(IUnitOfWork unitOfWork, IMapper mapper)
+        private string _userId;
+        public SupplierController(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
 
         [HttpGet]
@@ -47,7 +51,7 @@ namespace Api.Controllers
 
             var supplier = _mapper.Map<Supplier>(model);
             supplier.CreatedAt = DateTime.Now;
-            supplier.CreatedBy = "administrator";
+            supplier.CreatedBy = _userId;
             var data = _unitOfWork.SupplierRepository.Add(supplier);
             if (data == null) return BadRequest(new string[] { "Insert fail!" });
             _unitOfWork.Commit();
@@ -69,7 +73,7 @@ namespace Api.Controllers
             supplier.Contact1 = model.Contact1;
             supplier.Contact2 = model.Contact2;
             supplier.UpdatedAt = DateTime.Now;
-            supplier.UpdatedBy = "administrator";
+            supplier.UpdatedBy = _userId;
             _unitOfWork.SupplierRepository.Update(supplier);
             _unitOfWork.Commit();
             return Ok();

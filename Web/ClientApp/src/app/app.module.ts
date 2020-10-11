@@ -5,11 +5,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //https://www.npmjs.com/package/ng-bootstrap-form-validation
+//npm i ng-bootstrap-form-validation
 import { NgBootstrapFormValidationModule, CUSTOM_ERROR_MESSAGES } from 'ng-bootstrap-form-validation';
 
 import { AdminAuthGuardService } from './auth-guard/AdminAuthGuardService';
 import { UserAuthGuardService } from './auth-guard/UserAuthGuardService';
 import { CategoryService } from './categories/services/category.service';
+import { RoleService } from './roles/services/role.service';
 
 import { CUSTOM_ERRORS } from "./_layout/custom-errors";
 
@@ -28,7 +30,10 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './categories/category.component';
 import { UserComponent } from './auths/user.component'
 import { UsersComponent } from './auths/users.component'
-import { UserEditComponent } from './auths/user-edit.component'
+import { UserEditComponent } from './auths/user-edit.component';
+import { RolesComponent } from './roles/roles.component'
+import { RoleComponent } from './roles/role.component'
+import { RoleModel } from './roles/models/Role.model';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,9 @@ import { UserEditComponent } from './auths/user-edit.component'
     CategoryComponent,
     UserComponent,
     UsersComponent,
-    UserEditComponent
+    UserEditComponent,
+    RolesComponent,
+    RoleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -81,6 +88,15 @@ import { UserEditComponent } from './auths/user-edit.component'
         ]
       },
       {
+        path: 'role',
+        component: AdminLayoutComponent,
+        children: [
+          { path: 'all', component: RolesComponent, canActivate: [AdminAuthGuardService] },
+          { path: 'detail/:roleId', component: RoleComponent, canActivate: [AdminAuthGuardService] },
+          { path: 'add', component: RoleComponent, canActivate: [AdminAuthGuardService] },
+        ]
+      },
+      {
         path: 'user',
         component: AdminLayoutComponent,
         children: [
@@ -99,6 +115,7 @@ import { UserEditComponent } from './auths/user-edit.component'
     AdminAuthGuardService,
     UserAuthGuardService,
     CategoryService,
+    RoleService,
     {
       provide: CUSTOM_ERROR_MESSAGES,
       useValue: CUSTOM_ERRORS,
