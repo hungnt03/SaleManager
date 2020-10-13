@@ -1,4 +1,5 @@
 ﻿using SaleManager.Controls;
+using SaleManager.Models;
 using SaleManager.Services;
 using SaleManager.Utils;
 using SaleManager.Views;
@@ -18,6 +19,10 @@ namespace SaleManager
 {
     public partial class Main : Form
     {
+        private List<BillProductModel> _lst;
+        private BindingList<BillProductModel> _bindingLst;
+        private BindingSource _src;
+
         private int _currTabIdx = 0;
         private ProductService _productService;
         public Main()
@@ -107,18 +112,18 @@ namespace SaleManager
         #region "Init"
         private void InitView()
         {
-            var source = new AutoCompleteStringCollection();
-            var producs = _productService.GetAll();
-            foreach (var elm in producs)
-                source.Add(elm.Barcode);
+            //var source = new AutoCompleteStringCollection();
+            //var producs = _productService.GetAll();
+            //foreach (var elm in producs)
+            //    source.Add(elm.Barcode);
             //AutoComplete
-            txtSearch.AutoCompleteCustomSource = source;
-            txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //txtSearch.AutoCompleteCustomSource = source;
+            //txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void RemoveTab()
-        {            
+        {
             this.tabControl1.TabPages.Remove(this.tabControl1.SelectedTab);
         }
 
@@ -132,49 +137,64 @@ namespace SaleManager
             tab.Name = "tabPage" + _currTabIdx;
             tab.Text = "Hóa đơn " + _currTabIdx;
             tab.UseVisualStyleBackColor = true;
-            tab.Controls.Add(CreateDatagridView());
+            var grid = CreateDatagridView();
+            grid.AutoGenerateColumns = false;
+            tab.Controls.Add(grid);
             tab.Size = new System.Drawing.Size(738, 310);
             tab.ResumeLayout(false);
             this.tabControl1.Controls.Add(tab);
 
+            _lst = new List<BillProductModel>() { new BillProductModel("123456", "name", 10, "20000") };
+            _bindingLst = new BindingList<BillProductModel>(_lst);
+            _src = new BindingSource(_bindingLst, null);
+            grid.DataSource = _src;
+            _lst.Add(new BillProductModel("321123", "name2", 11, "30000"));
         }
 
-        private Control CreateDatagridView()
+        private DataGridView CreateDatagridView()
         {
             var grid = new System.Windows.Forms.DataGridView();
             grid.Name = "DataGridView" + _currTabIdx;
             var txtBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            txtBarcode.Name = "txtProductBarcode";
+            txtBarcode.Name = "barcode";
+            txtBarcode.DataPropertyName = "barcode";
             txtBarcode.HeaderText = "";
             txtBarcode.Width = 50;
             var txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            txtName.Name = "txtProductName";
+            txtName.Name = "name";
+            txtName.DataPropertyName = "name";
             txtName.HeaderText = "Tên sản phẩm";
             txtName.Width = 300;
             var txtQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Name = "quantity";
+            txtQuantity.DataPropertyName = "quantity";
             txtQuantity.HeaderText = "Số lượng";
             txtQuantity.Width = 70;
             var btnUp = new System.Windows.Forms.DataGridViewButtonColumn();
-            btnUp.Name = "btnProductQuantityUp";
-            btnUp.Text = "▲";
+            btnUp.Name = "quantityDown";
+            btnUp.DataPropertyName = "quantityDown";
+            btnUp.Text = "▼";
             btnUp.HeaderText = "";
             btnUp.Width = 30;
             var btnDown = new System.Windows.Forms.DataGridViewButtonColumn();
-            btnDown.Name = "btnProductQuantityDown";
+            btnDown.Name = "quantityUp";
+            btnDown.DataPropertyName = "quantityUp";
             btnDown.HeaderText = "";
-            btnDown.Text = "▼";
+            btnDown.Text = "▲";
             btnDown.Width = 30;
             var txtPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            txtPrice.Name = "txtProductPrice";
+            txtPrice.Name = "price";
+            txtPrice.DataPropertyName = "price";
             txtPrice.HeaderText = "Đơn giá";
             txtPrice.Width = 100;
             var txtTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            txtTotal.Name = "txtProductTotal";
+            txtTotal.Name = "total";
+            txtTotal.DataPropertyName = "total";
             txtTotal.HeaderText = "Thành tiền";
             txtTotal.Width = 120;
             var btnDel = new System.Windows.Forms.DataGridViewButtonColumn();
-            btnDel.Name = "btnProductDel";
+            btnDel.Name = "del";
+            btnDel.DataPropertyName = "del";
             btnDel.HeaderText = "";
             btnDel.Text = "✘";
             btnDel.Width = 30;
@@ -227,7 +247,7 @@ namespace SaleManager
                 var price = StringUtil.ConvertCurrentcy(grid.Rows[e.RowIndex].Cells[grid.Columns["txtProductPrice"].Index].Value.ToString());
                 quantity += 1;
                 grid.Rows[e.RowIndex].Cells[grid.Columns["txtQuantity"].Index].Value = quantity.ToString();
-                grid.Rows[e.RowIndex].Cells[grid.Columns["txtProductTotal"].Index].Value = StringUtil.ToCurrentcy((quantity*price));
+                grid.Rows[e.RowIndex].Cells[grid.Columns["txtProductTotal"].Index].Value = StringUtil.ToCurrentcy((quantity * price));
             }
             //QuantityDown click
             if (e.ColumnIndex == grid.Columns["btnProductQuantityDown"].Index)

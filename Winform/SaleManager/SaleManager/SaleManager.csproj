@@ -133,6 +133,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BillProductModel.cs" />
     <Compile Include="Models\KeyValue.cs" />
     <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Program.cs" />
