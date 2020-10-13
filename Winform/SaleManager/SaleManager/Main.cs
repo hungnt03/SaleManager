@@ -148,7 +148,7 @@ namespace SaleManager
             _bindingLst = new BindingList<BillProductModel>(_lst);
             _src = new BindingSource(_bindingLst, null);
             grid.DataSource = _src;
-            _lst.Add(new BillProductModel("321123", "name2", 11, "30000"));
+            _lst.Add(new BillProductModel("321123", "name232", 11, "30000"));
         }
 
         private DataGridView CreateDatagridView()
