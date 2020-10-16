@@ -17,7 +17,7 @@ namespace SaleManager.Controls
 
         public CardControl()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public CardControl(CardViewModel viewModel)

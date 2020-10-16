@@ -28,6 +28,10 @@ namespace SaleManager.Controls
         private void Cards_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             DataBind();
+            foreach(CardControl elm in Controls)
+            {                
+                elm.MouseHover += new System.EventHandler(this.card_MouseHover);
+            }
         }
 
         public void DataBind()
@@ -58,6 +62,11 @@ namespace SaleManager.Controls
             int yPos = (atIndex / columnCount) * CardHeight;
 
             ctl.Location = new Point(xPos, yPos);
+        }
+
+        private void card_MouseHover(object sender, System.EventArgs e)
+        {
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         }
     }
 }

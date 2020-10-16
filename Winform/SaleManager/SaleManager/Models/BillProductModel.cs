@@ -12,7 +12,19 @@ namespace SaleManager.Models
     {
         public string barcode { set; get; }
         public string name { set; get; }
-        public int quantity { set; get; }
+        public int _quantity { set; get; }
+        public int quantity
+        {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+                _quantity = value;
+                _total = (int.Parse(this._price) * quantity).ToString();
+            }
+        }
         public string quantityDown;
         public string quantityUp;
         private string _price;
@@ -20,23 +32,28 @@ namespace SaleManager.Models
         {
             get
             {
-                return _price;
+                return StringUtil.ToCurrentcy(int.Parse(_price));
             }
             set
             {
                 if (StringUtil.IsNumberic(value))
                 {
-                    _price = StringUtil.ToCurrentcy(int.Parse(value));
+                    _price = value;
                 }
             }
         }
-        public string total { 
+        public string _total;
+        public string total {
+            set
+            {
+                _total = value;
+            }
             get 
             {
-                if (StringUtil.IsNumberic(this._price))
-                    return StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(this._price) * quantity);
+                if (StringUtil.IsNumberic(this._total))
+                    return StringUtil.ToCurrentcy(int.Parse(_total));
                 return "0";
-            } 
+            }
         }
         public string del;
 
@@ -45,12 +62,12 @@ namespace SaleManager.Models
 
         }
 
-        public BillProductModel(string barcode, string name, int quantity, string price)
+        public BillProductModel(string barcode, string name, string price)
         {
             this.barcode = barcode;
             this.name = name;
-            this.quantity = quantity;
             this.price = price;
+            this.quantity = 1;
         }
     }
 }

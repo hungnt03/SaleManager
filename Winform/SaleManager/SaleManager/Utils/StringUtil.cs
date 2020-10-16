@@ -27,6 +27,8 @@ namespace SaleManager.Utils
 
         public static bool IsNumberic(string str)
         {
+            if (string.IsNullOrEmpty(str))
+                return false;
             return str.ToCharArray().All(x => Char.IsDigit(x));
         }
     }

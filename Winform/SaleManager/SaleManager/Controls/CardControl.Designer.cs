@@ -93,6 +93,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "CardControl";
             this.Size = new System.Drawing.Size(100, 160);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

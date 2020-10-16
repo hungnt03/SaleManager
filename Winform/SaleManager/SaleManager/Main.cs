@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,7 @@ namespace SaleManager
             cardsPanel1.ViewModel = LoadSomeData();
             cardsPanel1.DataBind();
             AddTab();
+            txtSearch.Focus();
         }
 
         private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -144,11 +146,12 @@ namespace SaleManager
             tab.ResumeLayout(false);
             this.tabControl1.Controls.Add(tab);
 
-            _lst = new List<BillProductModel>() { new BillProductModel("123456", "name", 10, "20000") };
+            //_lst = new List<BillProductModel>() { new BillProductModel("123456", "name", 10, "20000") };
+            _lst = new List<BillProductModel>();
             _bindingLst = new BindingList<BillProductModel>(_lst);
             _src = new BindingSource(_bindingLst, null);
             grid.DataSource = _src;
-            _lst.Add(new BillProductModel("321123", "name232", 11, "30000"));
+            //_lst.Add(new BillProductModel("321123", "name232", 11, "30000"));
         }
 
         private DataGridView CreateDatagridView()
@@ -217,13 +220,86 @@ namespace SaleManager
         private void AddRow(string barcode)
         {
             var product = _productService.GetById(barcode);
+            
             if (product == null)
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm.","",MessageBoxButtons.OK);
                 return;
-            var grid = (DataGridView)this.tabControl1.SelectedTab.Controls[0];
-            grid.Rows.Add(new string[] { product.Barcode, product.Name, "1", "", "", StringUtil.ToCurrentcy(product.Price), StringUtil.ToCurrentcy(product.Price), "" });
+            }
+            if (_lst.Where(x => x.barcode.Equals(product.Barcode)).Count() > 0)
+                _lst.Where(x => x.barcode.Equals(product.Barcode)).First().quantity += 1;
+            else
+                _lst.Add(new BillProductModel(product.Barcode, product.Name, product.Price.ToString()));
+            _bindingLst.ResetBindings();
+            _src.ResetBindings(false);
         }
         #endregion
 
+        
+
+
+        private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            var barcode = grid.Rows[e.RowIndex].Cells[grid.Columns["barcode"].Index].Value.ToString();
+            //QuantityUp click
+            if (e.ColumnIndex == grid.Columns["quantityUp"].Index)
+            {
+                _lst.Where(x => x.barcode.Equals(barcode)).First().quantity += 1;
+                _bindingLst.ResetBindings();
+                _src.ResetBindings(false);
+
+                //var quantity = int.Parse(grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value.ToString());
+                //var price = StringUtil.ConvertCurrentcy(grid.Rows[e.RowIndex].Cells[grid.Columns["price"].Index].Value.ToString());
+                //quantity += 1;
+                //grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value = quantity.ToString();
+                //grid.Rows[e.RowIndex].Cells[grid.Columns["total"].Index].Value = StringUtil.ToCurrentcy((quantity * price));
+            }
+            //QuantityDown click
+            if (e.ColumnIndex == grid.Columns["quantityDown"].Index)
+            {
+                var quantity = _lst.Where(x => x.barcode.Equals(barcode)).First().quantity;
+                if (quantity == 1)
+                    return;
+                _lst.Where(x => x.barcode.Equals(barcode)).First().quantity -= 1;
+                _bindingLst.ResetBindings();
+                _src.ResetBindings(false);
+
+                //var quantity = int.Parse(grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value.ToString());
+                //var price = StringUtil.ConvertCurrentcy(grid.Rows[e.RowIndex].Cells[grid.Columns["price"].Index].Value.ToString());
+                //if (quantity == 1)
+                //    return;
+                //quantity -= 1;
+                //grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value = quantity.ToString();
+                //grid.Rows[e.RowIndex].Cells[grid.Columns["total"].Index].Value = StringUtil.ToCurrentcy((quantity * price));
+            }
+            //Delete click
+            if (e.ColumnIndex == grid.Columns["del"].Index)
+            {
+                var product = _lst.Where(x => x.barcode.Equals(barcode)).First();
+                _lst.Remove(product);
+                _bindingLst.ResetBindings();
+                _src.ResetBindings(false);
+            }
+        }
+
+        private void CheckEnterKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.KeyChar) || e.KeyChar.Equals('\b'));
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Length == 13)
+            {
+                AddRow(txtSearch.Text);
+                txtSearch.Text = string.Empty;
+            }
+                
+        }
+
+
+        #region "event"
         private void btnAddTab_Click(object sender, EventArgs e)
         {
             AddTab();
@@ -237,51 +313,55 @@ namespace SaleManager
                 RemoveTab();
         }
 
-        private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btn100_Click(object sender, EventArgs e)
         {
-            var grid = (DataGridView)sender;
-            //QuantityUp click
-            if (e.ColumnIndex == grid.Columns["btnProductQuantityUp"].Index)
-            {
-                var quantity = int.Parse(grid.Rows[e.RowIndex].Cells[grid.Columns["txtQuantity"].Index].Value.ToString());
-                var price = StringUtil.ConvertCurrentcy(grid.Rows[e.RowIndex].Cells[grid.Columns["txtProductPrice"].Index].Value.ToString());
-                quantity += 1;
-                grid.Rows[e.RowIndex].Cells[grid.Columns["txtQuantity"].Index].Value = quantity.ToString();
-                grid.Rows[e.RowIndex].Cells[grid.Columns["txtProductTotal"].Index].Value = StringUtil.ToCurrentcy((quantity * price));
-            }
-            //QuantityDown click
-            if (e.ColumnIndex == grid.Columns["btnProductQuantityDown"].Index)
-            {
-                var quantity = int.Parse(grid.Rows[e.RowIndex].Cells[grid.Columns["txtQuantity"].Index].Value.ToString());
-                var price = StringUtil.ConvertCurrentcy(grid.Rows[e.RowIndex].Cells[grid.Columns["txtProductPrice"].Index].Value.ToString());
-                if (quantity == 1)
-                    return;
-                quantity -= 1;
-                grid.Rows[e.RowIndex].Cells[grid.Columns["txtQuantity"].Index].Value = quantity.ToString();
-                grid.Rows[e.RowIndex].Cells[grid.Columns["txtProductTotal"].Index].Value = StringUtil.ToCurrentcy((quantity * price));
-            }
-            //Delete click
-            if (e.ColumnIndex == grid.Columns["btnProductDel"].Index)
-            {
-                grid.Rows.Remove(grid.Rows[e.RowIndex]);
-            }
+            var money = txtMoneyCustomer.Text;
+            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 100000);
         }
 
-        private void CheckEnterKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void btn50_Click(object sender, EventArgs e)
         {
-            e.Handled = !(Char.IsDigit(e.KeyChar) || e.KeyChar.Equals('\b'));
+            var money = txtMoneyCustomer.Text;
+            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 50000);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn10_Click(object sender, EventArgs e)
         {
-            var grid = (DataGridView)this.tabControl1.SelectedTab.Controls[0];
-            grid.Rows.Add(new string[] { "Ten", "3", "", "", "9000", "27000", "" });
+            var money = txtMoneyCustomer.Text;
+            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 10000);
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void btn5_Click(object sender, EventArgs e)
         {
-            if (txtSearch.Text.Length == 13)
-                AddRow(txtSearch.Text);
+            var money = txtMoneyCustomer.Text;
+            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 5000);
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            var money = txtMoneyCustomer.Text;
+            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 1000);
+        }
+
+        private void btn01_Click(object sender, EventArgs e)
+        {
+            var money = txtMoneyCustomer.Text;
+            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 100);
+        }
+
+        private void btnClearMoney_Click(object sender, EventArgs e)
+        {
+            txtMoneyCustomer.Text = "0";
+        }
+
+        private void txtMoneyCustomer_TextLeave(object sender, EventArgs e)
+        {
+            if (!StringUtil.IsNumberic(txtMoneyCustomer.Text))
+                return;
+            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text));
         }
     }
+    #endregion
+
+
 }
