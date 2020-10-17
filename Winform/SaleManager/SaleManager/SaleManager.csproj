@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Models\BillProductModel.cs" />
     <Compile Include="Models\KeyValue.cs" />
+    <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

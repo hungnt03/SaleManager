@@ -1,4 +1,5 @@
 ﻿using Microsoft.SqlServer.Server;
+using SaleManager.Entities;
 using SaleManager.Utils;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,14 @@ namespace SaleManager.Models
             this.barcode = barcode;
             this.name = name;
             this.price = price;
+            this.quantity = 1;
+        }
+
+        public BillProductModel(Product product)
+        {
+            this.barcode = product.Barcode;
+            this.name = product.Name;
+            this.price = product.Price.ToString();
             this.quantity = 1;
         }
     }

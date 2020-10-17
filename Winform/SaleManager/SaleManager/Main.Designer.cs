@@ -45,10 +45,11 @@
             this.lblChange = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnClearMoney = new System.Windows.Forms.Button();
             this.txtMoneyCustomer = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lbPrice = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn5 = new System.Windows.Forms.Button();
@@ -61,6 +62,7 @@
             this.btnAddTab = new System.Windows.Forms.Button();
             this.btnRemoveTab = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.txtSearchSub = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -70,7 +72,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.cardsPanel1 = new SaleManager.Controls.CardsPanel();
             this.productModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnClearMoney = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -113,38 +114,38 @@
             this.kháchHàngToolStripMenuItem,
             this.khuyếnMãiToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
             // 
             // sảnPhẩmToolStripMenuItem
             // 
             this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
-            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.sảnPhẩmToolStripMenuItem.Text = "Sản Phẩm";
             this.sảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmToolStripMenuItem_Click);
             // 
             // danhMụcToolStripMenuItem
             // 
             this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.danhMụcToolStripMenuItem.Text = "Xuất nhập";
             // 
             // danhMụcToolStripMenuItem1
             // 
             this.danhMụcToolStripMenuItem1.Name = "danhMụcToolStripMenuItem1";
-            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
+            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
             this.danhMụcToolStripMenuItem1.Text = "Danh mục";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // khuyếnMãiToolStripMenuItem
             // 
             this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
-            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mại";
             // 
             // panel1
@@ -155,9 +156,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Location = new System.Drawing.Point(0, 61);
+            this.panel1.Location = new System.Drawing.Point(0, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1294, 499);
+            this.panel1.Size = new System.Drawing.Size(1294, 461);
             this.panel1.TabIndex = 1;
             // 
             // splitContainer1
@@ -180,24 +181,25 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel2.Controls.Add(this.txtSearchSub);
             this.splitContainer1.Panel2.Controls.Add(this.cardsPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1292, 497);
+            this.splitContainer1.Size = new System.Drawing.Size(1292, 459);
             this.splitContainer1.SplitterDistance = 753;
             this.splitContainer1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(86, 396);
+            this.textBox2.Location = new System.Drawing.Point(86, 366);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(222, 100);
+            this.textBox2.Size = new System.Drawing.Size(222, 93);
             this.textBox2.TabIndex = 8;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(5, 396);
+            this.button6.Location = new System.Drawing.Point(5, 366);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.Size = new System.Drawing.Size(75, 21);
             this.button6.TabIndex = 7;
             this.button6.Text = "Ghi chú";
             this.button6.UseVisualStyleBackColor = true;
@@ -206,26 +208,26 @@
             // 
             this.panel6.Controls.Add(this.lblChange);
             this.panel6.Controls.Add(this.label6);
-            this.panel6.Location = new System.Drawing.Point(449, 458);
+            this.panel6.Location = new System.Drawing.Point(449, 423);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(296, 38);
+            this.panel6.Size = new System.Drawing.Size(296, 35);
             this.panel6.TabIndex = 6;
             // 
             // lblChange
             // 
             this.lblChange.AutoSize = true;
             this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.Location = new System.Drawing.Point(152, 12);
+            this.lblChange.Location = new System.Drawing.Point(152, 11);
             this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(52, 18);
+            this.lblChange.Size = new System.Drawing.Size(16, 18);
             this.lblChange.TabIndex = 1;
-            this.lblChange.Text = "50.000";
+            this.lblChange.Text = "0";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 12);
+            this.label6.Location = new System.Drawing.Point(3, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 18);
             this.label6.TabIndex = 0;
@@ -236,27 +238,37 @@
             this.panel5.Controls.Add(this.btnClearMoney);
             this.panel5.Controls.Add(this.txtMoneyCustomer);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(449, 421);
+            this.panel5.Location = new System.Drawing.Point(449, 389);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(296, 35);
+            this.panel5.Size = new System.Drawing.Size(296, 32);
             this.panel5.TabIndex = 5;
+            // 
+            // btnClearMoney
+            // 
+            this.btnClearMoney.Location = new System.Drawing.Point(272, 2);
+            this.btnClearMoney.Name = "btnClearMoney";
+            this.btnClearMoney.Size = new System.Drawing.Size(24, 26);
+            this.btnClearMoney.TabIndex = 3;
+            this.btnClearMoney.Text = "X";
+            this.btnClearMoney.UseVisualStyleBackColor = true;
+            this.btnClearMoney.Click += new System.EventHandler(this.btnClearMoney_Click);
             // 
             // txtMoneyCustomer
             // 
             this.txtMoneyCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMoneyCustomer.Location = new System.Drawing.Point(155, 6);
+            this.txtMoneyCustomer.Location = new System.Drawing.Point(155, 3);
             this.txtMoneyCustomer.Multiline = true;
             this.txtMoneyCustomer.Name = "txtMoneyCustomer";
-            this.txtMoneyCustomer.Size = new System.Drawing.Size(120, 24);
+            this.txtMoneyCustomer.Size = new System.Drawing.Size(120, 25);
             this.txtMoneyCustomer.TabIndex = 2;
-            this.txtMoneyCustomer.Text = "100.000";
+            this.txtMoneyCustomer.Text = "0";
             this.txtMoneyCustomer.Leave += new System.EventHandler(this.txtMoneyCustomer_TextLeave);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 11);
+            this.label4.Location = new System.Drawing.Point(3, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(111, 24);
             this.label4.TabIndex = 1;
@@ -264,22 +276,22 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.lbPrice);
+            this.panel4.Controls.Add(this.lbTotal);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(449, 396);
+            this.panel4.Location = new System.Drawing.Point(449, 366);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(296, 25);
+            this.panel4.Size = new System.Drawing.Size(296, 23);
             this.panel4.TabIndex = 4;
             // 
-            // lbPrice
+            // lbTotal
             // 
-            this.lbPrice.AutoSize = true;
-            this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrice.Location = new System.Drawing.Point(151, 0);
-            this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(71, 24);
-            this.lbPrice.TabIndex = 1;
-            this.lbPrice.Text = "50.000";
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotal.Location = new System.Drawing.Point(151, 0);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(21, 24);
+            this.lbTotal.TabIndex = 1;
+            this.lbTotal.Text = "0";
             // 
             // label2
             // 
@@ -299,16 +311,16 @@
             this.panel3.Controls.Add(this.btn100);
             this.panel3.Controls.Add(this.btn10);
             this.panel3.Controls.Add(this.btn50);
-            this.panel3.Location = new System.Drawing.Point(376, 421);
+            this.panel3.Location = new System.Drawing.Point(376, 389);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(70, 75);
+            this.panel3.Size = new System.Drawing.Size(70, 69);
             this.panel3.TabIndex = 3;
             // 
             // btn5
             // 
             this.btn5.Location = new System.Drawing.Point(3, 2);
             this.btn5.Name = "btn5";
-            this.btn5.Size = new System.Drawing.Size(34, 23);
+            this.btn5.Size = new System.Drawing.Size(34, 21);
             this.btn5.TabIndex = 11;
             this.btn5.Text = "5";
             this.btn5.UseVisualStyleBackColor = true;
@@ -316,9 +328,9 @@
             // 
             // btn01
             // 
-            this.btn01.Location = new System.Drawing.Point(3, 51);
+            this.btn01.Location = new System.Drawing.Point(3, 47);
             this.btn01.Name = "btn01";
-            this.btn01.Size = new System.Drawing.Size(34, 23);
+            this.btn01.Size = new System.Drawing.Size(34, 21);
             this.btn01.TabIndex = 13;
             this.btn01.Text = "0.1";
             this.btn01.UseVisualStyleBackColor = true;
@@ -326,9 +338,9 @@
             // 
             // btn1
             // 
-            this.btn1.Location = new System.Drawing.Point(3, 27);
+            this.btn1.Location = new System.Drawing.Point(3, 25);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(34, 23);
+            this.btn1.Size = new System.Drawing.Size(34, 21);
             this.btn1.TabIndex = 12;
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = true;
@@ -338,7 +350,7 @@
             // 
             this.btn100.Location = new System.Drawing.Point(36, 2);
             this.btn100.Name = "btn100";
-            this.btn100.Size = new System.Drawing.Size(34, 23);
+            this.btn100.Size = new System.Drawing.Size(34, 21);
             this.btn100.TabIndex = 7;
             this.btn100.Text = "100";
             this.btn100.UseVisualStyleBackColor = true;
@@ -346,9 +358,9 @@
             // 
             // btn10
             // 
-            this.btn10.Location = new System.Drawing.Point(36, 51);
+            this.btn10.Location = new System.Drawing.Point(36, 47);
             this.btn10.Name = "btn10";
-            this.btn10.Size = new System.Drawing.Size(34, 23);
+            this.btn10.Size = new System.Drawing.Size(34, 21);
             this.btn10.TabIndex = 9;
             this.btn10.Text = "10";
             this.btn10.UseVisualStyleBackColor = true;
@@ -356,9 +368,9 @@
             // 
             // btn50
             // 
-            this.btn50.Location = new System.Drawing.Point(36, 27);
+            this.btn50.Location = new System.Drawing.Point(36, 25);
             this.btn50.Name = "btn50";
-            this.btn50.Size = new System.Drawing.Size(34, 23);
+            this.btn50.Size = new System.Drawing.Size(34, 21);
             this.btn50.TabIndex = 8;
             this.btn50.Text = "50";
             this.btn50.UseVisualStyleBackColor = true;
@@ -370,7 +382,7 @@
             this.flowLayoutPanel2.Controls.Add(this.btnRemoveTab);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(676, -2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(76, 28);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(76, 26);
             this.flowLayoutPanel2.TabIndex = 2;
             // 
             // btnAddTab
@@ -378,7 +390,7 @@
             this.btnAddTab.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTab.Location = new System.Drawing.Point(3, 3);
             this.btnAddTab.Name = "btnAddTab";
-            this.btnAddTab.Size = new System.Drawing.Size(30, 23);
+            this.btnAddTab.Size = new System.Drawing.Size(30, 21);
             this.btnAddTab.TabIndex = 0;
             this.btnAddTab.Text = "+";
             this.btnAddTab.UseVisualStyleBackColor = true;
@@ -389,7 +401,7 @@
             this.btnRemoveTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveTab.Location = new System.Drawing.Point(39, 3);
             this.btnRemoveTab.Name = "btnRemoveTab";
-            this.btnRemoveTab.Size = new System.Drawing.Size(30, 23);
+            this.btnRemoveTab.Size = new System.Drawing.Size(30, 21);
             this.btnRemoveTab.TabIndex = 1;
             this.btnRemoveTab.Text = "-";
             this.btnRemoveTab.UseVisualStyleBackColor = true;
@@ -403,15 +415,23 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(744, 369);
+            this.tabControl1.Size = new System.Drawing.Size(744, 341);
             this.tabControl1.TabIndex = 0;
+            // 
+            // txtSearchSub
+            // 
+            this.txtSearchSub.Location = new System.Drawing.Point(3, 8);
+            this.txtSearchSub.Multiline = true;
+            this.txtSearchSub.Name = "txtSearchSub";
+            this.txtSearchSub.Size = new System.Drawing.Size(362, 27);
+            this.txtSearchSub.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "Barcode";
             // 
@@ -428,9 +448,9 @@
             // 
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.txtSearch);
-            this.panel2.Location = new System.Drawing.Point(0, 27);
+            this.panel2.Location = new System.Drawing.Point(0, 25);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1201, 32);
+            this.panel2.Size = new System.Drawing.Size(1201, 30);
             this.panel2.TabIndex = 3;
             // 
             // flowLayoutPanel1
@@ -439,17 +459,17 @@
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 601);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 554);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1294, 44);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1294, 41);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(1216, 3);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 37);
+            this.button7.Size = new System.Drawing.Size(75, 34);
             this.button7.TabIndex = 2;
             this.button7.Text = "Thoát";
             this.button7.UseVisualStyleBackColor = true;
@@ -459,7 +479,7 @@
             this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button1.Location = new System.Drawing.Point(1135, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 37);
+            this.button1.Size = new System.Drawing.Size(75, 34);
             this.button1.TabIndex = 1;
             this.button1.Text = "Hủy";
             this.button1.UseVisualStyleBackColor = false;
@@ -469,7 +489,7 @@
             this.button3.BackColor = System.Drawing.Color.Orange;
             this.button3.Location = new System.Drawing.Point(1054, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 37);
+            this.button3.Size = new System.Drawing.Size(75, 34);
             this.button3.TabIndex = 0;
             this.button3.Text = "Thanh toán";
             this.button3.UseVisualStyleBackColor = false;
@@ -481,9 +501,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cardsPanel1.AutoScroll = true;
             this.cardsPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.cardsPanel1.Location = new System.Drawing.Point(3, 3);
+            this.cardsPanel1.Location = new System.Drawing.Point(3, 41);
             this.cardsPanel1.Name = "cardsPanel1";
-            this.cardsPanel1.Size = new System.Drawing.Size(448, 453);
+            this.cardsPanel1.Size = new System.Drawing.Size(529, 380);
             this.cardsPanel1.TabIndex = 0;
             this.cardsPanel1.ViewModel = null;
             // 
@@ -491,21 +511,11 @@
             // 
             this.productModelBindingSource.DataSource = typeof(SaleManager.Models.ProductModel);
             // 
-            // btnClearMoney
-            // 
-            this.btnClearMoney.Location = new System.Drawing.Point(274, 6);
-            this.btnClearMoney.Name = "btnClearMoney";
-            this.btnClearMoney.Size = new System.Drawing.Size(24, 24);
-            this.btnClearMoney.TabIndex = 3;
-            this.btnClearMoney.Text = "X";
-            this.btnClearMoney.UseVisualStyleBackColor = true;
-            this.btnClearMoney.Click += new System.EventHandler(this.btnClearMoney_Click);
-            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1294, 645);
+            this.ClientSize = new System.Drawing.Size(1294, 595);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -519,6 +529,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -569,7 +580,7 @@
         private System.Windows.Forms.TextBox txtMoneyCustomer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lbPrice;
+        private System.Windows.Forms.Label lbTotal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox2;
@@ -582,6 +593,7 @@
         private System.Windows.Forms.Button btn50;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnClearMoney;
+        private System.Windows.Forms.TextBox txtSearchSub;
     }
 }
 

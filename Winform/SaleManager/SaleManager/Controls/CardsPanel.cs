@@ -81,4 +81,5 @@ public class CardViewModel
     public string Name { get; set; }
     public int Price { get; set; }
     public Bitmap Picture { get; set; }
+    public string id { set; get; }
 }

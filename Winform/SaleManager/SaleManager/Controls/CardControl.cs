@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using SaleManager.Utils;
 
 namespace SaleManager.Controls
 {
@@ -31,8 +32,8 @@ namespace SaleManager.Controls
             SuspendLayout();
 
             lblName.Text = _model.Name.ToString();
-            CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
-            lblPrice.Text = _model.Price.ToString("#,###", cul.NumberFormat);
+
+            lblPrice.Text = StringUtil.ToCurrentcy(_model.Price);
             pictureBox.Image = _model.Picture;
 
             ResumeLayout();

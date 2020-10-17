@@ -29,7 +29,7 @@ namespace SaleManager.Utils
         {
             if (string.IsNullOrEmpty(str))
                 return false;
-            return str.ToCharArray().All(x => Char.IsDigit(x));
+            return str.ToCharArray().All(x => Char.IsDigit(x) || x.Equals("."));
         }
     }
 }

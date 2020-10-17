@@ -42,7 +42,7 @@
             // 
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox.Size = new System.Drawing.Size(100, 92);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
@@ -50,9 +50,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.lblName);
-            this.panel1.Location = new System.Drawing.Point(0, 106);
+            this.panel1.Location = new System.Drawing.Point(0, 98);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 32);
+            this.panel1.Size = new System.Drawing.Size(100, 30);
             this.panel1.TabIndex = 1;
             // 
             // lblName
@@ -61,16 +61,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblName.Location = new System.Drawing.Point(1, 1);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(98, 34);
+            this.lblName.Size = new System.Drawing.Size(98, 31);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "product name";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPrice
             // 
-            this.lblPrice.Location = new System.Drawing.Point(1, 8);
+            this.lblPrice.Location = new System.Drawing.Point(1, 7);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(98, 13);
+            this.lblPrice.Size = new System.Drawing.Size(98, 12);
             this.lblPrice.TabIndex = 1;
             this.lblPrice.Text = "100.000d";
             this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -80,14 +80,14 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.lblPrice);
-            this.panel2.Location = new System.Drawing.Point(0, 135);
+            this.panel2.Location = new System.Drawing.Point(0, 125);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(100, 25);
+            this.panel2.Size = new System.Drawing.Size(100, 23);
             this.panel2.TabIndex = 2;
             // 
             // CardControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Controls.Add(this.panel2);
@@ -95,7 +95,7 @@
             this.Controls.Add(this.pictureBox);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "CardControl";
-            this.Size = new System.Drawing.Size(100, 160);
+            this.Size = new System.Drawing.Size(100, 148);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

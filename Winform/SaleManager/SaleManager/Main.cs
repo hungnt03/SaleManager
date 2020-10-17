@@ -20,22 +20,42 @@ namespace SaleManager
 {
     public partial class Main : Form
     {
-        private List<BillProductModel> _lst;
-        private BindingList<BillProductModel> _bindingLst;
-        private BindingSource _src;
-
-        private int _currTabIdx = 0;
+        private Dictionary<int, MainModel> _models;
         private ProductService _productService;
         public Main()
         {
             InitializeComponent();
             _productService = new ProductService();
+            _models = new Dictionary<int, MainModel>();
             InitView();
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckEnterKeyPress);
             cardsPanel1.ViewModel = LoadSomeData();
             cardsPanel1.DataBind();
-            AddTab();
-            txtSearch.Focus();
+            for(var idx = 0; idx<5; idx++)
+            {
+                AddTab(idx);
+            }
+
+            foreach (CardControl card in cardsPanel1.Controls)
+            {
+                foreach (Control child in card.Controls)
+                {
+                    child.DoubleClick += Card_DoubleClick;
+                }
+            }
+
+        }
+
+        private void Card_DoubleClick(object sender, EventArgs e)
+        {
+            var data = ((CardControl)((Control)sender).Parent)._model;
+            var product = _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(data.id)).FirstOrDefault();
+            if (product == null)
+                _models[tabControl1.SelectedIndex].products.Add(new BillProductModel(_productService.GetById(data.id)));
+            else
+                _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(data.id)).First().quantity += 1;
+            _models[tabControl1.SelectedIndex].Refesh();
+            UpdateTotal();
         }
 
         private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,55 +73,15 @@ namespace SaleManager
             {
                 Price = 120000,
                 Name = "Bánh Sampa Balocco Savoiardi 200g",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
+                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg")),
+                id = "3110354325000"
             });
             cards.Add(new CardViewModel()
             {
                 Price = 16000,
                 Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Price = 16000,
-                Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Price = 16000,
-                Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Price = 16000,
-                Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Price = 16000,
-                Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Price = 16000,
-                Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Price = 16000,
-                Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Price = 16000,
-                Name = "Sốt ướp thịt nướng",
-                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg"))
+                Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg")),
+                id = "8934637514871"
             });
 
             CardsViewModel VM = new CardsViewModel()
@@ -114,14 +94,7 @@ namespace SaleManager
         #region "Init"
         private void InitView()
         {
-            //var source = new AutoCompleteStringCollection();
-            //var producs = _productService.GetAll();
-            //foreach (var elm in producs)
-            //    source.Add(elm.Barcode);
-            //AutoComplete
-            //txtSearch.AutoCompleteCustomSource = source;
-            //txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
         }
 
         private void RemoveTab()
@@ -129,15 +102,14 @@ namespace SaleManager
             this.tabControl1.TabPages.Remove(this.tabControl1.SelectedTab);
         }
 
-        private void AddTab()
+        private void AddTab(int idTab)
         {
             if (this.tabControl1.TabPages.Count > 5)
                 return;
-            _currTabIdx += 1;
             var tab = new System.Windows.Forms.TabPage();
             tab.SuspendLayout();
-            tab.Name = "tabPage" + _currTabIdx;
-            tab.Text = "Hóa đơn " + _currTabIdx;
+            tab.Name = "tabPage" + (idTab+1);
+            tab.Text = "Hóa đơn " + (idTab+1);
             tab.UseVisualStyleBackColor = true;
             var grid = CreateDatagridView();
             grid.AutoGenerateColumns = false;
@@ -146,18 +118,16 @@ namespace SaleManager
             tab.ResumeLayout(false);
             this.tabControl1.Controls.Add(tab);
 
-            //_lst = new List<BillProductModel>() { new BillProductModel("123456", "name", 10, "20000") };
-            _lst = new List<BillProductModel>();
-            _bindingLst = new BindingList<BillProductModel>(_lst);
-            _src = new BindingSource(_bindingLst, null);
-            grid.DataSource = _src;
-            //_lst.Add(new BillProductModel("321123", "name232", 11, "30000"));
+            var model = new MainModel();
+            model.id = idTab;
+            _models.Add(model.id, model);
+            grid.DataSource = _models[model.id].source;
         }
 
         private DataGridView CreateDatagridView()
         {
             var grid = new System.Windows.Forms.DataGridView();
-            grid.Name = "DataGridView" + _currTabIdx;
+            grid.Name = "DataGridView" + tabControl1.SelectedIndex + 1;
             var txtBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             txtBarcode.Name = "barcode";
             txtBarcode.DataPropertyName = "barcode";
@@ -217,25 +187,32 @@ namespace SaleManager
             return grid;
         }
 
-        private void AddRow(string barcode)
+        private void AddProduct(string barcode)
         {
             var product = _productService.GetById(barcode);
-            
+
             if (product == null)
             {
-                MessageBox.Show("Không tìm thấy sản phẩm.","",MessageBoxButtons.OK);
+                MessageBox.Show("Không tìm thấy sản phẩm.", "", MessageBoxButtons.OK);
                 return;
             }
-            if (_lst.Where(x => x.barcode.Equals(product.Barcode)).Count() > 0)
-                _lst.Where(x => x.barcode.Equals(product.Barcode)).First().quantity += 1;
+            if (product.Quantity < 1)
+            {
+                MessageBox.Show("Sản phẩm này đã hết.", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (_models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(product.Barcode)).Count() > 0)
+                _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(product.Barcode)).First().quantity += 1;
             else
-                _lst.Add(new BillProductModel(product.Barcode, product.Name, product.Price.ToString()));
-            _bindingLst.ResetBindings();
-            _src.ResetBindings(false);
+                _models[tabControl1.SelectedIndex].products.Add(new BillProductModel(product.Barcode, product.Name, product.Price.ToString()));
+            _models[tabControl1.SelectedIndex].Refesh();
         }
         #endregion
 
-        
+        private void UpdateTotal()
+        {
+            lbTotal.Text = _models[tabControl1.SelectedIndex].GetTotal();
+        }
 
 
         private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -245,41 +222,27 @@ namespace SaleManager
             //QuantityUp click
             if (e.ColumnIndex == grid.Columns["quantityUp"].Index)
             {
-                _lst.Where(x => x.barcode.Equals(barcode)).First().quantity += 1;
-                _bindingLst.ResetBindings();
-                _src.ResetBindings(false);
-
-                //var quantity = int.Parse(grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value.ToString());
-                //var price = StringUtil.ConvertCurrentcy(grid.Rows[e.RowIndex].Cells[grid.Columns["price"].Index].Value.ToString());
-                //quantity += 1;
-                //grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value = quantity.ToString();
-                //grid.Rows[e.RowIndex].Cells[grid.Columns["total"].Index].Value = StringUtil.ToCurrentcy((quantity * price));
+                _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(barcode)).First().quantity += 1;
+                _models[tabControl1.SelectedIndex].Refesh();
+                UpdateTotal();
             }
             //QuantityDown click
             if (e.ColumnIndex == grid.Columns["quantityDown"].Index)
             {
-                var quantity = _lst.Where(x => x.barcode.Equals(barcode)).First().quantity;
+                var quantity = _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(barcode)).First().quantity;
                 if (quantity == 1)
                     return;
-                _lst.Where(x => x.barcode.Equals(barcode)).First().quantity -= 1;
-                _bindingLst.ResetBindings();
-                _src.ResetBindings(false);
-
-                //var quantity = int.Parse(grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value.ToString());
-                //var price = StringUtil.ConvertCurrentcy(grid.Rows[e.RowIndex].Cells[grid.Columns["price"].Index].Value.ToString());
-                //if (quantity == 1)
-                //    return;
-                //quantity -= 1;
-                //grid.Rows[e.RowIndex].Cells[grid.Columns["quantity"].Index].Value = quantity.ToString();
-                //grid.Rows[e.RowIndex].Cells[grid.Columns["total"].Index].Value = StringUtil.ToCurrentcy((quantity * price));
+                _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(barcode)).First().quantity -= 1;
+                _models[tabControl1.SelectedIndex].Refesh();
+                UpdateTotal();
             }
             //Delete click
             if (e.ColumnIndex == grid.Columns["del"].Index)
             {
-                var product = _lst.Where(x => x.barcode.Equals(barcode)).First();
-                _lst.Remove(product);
-                _bindingLst.ResetBindings();
-                _src.ResetBindings(false);
+                var product = _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(barcode)).First();
+                _models[tabControl1.SelectedIndex].products.Remove(product);
+                _models[tabControl1.SelectedIndex].Refesh();
+                UpdateTotal();
             }
         }
 
@@ -292,66 +255,79 @@ namespace SaleManager
         {
             if (txtSearch.Text.Length == 13)
             {
-                AddRow(txtSearch.Text);
+                AddProduct(txtSearch.Text);
                 txtSearch.Text = string.Empty;
             }
-                
-        }
 
+        }
 
         #region "event"
         private void btnAddTab_Click(object sender, EventArgs e)
         {
-            AddTab();
+            //AddTab();
         }
 
         private void btnRemoveTab_Click(object sender, EventArgs e)
         {
-            if (this.tabControl1.TabPages.Count == 1)
-                return;
-            if (MessageBox.Show("Bạn muốn xóa " + this.tabControl1.SelectedTab.Text + " ?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                RemoveTab();
+            //if (this.tabControl1.TabPages.Count == 1)
+            //    return;
+            //if (MessageBox.Show("Bạn muốn xóa " + this.tabControl1.SelectedTab.Text + " ?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //    RemoveTab();
         }
 
         private void btn100_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 100000);
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) - 
+                StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
 
         private void btn50_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 50000);
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
+                StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
 
         private void btn10_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 10000);
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
+                StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 5000);
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
+                StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 1000);
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
+                StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
 
         private void btn01_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 100);
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
+                StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
 
         private void btnClearMoney_Click(object sender, EventArgs e)
         {
             txtMoneyCustomer.Text = "0";
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
+                StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
 
         private void txtMoneyCustomer_TextLeave(object sender, EventArgs e)
@@ -359,7 +335,9 @@ namespace SaleManager
             if (!StringUtil.IsNumberic(txtMoneyCustomer.Text))
                 return;
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text));
+            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) - StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
+
     }
     #endregion
 
