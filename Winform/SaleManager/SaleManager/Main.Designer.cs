@@ -58,11 +58,9 @@
             this.btn100 = new System.Windows.Forms.Button();
             this.btn10 = new System.Windows.Forms.Button();
             this.btn50 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAddTab = new System.Windows.Forms.Button();
-            this.btnRemoveTab = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.txtSearchSub = new System.Windows.Forms.TextBox();
+            this.cardsPanel1 = new SaleManager.Controls.CardsPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -70,7 +68,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.cardsPanel1 = new SaleManager.Controls.CardsPanel();
             this.productModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,7 +79,6 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource)).BeginInit();
@@ -175,7 +171,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.panel5);
             this.splitContainer1.Panel1.Controls.Add(this.panel4);
             this.splitContainer1.Panel1.Controls.Add(this.panel3);
-            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel2);
             this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
             // 
             // splitContainer1.Panel2
@@ -376,37 +371,6 @@
             this.btn50.UseVisualStyleBackColor = true;
             this.btn50.Click += new System.EventHandler(this.btn50_Click);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.btnAddTab);
-            this.flowLayoutPanel2.Controls.Add(this.btnRemoveTab);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(676, -2);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(76, 26);
-            this.flowLayoutPanel2.TabIndex = 2;
-            // 
-            // btnAddTab
-            // 
-            this.btnAddTab.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTab.Location = new System.Drawing.Point(3, 3);
-            this.btnAddTab.Name = "btnAddTab";
-            this.btnAddTab.Size = new System.Drawing.Size(30, 21);
-            this.btnAddTab.TabIndex = 0;
-            this.btnAddTab.Text = "+";
-            this.btnAddTab.UseVisualStyleBackColor = true;
-            this.btnAddTab.Click += new System.EventHandler(this.btnAddTab_Click);
-            // 
-            // btnRemoveTab
-            // 
-            this.btnRemoveTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveTab.Location = new System.Drawing.Point(39, 3);
-            this.btnRemoveTab.Name = "btnRemoveTab";
-            this.btnRemoveTab.Size = new System.Drawing.Size(30, 21);
-            this.btnRemoveTab.TabIndex = 1;
-            this.btnRemoveTab.Text = "-";
-            this.btnRemoveTab.UseVisualStyleBackColor = true;
-            this.btnRemoveTab.Click += new System.EventHandler(this.btnRemoveTab_Click);
-            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -425,6 +389,19 @@
             this.txtSearchSub.Name = "txtSearchSub";
             this.txtSearchSub.Size = new System.Drawing.Size(362, 27);
             this.txtSearchSub.TabIndex = 1;
+            // 
+            // cardsPanel1
+            // 
+            this.cardsPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cardsPanel1.AutoScroll = true;
+            this.cardsPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.cardsPanel1.Location = new System.Drawing.Point(3, 41);
+            this.cardsPanel1.Name = "cardsPanel1";
+            this.cardsPanel1.Size = new System.Drawing.Size(529, 380);
+            this.cardsPanel1.TabIndex = 0;
+            this.cardsPanel1.ViewModel = null;
             // 
             // label1
             // 
@@ -494,19 +471,6 @@
             this.button3.Text = "Thanh toán";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // cardsPanel1
-            // 
-            this.cardsPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cardsPanel1.AutoScroll = true;
-            this.cardsPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.cardsPanel1.Location = new System.Drawing.Point(3, 41);
-            this.cardsPanel1.Name = "cardsPanel1";
-            this.cardsPanel1.Size = new System.Drawing.Size(529, 380);
-            this.cardsPanel1.TabIndex = 0;
-            this.cardsPanel1.ViewModel = null;
-            // 
             // productModelBindingSource
             // 
             this.productModelBindingSource.DataSource = typeof(SaleManager.Models.ProductModel);
@@ -539,7 +503,6 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -561,8 +524,6 @@
         private System.Windows.Forms.ToolStripMenuItem khuyếnMãiToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button btnAddTab;
-        private System.Windows.Forms.Button btnRemoveTab;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
@@ -571,7 +532,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button3;
         private Controls.CardsPanel cardsPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lblChange;

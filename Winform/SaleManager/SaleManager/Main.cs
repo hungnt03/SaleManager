@@ -43,7 +43,13 @@ namespace SaleManager
                     child.DoubleClick += Card_DoubleClick;
                 }
             }
+            this.tabControl1.SelectedIndexChanged += TabControl1_SelectedIndexChanged;
 
+        }
+
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateTotal();
         }
 
         private void Card_DoubleClick(object sender, EventArgs e)
@@ -95,11 +101,6 @@ namespace SaleManager
         private void InitView()
         {
 
-        }
-
-        private void RemoveTab()
-        {
-            this.tabControl1.TabPages.Remove(this.tabControl1.SelectedTab);
         }
 
         private void AddTab(int idTab)
@@ -262,18 +263,6 @@ namespace SaleManager
         }
 
         #region "event"
-        private void btnAddTab_Click(object sender, EventArgs e)
-        {
-            //AddTab();
-        }
-
-        private void btnRemoveTab_Click(object sender, EventArgs e)
-        {
-            //if (this.tabControl1.TabPages.Count == 1)
-            //    return;
-            //if (MessageBox.Show("Bạn muốn xóa " + this.tabControl1.SelectedTab.Text + " ?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //    RemoveTab();
-        }
 
         private void btn100_Click(object sender, EventArgs e)
         {
