@@ -243,6 +243,7 @@
       <LastGenOutput>SaleManagerDb.cs</LastGenOutput>
     </Content>
     <Content Include="Requiment\dump.sql" />
+    <Content Include="Requiment\sale-manager.sql" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Product\" />
