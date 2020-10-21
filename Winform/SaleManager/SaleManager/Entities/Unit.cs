@@ -12,13 +12,13 @@ namespace SaleManager.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class SystemParameter
+    public partial class Unit
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> UpdatedAt { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
-        public string Description { get; set; }
     }
 }

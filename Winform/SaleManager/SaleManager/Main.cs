@@ -70,6 +70,12 @@ namespace SaleManager
             frm.Show(this);
             this.Hide();
         }
+        private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmConvert();
+            frm.Show(this);
+            this.Hide();
+        }
 
         private CardsViewModel LoadSomeData()
         {
@@ -326,6 +332,7 @@ namespace SaleManager
             txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text));
             lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) - StringUtil.ConvertCurrentcy(lbTotal.Text));
         }
+
 
     }
     #endregion

@@ -27,7 +27,8 @@ namespace SaleManager.Entities
         public Nullable<bool> Pin { get; set; }
         public bool Enable { get; set; }
         public Nullable<System.DateTime> ExpirationDate { get; set; }
-        public string Unit { get; set; }
+        public int Unit { get; set; }
         public string Img { get; set; }
+        public Nullable<int> PriceBuy { get; set; }
     }
 }

@@ -35,10 +35,11 @@ namespace SaleManager.Entities
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<SystemParameter> SystemParameters { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
+        public virtual DbSet<ConvertProduct> ConvertProducts { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Unit> Units { get; set; }
     }
 }

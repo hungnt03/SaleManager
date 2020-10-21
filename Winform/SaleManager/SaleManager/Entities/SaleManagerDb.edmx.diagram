@@ -15,9 +15,7 @@
         <EntityTypeShape EntityType="SaleManagerModel.Category" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SaleManagerModel.Customer" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SaleManagerModel.Discount" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SaleManagerModel.Product" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SaleManagerModel.Supplier" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SaleManagerModel.SystemParameter" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SaleManagerModel.Transaction" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SaleManagerModel.TransactionDetail" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <AssociationConnector Association="SaleManagerModel.FK_AspNetRoleClaims_AspNetRoles_RoleId" ManuallyRouted="false" />
@@ -25,6 +23,9 @@
         <AssociationConnector Association="SaleManagerModel.FK_AspNetUserLogins_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="SaleManagerModel.FK_AspNetUserTokens_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="SaleManagerModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SaleManagerModel.ConvertProduct" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SaleManagerModel.Product" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SaleManagerModel.Unit" Width="1.5" PointX="12.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

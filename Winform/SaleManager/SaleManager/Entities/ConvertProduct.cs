@@ -12,17 +12,16 @@ namespace SaleManager.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class ConvertProduct
     {
-        public int Id { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string Barcode { get; set; }
+        public int Unit1 { get; set; }
+        public int Quantity1 { get; set; }
+        public int Unit2 { get; set; }
+        public int Quantity2 { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> UpdatedAt { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Contact1 { get; set; }
-        public string Contact2 { get; set; }
-        public string Note { get; set; }
     }
 }
