@@ -157,6 +157,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvData);
 
+
             this.Text = "FrmConvert";
             this.Load += new System.EventHandler(this.FrmConvert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
