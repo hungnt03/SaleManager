@@ -30,21 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.unit1ModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.unit2ModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unit1ModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Quantity2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unit2ModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unit1ModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unit2ModelBindingSource)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvData
@@ -63,43 +64,6 @@
             this.dgvData.RowTemplate.Height = 21;
             this.dgvData.Size = new System.Drawing.Size(843, 450);
             this.dgvData.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnExit);
-            this.flowLayoutPanel1.Controls.Add(this.btnSave);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 411);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 39);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(779, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(61, 31);
-            this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(712, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(61, 31);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // unit1ModelBindingSource
-            // 
-            this.unit1ModelBindingSource.DataSource = typeof(SaleManager.Models.Unit1Model);
-            // 
-            // unit2ModelBindingSource
-            // 
-            this.unit2ModelBindingSource.DataSource = typeof(SaleManager.Models.Unit2Model);
             // 
             // barcode
             // 
@@ -132,6 +96,10 @@
             this.Unit1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Unit1.ValueMember = "Unit1";
             // 
+            // unit1ModelBindingSource
+            // 
+            this.unit1ModelBindingSource.DataSource = typeof(SaleManager.Models.Unit1Model);
+            // 
             // Quantity2
             // 
             this.Quantity2.DataPropertyName = "Quantity2";
@@ -149,6 +117,51 @@
             this.Unit2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Unit2.ValueMember = "Unit2";
             // 
+            // unit2ModelBindingSource
+            // 
+            this.unit2ModelBindingSource.DataSource = typeof(SaleManager.Models.Unit2Model);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnExit);
+            this.flowLayoutPanel1.Controls.Add(this.btnSave);
+            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 411);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 39);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(779, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(61, 31);
+            this.btnExit.TabIndex = 0;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(712, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(61, 31);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(645, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(61, 31);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // FrmConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -156,16 +169,13 @@
             this.ClientSize = new System.Drawing.Size(843, 450);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvData);
-
-
-
-
+            this.Name = "FrmConvert";
             this.Text = "FrmConvert";
             this.Load += new System.EventHandler(this.FrmConvert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.unit1ModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unit2ModelBindingSource)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -184,5 +194,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity2;
         private System.Windows.Forms.DataGridViewComboBoxColumn Unit2;
         private System.Windows.Forms.BindingSource unit2ModelBindingSource;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

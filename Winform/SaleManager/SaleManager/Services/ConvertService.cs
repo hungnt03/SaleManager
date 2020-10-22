@@ -46,11 +46,20 @@ namespace SaleManager.Services
 
         public List<Unit1Model> GetUnits1()
         {
-            return _db.Units.Select(x => new Unit1Model() { Unit1 = x.Id, Name = x.Name }).ToList();
+            var results =_db.Units.Select(x => new Unit1Model() { Unit1 = x.Id, Name = x.Name }).ToList();
+            results.Add(new Unit1Model() { Unit1 = -1, Name = string.Empty });
+            return results;
         }
         public List<Unit2Model> GetUnits2()
         {
-            return _db.Units.Select(x => new Unit2Model() { Unit2 = x.Id, Name = x.Name }).ToList();
+            var results = _db.Units.Select(x => new Unit2Model() { Unit2 = x.Id, Name = x.Name }).ToList();
+            results.Add(new Unit2Model() { Unit2 = -1, Name = string.Empty });
+            return results;
+        }
+
+        public void Update(List<ConvertModel> models)
+        {
+
         }
     }
 }

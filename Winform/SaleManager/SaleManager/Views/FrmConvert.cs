@@ -1,4 +1,7 @@
-﻿using SaleManager.Services;
+﻿using AutoMapper;
+using SaleManager.Entities;
+using SaleManager.Models;
+using SaleManager.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +18,9 @@ namespace SaleManager.Views
     {
         private ConvertService _convertService;
         private UnitService _unitSrvice;
+        private BindingList<ConvertModel> _binding;
+        private List<ConvertModel> _converts;
+        public BindingSource _source { get; }
         public FrmConvert()
         {
             InitializeComponent();
@@ -27,7 +33,21 @@ namespace SaleManager.Views
         {
             unit1ModelBindingSource.DataSource = _convertService.GetUnits1();
             unit2ModelBindingSource.DataSource = _convertService.GetUnits2();
-            dgvData.DataSource = _convertService.GetAll();
+            var converts = _convertService.GetAll();
+            converts.Add(new ConvertModel());
+            dgvData.DataSource = converts;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var data = (List<ConvertModel>)dgvData.DataSource;
+            var convertProducts = Mapper.Map<IEnumerable<ConvertModel>, List<ConvertProduct>>(data);
+            var a = 1;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
