@@ -59,7 +59,12 @@ namespace SaleManager.Services
 
         public void Update(List<ConvertModel> models)
         {
-
+            var converts = _db.ConvertProducts.ToList();
+            ConvertProduct convert; 
+            foreach(var elm in models)
+            {
+                //convert = converts.Where(x=>x.Barcode.Equals(elm.Barcode) && x.Unit1.Equals())
+            }
         }
     }
 }

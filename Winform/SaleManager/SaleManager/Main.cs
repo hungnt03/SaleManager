@@ -72,7 +72,7 @@ namespace SaleManager
         }
         private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmConvert();
+            var frm = new FrmImportProduct();
             frm.Show(this);
             this.Hide();
         }

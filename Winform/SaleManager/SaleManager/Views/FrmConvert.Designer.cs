@@ -169,7 +169,6 @@
             this.ClientSize = new System.Drawing.Size(843, 450);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvData);
-            this.Name = "FrmConvert";
             this.Text = "FrmConvert";
             this.Load += new System.EventHandler(this.FrmConvert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();

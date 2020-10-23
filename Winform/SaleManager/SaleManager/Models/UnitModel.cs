@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace SaleManager.Models
 {
-    public class Unit1Model
+    public class UnitModel
     {
-        public int Unit1 { get; set; }
-        public int Unit { get; set; }
+        public int Id { set; get; }
         public string Name { set; get; }
     }
 }
