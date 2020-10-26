@@ -15,6 +15,7 @@ namespace SaleManager.Models
         public int Quantity { set; get; }
         public int Unit { set; get; }
         public int Price { set; get; }
+        public int Supplier { set; get; }
         public Nullable<DateTime> Ex { set; get; }
     }
 }

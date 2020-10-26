@@ -149,6 +149,7 @@
     <Compile Include="Models\ConvertModel.cs" />
     <Compile Include="Models\ImportProductModel.cs" />
     <Compile Include="Models\KeyValue.cs" />
+    <Compile Include="Models\KeyValue2.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Models\Unit1Model.cs" />
@@ -224,6 +225,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.KeyValue2.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.Unit1Model.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.Unit2Model.datasource" />

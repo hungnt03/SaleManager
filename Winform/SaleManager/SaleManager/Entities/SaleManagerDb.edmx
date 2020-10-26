@@ -165,6 +165,7 @@
           <Property Name="Unit" Type="int" Nullable="false" />
           <Property Name="Img" Type="nvarchar(max)" />
           <Property Name="PriceBuy" Type="int" />
+          <Property Name="Interest" Type="int" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -666,6 +667,7 @@
           <Property Name="Unit" Type="Int32" Nullable="false" />
           <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PriceBuy" Type="Int32" />
+          <Property Name="Interest" Type="Int32" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -883,6 +885,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="SaleManagerModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
                 <ScalarProperty Name="PriceBuy" ColumnName="PriceBuy" />
                 <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />

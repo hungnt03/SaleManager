@@ -30,5 +30,6 @@ namespace SaleManager.Entities
         public int Unit { get; set; }
         public string Img { get; set; }
         public Nullable<int> PriceBuy { get; set; }
+        public Nullable<int> Interest { get; set; }
     }
 }

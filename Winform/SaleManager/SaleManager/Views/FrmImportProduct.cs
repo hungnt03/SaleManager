@@ -29,7 +29,7 @@ namespace SaleManager.Views
             string filePath = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Excel Worksheets|*.xls";
+                openFileDialog.Filter = "Excel Worksheets|*.xlsx";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                     filePath = openFileDialog.FileName;
             }
@@ -41,6 +41,7 @@ namespace SaleManager.Views
                 return;
             dgvData.DataSource = new BindingSource(new BindingList<ImportProductModel>(_datas),null);
             unitModelBindingSource.DataSource = _service.GetUnits();
+            supplierBindingSource.DataSource = _service.GetSuppliers();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -50,7 +51,10 @@ namespace SaleManager.Views
 
         private void btnTemplate_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             _service.CreateTemplate();
+            Cursor.Current = Cursors.Default;
+            MessageBox.Show("done.");
         }
     }
 }
