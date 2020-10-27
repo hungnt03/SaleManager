@@ -35,8 +35,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnTemplate = new System.Windows.Forms.Button();
-            this.unitModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,8 +42,11 @@
             this.PriceBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Supplier = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitModelBindingSource)).BeginInit();
@@ -64,13 +65,14 @@
             this.PriceBuy,
             this.Unit,
             this.Price,
+            this.Interest,
             this.Ex,
             this.Supplier});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 0);
             this.dgvData.Name = "dgvData";
             this.dgvData.RowTemplate.Height = 21;
-            this.dgvData.Size = new System.Drawing.Size(1071, 366);
+            this.dgvData.Size = new System.Drawing.Size(1195, 366);
             this.dgvData.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -83,12 +85,12 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 327);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1071, 39);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1195, 39);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1001, 3);
+            this.btnExit.Location = new System.Drawing.Point(1125, 3);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(67, 36);
             this.btnExit.TabIndex = 0;
@@ -97,7 +99,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(928, 3);
+            this.btnSave.Location = new System.Drawing.Point(1052, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(67, 36);
             this.btnSave.TabIndex = 1;
@@ -107,7 +109,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(855, 3);
+            this.btnImport.Location = new System.Drawing.Point(979, 3);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(67, 36);
             this.btnImport.TabIndex = 2;
@@ -117,21 +119,13 @@
             // 
             // btnTemplate
             // 
-            this.btnTemplate.Location = new System.Drawing.Point(782, 3);
+            this.btnTemplate.Location = new System.Drawing.Point(906, 3);
             this.btnTemplate.Name = "btnTemplate";
             this.btnTemplate.Size = new System.Drawing.Size(67, 36);
             this.btnTemplate.TabIndex = 3;
             this.btnTemplate.Text = "Lấy mẫu";
             this.btnTemplate.UseVisualStyleBackColor = true;
             this.btnTemplate.Click += new System.EventHandler(this.btnTemplate_Click);
-            // 
-            // unitModelBindingSource
-            // 
-            this.unitModelBindingSource.DataSource = typeof(SaleManager.Models.UnitModel);
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(SaleManager.Models.KeyValue2);
             // 
             // Barcode
             // 
@@ -181,6 +175,12 @@
             this.Price.HeaderText = "Giá bán";
             this.Price.Name = "Price";
             // 
+            // Interest
+            // 
+            this.Interest.DataPropertyName = "Interest";
+            this.Interest.HeaderText = "Tiền lãi";
+            this.Interest.Name = "Interest";
+            // 
             // Ex
             // 
             this.Ex.DataPropertyName = "Ex";
@@ -199,11 +199,19 @@
             this.Supplier.ValueMember = "key";
             this.Supplier.Width = 150;
             // 
+            // unitModelBindingSource
+            // 
+            this.unitModelBindingSource.DataSource = typeof(SaleManager.Models.UnitModel);
+            // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(SaleManager.Models.KeyValue2);
+            // 
             // FrmImportProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 366);
+            this.ClientSize = new System.Drawing.Size(1195, 366);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvData);
             this.Name = "FrmImportProduct";
@@ -225,6 +233,7 @@
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnTemplate;
         private System.Windows.Forms.BindingSource unitModelBindingSource;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
@@ -232,8 +241,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceBuy;
         private System.Windows.Forms.DataGridViewComboBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Interest;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ex;
         private System.Windows.Forms.DataGridViewComboBoxColumn Supplier;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
     }
 }
