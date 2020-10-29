@@ -1,6 +1,6 @@
 alter table [HungTest].[dbo].[Product] add PriceBuy int default 0
 alter table [HungTest].[dbo].[Supplier] add Note [nvarchar](256)
-alter table [dbo].[Product] add interest int default 0
+alter table [dbo].[Product] add Interest int default 0
 
 ALTER TABLE [HungTest].[dbo].[Product]
 ALTER COLUMN Unit int not null;

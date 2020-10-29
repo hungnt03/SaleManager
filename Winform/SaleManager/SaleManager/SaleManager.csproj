@@ -65,6 +65,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.9.7\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.9.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.9.7\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\CardControl.cs">
@@ -106,12 +112,15 @@
     <Compile Include="Entities\C__EFMigrationsHistory.cs">
       <DependentUpon>SaleManagerDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\DbFactory.cs" />
     <Compile Include="Entities\Discount.cs">
       <DependentUpon>SaleManagerDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Disposable.cs" />
     <Compile Include="Entities\Product.cs">
       <DependentUpon>SaleManagerDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\RepositoryBase.cs" />
     <Compile Include="Entities\SaleManagerDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -139,6 +148,7 @@
     <Compile Include="Entities\Unit.cs">
       <DependentUpon>SaleManagerDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\UnitOfWork.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,10 +156,11 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BillProductModel.cs" />
+    <Compile Include="Utils\Bindable.cs" />
     <Compile Include="Models\ConvertModel.cs" />
     <Compile Include="Models\ImportProductModel.cs" />
     <Compile Include="Models\KeyValue.cs" />
-    <Compile Include="Models\KeyValue2.cs" />
+    <Compile Include="Models\KeyValueInt.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Models\Unit1Model.cs" />
@@ -164,7 +175,9 @@
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\UnitService.cs" />
     <Compile Include="Utils\AutoMapperConfig.cs" />
+    <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\StringUtil.cs" />
+    <Compile Include="ViewModels\ImportProductViewModel.cs" />
     <Compile Include="Views\FrmConvert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,12 +237,11 @@
       <DependentUpon>SaleManagerDb.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SaleManager.Entities.Supplier.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Entities.Unit.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.ImportProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />
-    <None Include="Properties\DataSources\SaleManager.Models.KeyValue2.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ProductModel.datasource" />
-    <None Include="Properties\DataSources\SaleManager.Models.Unit1Model.datasource" />
-    <None Include="Properties\DataSources\SaleManager.Models.Unit2Model.datasource" />
-    <None Include="Properties\DataSources\SaleManager.Models.UnitModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

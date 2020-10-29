@@ -66,7 +66,7 @@ namespace SaleManager.Views
             var supplierBinding = new BindingSource();
             var suppliers = _service.GetSupplierList();
             suppliers.Insert(0, new KeyValue("-1", string.Empty));
-            _product.Suppliers = suppliers;
+            //_product.Suppliers = suppliers;
             supplierBinding.DataSource = suppliers;
             cmbSupplier.DataSource = supplierBinding;
             cmbSupplier.DisplayMember = "Value";
@@ -77,7 +77,7 @@ namespace SaleManager.Views
                 var product = _service.GetById(_barcode);
                 _product = Mapper.Map<Product, ProductModel>(product);
                 _product.Categories = categories;
-                _product.Suppliers = suppliers;
+                //_product.Suppliers = suppliers;
                 txtBarcode.ReadOnly = true;
                 var imgRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Resources\\Product\\";
                 if (new FileInfo(imgRootPath + product.Img).Exists)

@@ -1,13 +1,10 @@
 ﻿using SaleManager.Entities;
+using SaleManager.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SaleManager.Models
 {
-    public class ImportProductModel
+    public class ImportProductModel : Bindable
     {
         public string Barcode { set; get; }
         public string ProductName { set; get; }

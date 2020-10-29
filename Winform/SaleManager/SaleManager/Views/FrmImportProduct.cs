@@ -1,6 +1,7 @@
-﻿using OfficeOpenXml;
+﻿
 using SaleManager.Models;
 using SaleManager.Services;
+using SaleManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,14 +18,22 @@ namespace SaleManager.Views
     public partial class FrmImportProduct : Form
     {
         private ImportProductService _service;
-        private List<ImportProductModel> _datas;
+        private ImportProductViewModel _vm = new ImportProductViewModel();
         public FrmImportProduct()
         {
             InitializeComponent();
             _service = new ImportProductService();
+            _vm._source = importProductModelBindingSource;
+            _vm._unitSource = unitBindingSource;
+            _vm._supplierSource = supplierBindingSource;
+            _vm.Initialize();
+            btnImport.Click += BtnImport_Click;
+            this.Load += delegate { _vm.Load(); };
+
+            DataBindings.Add("Text", _vm, "Title");
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        private void BtnImport_Click(object sender, EventArgs e)
         {
             string filePath = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -35,14 +44,9 @@ namespace SaleManager.Views
             }
             if (string.IsNullOrEmpty(filePath))
                 return;
-
-            _datas = _service.Read(filePath);
-            if (_datas.Count == 0)
-                return;
-            dgvData.DataSource = new BindingSource(new BindingList<ImportProductModel>(_datas),null);
-            unitModelBindingSource.DataSource = _service.GetUnits();
-            supplierBindingSource.DataSource = _service.GetSuppliers();
+            _vm.Import(filePath);
         }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {

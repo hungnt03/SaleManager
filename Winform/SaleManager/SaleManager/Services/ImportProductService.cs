@@ -12,14 +12,15 @@ namespace SaleManager.Services
 {
     public class ImportProductService : ServiceBase
     {
+
         public List<ImportProductModel> Read(string path)
         {
             var results = new List<ImportProductModel>();
             var inputFile = new ExcelPackage(new FileInfo(path));
             var sheet = inputFile.Workbook.Worksheets[1];
             var maxRow = sheet.Dimension.End.Row;
-            var units = _db.Units.ToList();
-            var suppliers = _db.Suppliers.ToList();
+            var units = _db.Units.Select(x=>new KeyValueInt() { Key = x.Id, Value = x.Name}).ToList();
+            var suppliers = _db.Suppliers.Select(x => new KeyValueInt() { Key = x.Id, Value = x.Name }).ToList();
             for (var row = 2; row <= maxRow; row++)
             {
                 if (sheet.Row(row) == null)
@@ -28,14 +29,14 @@ namespace SaleManager.Services
                 {
                     Barcode = sheet.Cells["A" + row].Value.ToString(),
                     ProductName = sheet.Cells["B" + row].Value.ToString(),
-                    Total = int.Parse(sheet.Cells["C" + row].Value.ToString()),
-                    Quantity = int.Parse(sheet.Cells["D" + row].Value.ToString()),
-                    PriceBuy = int.Parse(sheet.Cells["E" + row].Value.ToString()),
-                    Unit = units.Where(x => x.Name.Equals(sheet.Cells["F" + row].Value.ToString())).Select(x => x.Id).First(),
+                    Total = StringUtil.IsNumberic(sheet.Cells["C" + row].Value.ToString()) ? int.Parse(sheet.Cells["C" + row].Value.ToString()) : 0,
+                    Quantity = StringUtil.IsNumberic(sheet.Cells["D" + row].Value.ToString()) ? int.Parse(sheet.Cells["D" + row].Value.ToString()) : 0,
+                    PriceBuy = StringUtil.IsNumberic(sheet.Cells["E" + row].Value.ToString()) ? int.Parse(sheet.Cells["E" + row].Value.ToString()) : 0,
+                    Unit = units.Where(x => x.Value.Equals(sheet.Cells["F" + row].Value.ToString())).Select(x => x.Key).First(),
                     Price = (sheet.Cells["G" + row].Value != null && StringUtil.IsNumberic(sheet.Cells["G" + row].Value.ToString())) ? int.Parse(sheet.Cells["G" + row].Value.ToString()) : 0,                    
-                    Ex = DateTime.Parse(sheet.Cells["I" + row].Value.ToString()),
-                    Supplier = suppliers.Where(x => x.Name.Equals(sheet.Cells["J" + row].Value.ToString())).Select(x => x.Id).First(),
-                    Interest = (sheet.Cells["K" + row].Value != null && StringUtil.IsNumberic(sheet.Cells["K" + row].Value.ToString())) ? int.Parse(sheet.Cells["K" + row].Value.ToString()) : 0,
+                    Ex = DateTime.FromOADate(double.Parse(sheet.Cells["I" + row].Value.ToString())),
+                    Supplier = suppliers.Where(x => x.Value.Equals(sheet.Cells["J" + row].Value.ToString())).Select(x => x.Key).First(),
+                    Interest = (sheet.Cells["K" + row].Value != null && StringUtil.IsNumberic(sheet.Cells["K" + row].Value.ToString())) ? int.Parse(sheet.Cells["K" + row].Value.ToString()) : 0
                 };
                 elm.Cal();
                 results.Add(elm);
@@ -48,9 +49,9 @@ namespace SaleManager.Services
             return _db.Units.Select(x => new UnitModel() { Id = x.Id, Name = x.Name }).ToList();
         }
 
-        public List<KeyValue2> GetSuppliers()
+        public List<KeyValue> GetSuppliers()
         {
-            return _db.Suppliers.Select(x => new KeyValue2() { key = x.Id, value = x.Name}).ToList();
+            return _db.Suppliers.Select(x => new KeyValue() { key = x.Id.ToString(), value = x.Name}).ToList();
         }
 
         public void CreateTemplate()
