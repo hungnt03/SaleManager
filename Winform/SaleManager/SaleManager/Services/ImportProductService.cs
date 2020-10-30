@@ -128,8 +128,8 @@ namespace SaleManager.Services
 
             try
             {
-                var tranId = _db.Transactions.OrderByDescending(x => x.Id).Select(x => x.Id).First().ToString().ToInt();
-                if (tranId == -1) tranId = 0;
+                var tranId = 0;
+                if(_db.Transactions.Count()>0) _db.Transactions.OrderByDescending(x => x.Id).Select(x => x.Id).First().ToString().ToInt();
                 foreach (var elm in datas)
                 {
                     var product = products.Where(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit)).FirstOrDefault();
