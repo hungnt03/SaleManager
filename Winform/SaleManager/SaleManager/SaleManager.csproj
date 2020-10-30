@@ -120,6 +120,9 @@
     <Compile Include="Entities\Product.cs">
       <DependentUpon>SaleManagerDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ProductHistory.cs">
+      <DependentUpon>SaleManagerDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\RepositoryBase.cs" />
     <Compile Include="Entities\SaleManagerDb.Context.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +159,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BillProductModel.cs" />
+    <Compile Include="Models\ImportProductDialogModel.cs" />
     <Compile Include="Utils\Bindable.cs" />
     <Compile Include="Models\ConvertModel.cs" />
     <Compile Include="Models\ImportProductModel.cs" />
@@ -176,8 +180,16 @@
     <Compile Include="Services\UnitService.cs" />
     <Compile Include="Utils\AutoMapperConfig.cs" />
     <Compile Include="Utils\Command.cs" />
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\ExtensionMethods.cs" />
     <Compile Include="Utils\StringUtil.cs" />
     <Compile Include="ViewModels\ImportProductViewModel.cs" />
+    <Compile Include="Views\Dialogs\ImportProductDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dialogs\ImportProductDialog.Designer.cs">
+      <DependentUpon>ImportProductDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmConvert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +229,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Dialogs\ImportProductDialog.resx">
+      <DependentUpon>ImportProductDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmConvert.resx">
       <DependentUpon>FrmConvert.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +254,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SaleManager.Entities.Supplier.datasource" />
     <None Include="Properties\DataSources\SaleManager.Entities.Unit.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.ImportProductDialogModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ProductModel.datasource" />

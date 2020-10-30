@@ -9,27 +9,6 @@ namespace SaleManager.Utils
 {
     public static class StringUtil
     {
-        public static string ToCurrentcy(int num)
-        {
-            CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
-           return num.ToString("#,###", cul.NumberFormat);
-        }
-
-        public static int ConvertCurrentcy(string currency)
-        {
-            var result = currency.Replace(",", "");
-            result = result.Replace(".", "");
-            result = result.Trim();
-            if (IsNumberic(result))
-                return int.Parse(result);
-            return 0;
-        }
-
-        public static bool IsNumberic(string str)
-        {
-            if (string.IsNullOrEmpty(str))
-                return false;
-            return str.ToCharArray().All(x => Char.IsDigit(x) || x.Equals("."));
-        }
+        
     }
 }

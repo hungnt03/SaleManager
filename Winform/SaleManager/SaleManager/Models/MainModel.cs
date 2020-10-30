@@ -27,13 +27,13 @@ namespace SaleManager.Models
         public string total { 
             set 
             {
-                if(StringUtil.IsNumberic(value))
+                if(value.IsNumberic())
                     this._total = value.Replace(".", string.Empty);
-                if (!StringUtil.IsNumberic(value))
+                if (!value.IsNumberic())
                     this._total = "0";
             }
             get 
-            { return StringUtil.ToCurrentcy(int.Parse(_total)); }
+            { return _total.ToInt().ToCurrentcy(); }
         }
 
         public string _moneyCustomer;
@@ -41,13 +41,13 @@ namespace SaleManager.Models
         {
             set
             {
-                if (StringUtil.IsNumberic(value))
+                if (value.IsNumberic())
                     this._moneyCustomer = value.Replace(".",string.Empty);
-                if (!StringUtil.IsNumberic(value))
+                if (!value.IsNumberic())
                     this._moneyCustomer = "0";
             }
             get
-            { return StringUtil.ToCurrentcy(int.Parse(_moneyCustomer)); }
+            { return _moneyCustomer.ToInt().ToCurrentcy(); }
         }
 
         public string _moneyChange;
@@ -55,13 +55,13 @@ namespace SaleManager.Models
         {
             set
             {
-                if (StringUtil.IsNumberic(value))
+                if (value.IsNumberic())
                     this._moneyChange = value.Replace(".", string.Empty);
-                if (!StringUtil.IsNumberic(value))
+                if (!value.IsNumberic())
                     this._moneyChange = "0";
             }
             get
-            { return StringUtil.ToCurrentcy(int.Parse(_moneyChange)); }
+            { return _moneyChange.ToCurrentcy(); }
         }
         public void Refesh()
         {
@@ -76,9 +76,9 @@ namespace SaleManager.Models
                 return result.ToString();
             foreach(var product in products)
             {
-                result += StringUtil.ConvertCurrentcy(product.total);
+                result += product.total.CurrentcyToNumber();
             }
-            return StringUtil.ToCurrentcy(result);
+            return result.ToCurrentcy();
         }
     }
 }

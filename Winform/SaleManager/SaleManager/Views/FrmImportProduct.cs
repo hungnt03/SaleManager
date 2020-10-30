@@ -2,6 +2,7 @@
 using SaleManager.Models;
 using SaleManager.Services;
 using SaleManager.ViewModels;
+using SaleManager.Views.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,18 +20,30 @@ namespace SaleManager.Views
     {
         private ImportProductService _service;
         private ImportProductViewModel _vm = new ImportProductViewModel();
+        public static ImportProductDialogModel _dialogModel;
         public FrmImportProduct()
         {
             InitializeComponent();
             _service = new ImportProductService();
+            _dialogModel = new ImportProductDialogModel();
             _vm._source = importProductModelBindingSource;
             _vm._unitSource = unitBindingSource;
             _vm._supplierSource = supplierBindingSource;
             _vm.Initialize();
             btnImport.Click += BtnImport_Click;
             this.Load += delegate { _vm.Load(); };
-
+            btnSave.Click += BtnSave_Click; ;
             DataBindings.Add("Text", _vm, "Title");
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            if(importProductModelBindingSource.DataSource is List<ImportProductModel> datas)
+            {
+                var dialog = new ImportProductDialog(datas);
+                dialog.ShowDialog(this);
+                _vm.Save();
+            }
         }
 
         private void BtnImport_Click(object sender, EventArgs e)
@@ -45,12 +58,6 @@ namespace SaleManager.Views
             if (string.IsNullOrEmpty(filePath))
                 return;
             _vm.Import(filePath);
-        }
-
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnTemplate_Click(object sender, EventArgs e)

@@ -33,7 +33,7 @@ namespace SaleManager.Controls
 
             lblName.Text = _model.Name.ToString();
 
-            lblPrice.Text = StringUtil.ToCurrentcy(_model.Price);
+            lblPrice.Text = _model.Price.ToCurrentcy();
             pictureBox.Image = _model.Picture;
 
             ResumeLayout();

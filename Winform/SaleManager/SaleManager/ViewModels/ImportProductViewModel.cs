@@ -51,6 +51,14 @@ namespace SaleManager.ViewModels
             _source.ResetBindings(false);
             _source.DataSource = datas;
         }
+
+        public void Save()
+        {            
+            if(_source.DataSource is List<ImportProductModel> datas)
+                _service.Save(datas);
+            MessageBox.Show("done");
+        }
+
         private void Notify([CallerMemberName] string property = "") 
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property)); 

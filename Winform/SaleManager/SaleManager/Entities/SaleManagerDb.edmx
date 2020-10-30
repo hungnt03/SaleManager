@@ -167,6 +167,41 @@
           <Property Name="PriceBuy" Type="int" />
           <Property Name="Interest" Type="int" />
         </EntityType>
+        <EntityType Name="ProductHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Unit" Type="int" Nullable="false" />
+          <Property Name="NameOld" Type="nvarchar" MaxLength="250" />
+          <Property Name="NameNew" Type="nvarchar" MaxLength="250" />
+          <Property Name="PriceBuyOld" Type="int" />
+          <Property Name="PriceBuyNew" Type="int" />
+          <Property Name="InterestOld" Type="int" />
+          <Property Name="InterestNew" Type="int" />
+          <Property Name="PriceOld" Type="int" />
+          <Property Name="PriceNew" Type="int" />
+          <Property Name="QuantityOld" Type="int" />
+          <Property Name="QuantityNew" Type="int" />
+          <Property Name="CategoryIdOld" Type="int" />
+          <Property Name="CategoryIdNew" Type="int" />
+          <Property Name="SupplierIdOld" Type="int" />
+          <Property Name="SupplierIdNew" Type="int" />
+          <Property Name="PinOld" Type="bit" />
+          <Property Name="PinNew" Type="bit" />
+          <Property Name="EnableOld" Type="bit" />
+          <Property Name="EnableNew" Type="bit" />
+          <Property Name="ExpirationDateOld" Type="datetime2" Precision="7" />
+          <Property Name="ExpirationDateNew" Type="datetime2" Precision="7" />
+          <Property Name="ImgOld" Type="nvarchar(max)" />
+          <Property Name="ImgNew" Type="nvarchar(max)" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="256" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="7" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="256" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Supplier">
           <Key>
             <PropertyRef Name="Id" />
@@ -325,6 +360,7 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductHistory" EntityType="Self.ProductHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" Schema="dbo" store:Type="Tables" />
@@ -629,6 +665,7 @@
           <EntitySet Name="ConvertProducts" EntityType="SaleManagerModel.ConvertProduct" />
           <EntitySet Name="Products" EntityType="SaleManagerModel.Product" />
           <EntitySet Name="Units" EntityType="SaleManagerModel.Unit" />
+          <EntitySet Name="ProductHistories" EntityType="SaleManagerModel.ProductHistory" />
         </EntityContainer>
         <EntityType Name="ConvertProduct">
           <Key>
@@ -679,6 +716,41 @@
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="Int32" Nullable="false" />
+          <Property Name="NameOld" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NameNew" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PriceBuyOld" Type="Int32" />
+          <Property Name="PriceBuyNew" Type="Int32" />
+          <Property Name="InterestOld" Type="Int32" />
+          <Property Name="InterestNew" Type="Int32" />
+          <Property Name="PriceOld" Type="Int32" />
+          <Property Name="PriceNew" Type="Int32" />
+          <Property Name="QuantityOld" Type="Int32" />
+          <Property Name="QuantityNew" Type="Int32" />
+          <Property Name="CategoryIdOld" Type="Int32" />
+          <Property Name="CategoryIdNew" Type="Int32" />
+          <Property Name="SupplierIdOld" Type="Int32" />
+          <Property Name="SupplierIdNew" Type="Int32" />
+          <Property Name="PinOld" Type="Boolean" />
+          <Property Name="PinNew" Type="Boolean" />
+          <Property Name="EnableOld" Type="Boolean" />
+          <Property Name="EnableNew" Type="Boolean" />
+          <Property Name="ExpirationDateOld" Type="DateTime" Precision="7" />
+          <Property Name="ExpirationDateNew" Type="DateTime" Precision="7" />
+          <Property Name="ImgOld" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImgNew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -913,6 +985,42 @@
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductHistories">
+            <EntityTypeMapping TypeName="SaleManagerModel.ProductHistory">
+              <MappingFragment StoreEntitySet="ProductHistory">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ImgNew" ColumnName="ImgNew" />
+                <ScalarProperty Name="ImgOld" ColumnName="ImgOld" />
+                <ScalarProperty Name="ExpirationDateNew" ColumnName="ExpirationDateNew" />
+                <ScalarProperty Name="ExpirationDateOld" ColumnName="ExpirationDateOld" />
+                <ScalarProperty Name="EnableNew" ColumnName="EnableNew" />
+                <ScalarProperty Name="EnableOld" ColumnName="EnableOld" />
+                <ScalarProperty Name="PinNew" ColumnName="PinNew" />
+                <ScalarProperty Name="PinOld" ColumnName="PinOld" />
+                <ScalarProperty Name="SupplierIdNew" ColumnName="SupplierIdNew" />
+                <ScalarProperty Name="SupplierIdOld" ColumnName="SupplierIdOld" />
+                <ScalarProperty Name="CategoryIdNew" ColumnName="CategoryIdNew" />
+                <ScalarProperty Name="CategoryIdOld" ColumnName="CategoryIdOld" />
+                <ScalarProperty Name="QuantityNew" ColumnName="QuantityNew" />
+                <ScalarProperty Name="QuantityOld" ColumnName="QuantityOld" />
+                <ScalarProperty Name="PriceNew" ColumnName="PriceNew" />
+                <ScalarProperty Name="PriceOld" ColumnName="PriceOld" />
+                <ScalarProperty Name="InterestNew" ColumnName="InterestNew" />
+                <ScalarProperty Name="InterestOld" ColumnName="InterestOld" />
+                <ScalarProperty Name="PriceBuyNew" ColumnName="PriceBuyNew" />
+                <ScalarProperty Name="PriceBuyOld" ColumnName="PriceBuyOld" />
+                <ScalarProperty Name="NameNew" ColumnName="NameNew" />
+                <ScalarProperty Name="NameOld" ColumnName="NameOld" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

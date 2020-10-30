@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="SaleManagerModel.ConvertProduct" Width="1.5" PointX="10.375" PointY="9.75" />
         <EntityTypeShape EntityType="SaleManagerModel.Product" Width="1.5" PointX="3.375" PointY="12.75" />
         <EntityTypeShape EntityType="SaleManagerModel.Unit" Width="1.5" PointX="12.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SaleManagerModel.ProductHistory" Width="1.5" PointX="5.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

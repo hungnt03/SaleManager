@@ -273,64 +273,57 @@ namespace SaleManager
         private void btn100_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
-            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 100000);
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) - 
-                StringUtil.ConvertCurrentcy(lbTotal.Text));
+            txtMoneyCustomer.Text = (money.CurrentcyToNumber() + 100000).ToCurrentcy();
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
         private void btn50_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
-            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 50000);
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
-                StringUtil.ConvertCurrentcy(lbTotal.Text));
+            txtMoneyCustomer.Text = (money.CurrentcyToNumber() + 50000).ToCurrentcy();
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
         private void btn10_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
-            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 10000);
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
-                StringUtil.ConvertCurrentcy(lbTotal.Text));
+            txtMoneyCustomer.Text = (money.CurrentcyToNumber() + 10000).ToCurrentcy();
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
-            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 5000);
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
-                StringUtil.ConvertCurrentcy(lbTotal.Text));
+            txtMoneyCustomer.Text = (money.CurrentcyToNumber() + 5000).ToCurrentcy();
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
-            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 1000);
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
-                StringUtil.ConvertCurrentcy(lbTotal.Text));
+            txtMoneyCustomer.Text = (money.CurrentcyToNumber() + 1000).ToCurrentcy();
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
         private void btn01_Click(object sender, EventArgs e)
         {
             var money = txtMoneyCustomer.Text;
-            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(money) + 100);
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
-                StringUtil.ConvertCurrentcy(lbTotal.Text));
+            txtMoneyCustomer.Text = (money.CurrentcyToNumber() + 100).ToCurrentcy();
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
         private void btnClearMoney_Click(object sender, EventArgs e)
         {
             txtMoneyCustomer.Text = "0";
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) -
-                StringUtil.ConvertCurrentcy(lbTotal.Text));
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
         private void txtMoneyCustomer_TextLeave(object sender, EventArgs e)
         {
-            if (!StringUtil.IsNumberic(txtMoneyCustomer.Text))
+            if (!txtMoneyCustomer.Text.IsNumberic())
                 return;
-            txtMoneyCustomer.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text));
-            lblChange.Text = StringUtil.ToCurrentcy(StringUtil.ConvertCurrentcy(txtMoneyCustomer.Text) - StringUtil.ConvertCurrentcy(lbTotal.Text));
+            txtMoneyCustomer.Text = txtMoneyCustomer.Text.CurrentcyToNumber().ToCurrentcy();
+            lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
 
 

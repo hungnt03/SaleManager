@@ -2,6 +2,8 @@
 using SaleManager.Entities;
 using SaleManager.Models;
 using SaleManager.Utils;
+using SaleManager.Views;
+using SaleManager.Views.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +21,7 @@ namespace SaleManager.Services
             var inputFile = new ExcelPackage(new FileInfo(path));
             var sheet = inputFile.Workbook.Worksheets[1];
             var maxRow = sheet.Dimension.End.Row;
-            var units = _db.Units.Select(x=>new KeyValueInt() { Key = x.Id, Value = x.Name}).ToList();
+            var units = _db.Units.Select(x => new KeyValueInt() { Key = x.Id, Value = x.Name }).ToList();
             var suppliers = _db.Suppliers.Select(x => new KeyValueInt() { Key = x.Id, Value = x.Name }).ToList();
             for (var row = 2; row <= maxRow; row++)
             {
@@ -29,14 +31,14 @@ namespace SaleManager.Services
                 {
                     Barcode = sheet.Cells["A" + row].Value.ToString(),
                     ProductName = sheet.Cells["B" + row].Value.ToString(),
-                    Total = StringUtil.IsNumberic(sheet.Cells["C" + row].Value.ToString()) ? int.Parse(sheet.Cells["C" + row].Value.ToString()) : 0,
-                    Quantity = StringUtil.IsNumberic(sheet.Cells["D" + row].Value.ToString()) ? int.Parse(sheet.Cells["D" + row].Value.ToString()) : 0,
-                    PriceBuy = StringUtil.IsNumberic(sheet.Cells["E" + row].Value.ToString()) ? int.Parse(sheet.Cells["E" + row].Value.ToString()) : 0,
+                    Total = sheet.Cells["C" + row].Value.ToString().IsNumberic() ? int.Parse(sheet.Cells["C" + row].Value.ToString()) : 0,
+                    Quantity = sheet.Cells["D" + row].Value.ToString().IsNumberic() ? int.Parse(sheet.Cells["D" + row].Value.ToString()) : 0,
+                    PriceBuy = sheet.Cells["E" + row].Value.ToString().IsNumberic() ? int.Parse(sheet.Cells["E" + row].Value.ToString()) : 0,
                     Unit = units.Where(x => x.Value.Equals(sheet.Cells["F" + row].Value.ToString())).Select(x => x.Key).First(),
-                    Price = (sheet.Cells["G" + row].Value != null && StringUtil.IsNumberic(sheet.Cells["G" + row].Value.ToString())) ? int.Parse(sheet.Cells["G" + row].Value.ToString()) : 0,                    
+                    Price = (sheet.Cells["G" + row].Value != null && sheet.Cells["G" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["G" + row].Value.ToString()) : 0,
                     Ex = DateTime.FromOADate(double.Parse(sheet.Cells["I" + row].Value.ToString())),
                     Supplier = suppliers.Where(x => x.Value.Equals(sheet.Cells["J" + row].Value.ToString())).Select(x => x.Key).First(),
-                    Interest = (sheet.Cells["K" + row].Value != null && StringUtil.IsNumberic(sheet.Cells["K" + row].Value.ToString())) ? int.Parse(sheet.Cells["K" + row].Value.ToString()) : 0
+                    Interest = (sheet.Cells["K" + row].Value != null && sheet.Cells["K" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["K" + row].Value.ToString()) : 0
                 };
                 elm.Cal();
                 results.Add(elm);
@@ -51,7 +53,7 @@ namespace SaleManager.Services
 
         public List<KeyValue> GetSuppliers()
         {
-            return _db.Suppliers.Select(x => new KeyValue() { key = x.Id.ToString(), value = x.Name}).ToList();
+            return _db.Suppliers.Select(x => new KeyValue() { key = x.Id.ToString(), value = x.Name }).ToList();
         }
 
         public void CreateTemplate()
@@ -82,7 +84,7 @@ namespace SaleManager.Services
             //Format
             workSheet.Cells["A2"].Style.Numberformat.Format = "@";
             workSheet.Cells["C2"].Style.Numberformat.Format = "#,###";
-            workSheet.Cells["D2"].Style.Numberformat.Format = "#";            
+            workSheet.Cells["D2"].Style.Numberformat.Format = "#";
             workSheet.Cells["E2"].Style.Numberformat.Format = "#,###";
             workSheet.Cells["E2"].Formula = "ROUND(C2/D2,1)";
             workSheet.Cells["G2"].Style.Numberformat.Format = "#,###";
@@ -114,16 +116,20 @@ namespace SaleManager.Services
         }
 
         public void Save(List<ImportProductModel> datas)
-        {
-            var barcodes = datas.Select(x => new { Barcode = x.Barcode, Unit = x.Unit }).ToList();
-            var products = _db.Products.Where(x=> barcodes.Any(b=>b.Barcode.Equals(x.Barcode) && b.Unit.Equals(x.Unit))).ToList();
+        {            
+            var keys = datas.Select(x => x.Barcode + x.Unit).ToList();
+            var products = _db.Products.Where(x => keys.Contains(x.Barcode + x.Unit)).ToList();
 
             List<Product> adds = new List<Product>();
             List<Product> edits = new List<Product>();
+            List<ProductHistory> histories = new List<ProductHistory>();
+            List<TransactionDetail> tranDetails = new List<TransactionDetail>();
             _db.Database.BeginTransaction();
 
             try
             {
+                var tranId = _db.Transactions.OrderByDescending(x => x.Id).Select(x => x.Id).First().ToString().ToInt();
+                if (tranId == -1) tranId = 0;
                 foreach (var elm in datas)
                 {
                     var product = products.Where(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit)).FirstOrDefault();
@@ -134,22 +140,40 @@ namespace SaleManager.Services
                         add.CreatedAt = DateTime.Now;
                         add.CreatedBy = "Administrator";
                         adds.Add(add);
+                        histories.Add(elm.ToProductHistory());                        
                     }
                     else
                     {
-                        var edit = elm.ToProduct(product);
-                        _db.Products.Attach(edit);
+                        elm.DumpProduct(ref product);
+                        _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                        histories.Add(elm.ToProductHistory(product));
                     }
+                    tranDetails.Add(elm.ToTransactionDetail(tranId));
                 }
 
-                _db.Products.AddRange(adds);
+                if (adds.Count > 0) _db.Products.AddRange(adds);
+                _db.ProductHistories.AddRange(histories);
+                _db.Transactions.Add(new Transaction()
+                {
+                    Id = tranId,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Administrator",
+                    Type = Constants.PURCHASE,
+                    SuplierId = 0,
+                    IsPayment = FrmImportProduct._dialogModel.IsDebt ? Constants.NOT_PAY : Constants.PAID,
+                    Amount = FrmImportProduct._dialogModel.Total,
+                    Payment = FrmImportProduct._dialogModel.Payment,
+                    PayBack = FrmImportProduct._dialogModel.Payback
+                });
+                _db.TransactionDetails.AddRange(tranDetails);
+                _db.SaveChanges();
                 //_db
                 _db.Database.CurrentTransaction.Commit();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _db.Database.CurrentTransaction.Rollback();
-                throw;
+                throw e;
             }
         }
     }

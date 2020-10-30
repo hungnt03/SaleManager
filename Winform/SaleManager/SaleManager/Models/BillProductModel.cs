@@ -33,11 +33,11 @@ namespace SaleManager.Models
         {
             get
             {
-                return StringUtil.ToCurrentcy(int.Parse(_price));
+                return _price.ToCurrentcy();
             }
             set
             {
-                if (StringUtil.IsNumberic(value))
+                if (value.IsNumberic())
                 {
                     _price = value;
                 }
@@ -51,8 +51,8 @@ namespace SaleManager.Models
             }
             get 
             {
-                if (StringUtil.IsNumberic(this._total))
-                    return StringUtil.ToCurrentcy(int.Parse(_total));
+                if (this._total.IsNumberic())
+                    return _total.ToCurrentcy();
                 return "0";
             }
         }
