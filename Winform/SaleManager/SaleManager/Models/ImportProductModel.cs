@@ -51,7 +51,6 @@ namespace SaleManager.Models
             result.QuantityNew = this.Quantity;
             result.PriceNew = this.Price;
             result.SupplierIdNew = Supplier;
-            result.EnableNew = true;
             result.ExpirationDateNew = Ex;
             result.PriceBuyNew = this.PriceBuy;
             result.InterestNew = this.Interest;
@@ -65,7 +64,11 @@ namespace SaleManager.Models
                 result.QuantityOld = product.Quantity;
                 result.ExpirationDateOld = product.ExpirationDate;
                 result.Status = Constants.UPDATE;
+                result.QuantityNew = this.Quantity + product.Quantity;
+                result.SupplierIdOld = product.SupplierId;
             }
+            result.CreatedAt = DateTime.Now;
+            result.CreatedBy = "Administrator";
             return result;
         }
         public TransactionDetail ToTransactionDetail(int transactionId)

@@ -44,19 +44,6 @@ namespace SaleManager.Services
             return results;
         }
 
-        public List<Unit1Model> GetUnits1()
-        {
-            var results =_db.Units.Select(x => new Unit1Model() { Unit1 = x.Id, Name = x.Name }).ToList();
-            results.Add(new Unit1Model() { Unit1 = -1, Name = string.Empty });
-            return results;
-        }
-        public List<Unit2Model> GetUnits2()
-        {
-            var results = _db.Units.Select(x => new Unit2Model() { Unit2 = x.Id, Name = x.Name }).ToList();
-            results.Add(new Unit2Model() { Unit2 = -1, Name = string.Empty });
-            return results;
-        }
-
         public void Update(List<ConvertModel> models)
         {
             var converts = _db.ConvertProducts.ToList();

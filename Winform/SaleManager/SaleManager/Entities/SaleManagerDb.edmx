@@ -138,7 +138,7 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="256" />
           <Property Name="UpdatedAt" Type="datetime2" Precision="7" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="256" />
-          <Property Name="Barcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
@@ -240,7 +240,7 @@
             <PropertyRef Name="Barcode" />
             <PropertyRef Name="TracsactionId" />
           </Key>
-          <Property Name="Barcode" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="TracsactionId" Type="int" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime2" Precision="7" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="256" />
@@ -513,7 +513,7 @@
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Barcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
@@ -557,7 +557,7 @@
             <PropertyRef Name="Barcode" />
             <PropertyRef Name="TracsactionId" />
           </Key>
-          <Property Name="Barcode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Barcode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TracsactionId" Type="Int32" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Precision="7" />
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />

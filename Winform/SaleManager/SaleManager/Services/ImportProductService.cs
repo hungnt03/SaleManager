@@ -46,11 +46,6 @@ namespace SaleManager.Services
             return results;
         }
 
-        public List<UnitModel> GetUnits()
-        {
-            return _db.Units.Select(x => new UnitModel() { Id = x.Id, Name = x.Name }).ToList();
-        }
-
         public List<KeyValue> GetSuppliers()
         {
             return _db.Suppliers.Select(x => new KeyValue() { key = x.Id.ToString(), value = x.Name }).ToList();
@@ -116,7 +111,7 @@ namespace SaleManager.Services
         }
 
         public void Save(List<ImportProductModel> datas)
-        {            
+        {
             var keys = datas.Select(x => x.Barcode + x.Unit).ToList();
             var products = _db.Products.Where(x => keys.Contains(x.Barcode + x.Unit)).ToList();
 
@@ -129,7 +124,8 @@ namespace SaleManager.Services
             try
             {
                 var tranId = 0;
-                if(_db.Transactions.Count()>0) _db.Transactions.OrderByDescending(x => x.Id).Select(x => x.Id).First().ToString().ToInt();
+                if (_db.Transactions.Count() > 0) tranId = _db.Transactions.OrderByDescending(x => x.Id).Select(x => x.Id).First().ToString().ToInt() + 1;
+
                 foreach (var elm in datas)
                 {
                     var product = products.Where(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit)).FirstOrDefault();
@@ -140,7 +136,7 @@ namespace SaleManager.Services
                         add.CreatedAt = DateTime.Now;
                         add.CreatedBy = "Administrator";
                         adds.Add(add);
-                        histories.Add(elm.ToProductHistory());                        
+                        histories.Add(elm.ToProductHistory());
                     }
                     else
                     {

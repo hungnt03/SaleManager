@@ -96,10 +96,6 @@
             this.Unit1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Unit1.ValueMember = "Unit1";
             // 
-            // unit1ModelBindingSource
-            // 
-            this.unit1ModelBindingSource.DataSource = typeof(SaleManager.Models.Unit1Model);
-            // 
             // Quantity2
             // 
             this.Quantity2.DataPropertyName = "Quantity2";
@@ -116,10 +112,6 @@
             this.Unit2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Unit2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Unit2.ValueMember = "Unit2";
-            // 
-            // unit2ModelBindingSource
-            // 
-            this.unit2ModelBindingSource.DataSource = typeof(SaleManager.Models.Unit2Model);
             // 
             // flowLayoutPanel1
             // 

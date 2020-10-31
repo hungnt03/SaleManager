@@ -1,4 +1,5 @@
-﻿using SaleManager.Entities;
+﻿using AutoMapper;
+using SaleManager.Entities;
 using SaleManager.Models;
 using System;
 using System.Collections.Generic;
@@ -7,15 +8,15 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SaleManager.Services
 {
-    public class ProductService
+    public class ProductService : ServiceBase
     {
-        private SaleManagerEntities _db;
         public ProductService()
         {
             _db = new SaleManagerEntities();
@@ -40,36 +41,54 @@ namespace SaleManager.Services
                 results = results.Where(x => x.SupplierId == supplierId).AsQueryable();
             return results.ToList();
         }
-
-        public bool Insert(Product data)
+        public void Save(List<ProductModel> datas)
         {
-            _db.Products.Add(data);
-            return _db.SaveChanges() != 0;
-        }
+            Product product;
+            List<Product> adds = new List<Product>();
+            _db.Database.BeginTransaction();
+            var isSuccess = false;
 
-        public bool Insert(List<Product> datas)
-        {
-            var tran = _db.Database.BeginTransaction();
             try
             {
-                var barcodes = datas.Select(x => x.Barcode).ToList();
-                //Delete
-                var deleteData = _db.Products.Where(x => barcodes.Contains(x.Barcode)).ToList();
-                _db.Products.RemoveRange(deleteData);
-                foreach (var elm in datas)
+                foreach (var p in datas)
                 {
-                    elm.CreatedAt = DateTime.Now;
-                    elm.CreatedBy = "Administrator";
+                    product = _db.Products.Find(new string[] { p.Barcode, p.Unit.ToString() });
+                    if (product != null)
+                    {
+                        p.DumpProduct(ref product);
+                        _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    else
+                    {
+                        product = Mapper.Map<ProductModel, Product>(p);
+                        product.CreatedAt = DateTime.Now;
+                        product.CreatedBy = "Administrator";
+                        product.Img = product.Barcode + ".jpg";
+                        adds.Add(product);
+                    }
                 }
-                _db.Products.AddRange(datas);
-                _db.SaveChanges();
-                tran.Commit();
-                return true;
+                if (adds.Count > 0) _db.Products.AddRange(adds);
+
+                isSuccess = _db.SaveChanges() != 0;
+                _db.Database.CurrentTransaction.Commit();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                tran.Rollback();
-                throw;
+                _db.Database.CurrentTransaction.Rollback();
+                throw e;
+            }
+
+            //Upload image
+            if (!isSuccess) return;
+            foreach(var p in datas)
+            {
+                if (string.IsNullOrEmpty(p.Img)) continue;
+                var imgRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Resources\\Product\\";
+                var imgName = p.Barcode + ".jpg";
+                var file = new FileInfo(imgRootPath + imgName);
+                if (file.Exists)
+                    file.Delete();
+                p.Image.Save(imgRootPath + imgName, ImageFormat.Jpeg);
             }
         }
 
@@ -92,25 +111,6 @@ namespace SaleManager.Services
             result.Img = data.Img;
             _db.Entry(result).State = System.Data.Entity.EntityState.Modified;
             return _db.SaveChanges() != 0;
-        }
-
-        public bool Delete(string barcode)
-        {
-            var result = _db.Products.Where(x => x.Barcode.Equals(barcode)).FirstOrDefault();
-            if (result == null)
-                throw new Exception("Không tìm thấy dữ liệu!");
-            _db.Products.Remove(result);
-            return _db.SaveChanges() != 0;
-        }
-
-        public List<KeyValue> GetCategoryList()
-        {
-            return _db.Categories.Select(x => new KeyValue() { key = x.Id.ToString(), value = x.Name }).ToList();
-        }
-
-        public List<KeyValue> GetSupplierList()
-        {
-            return _db.Suppliers.Select(x => new KeyValue() { key = x.Id.ToString(), value = x.Name }).ToList();
         }
 
         /// <summary>

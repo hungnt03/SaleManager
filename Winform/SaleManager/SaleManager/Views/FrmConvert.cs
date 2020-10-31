@@ -31,8 +31,6 @@ namespace SaleManager.Views
 
         private void FrmConvert_Load(object sender, EventArgs e)
         {
-            unit1ModelBindingSource.DataSource = _convertService.GetUnits1();
-            unit2ModelBindingSource.DataSource = _convertService.GetUnits2();
             var converts = _convertService.GetAll();
             converts.Add(new ConvertModel());
             dgvData.DataSource = converts;

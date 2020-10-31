@@ -66,7 +66,7 @@ namespace SaleManager
 
         private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new FrmProductList();
+            var frm = new FrmProduct();
             frm.Show(this);
             this.Hide();
         }
