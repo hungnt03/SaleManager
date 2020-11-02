@@ -42,7 +42,7 @@
             System.Windows.Forms.Label quantityLabel;
             System.Windows.Forms.Label supplierIdLabel;
             System.Windows.Forms.Label unitIdLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
@@ -380,9 +380,9 @@
             // expirationDateDataGridViewTextBoxColumn
             // 
             this.expirationDateDataGridViewTextBoxColumn.DataPropertyName = "ExpirationDate";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.expirationDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.expirationDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.expirationDateDataGridViewTextBoxColumn.HeaderText = "Hạn sử dụng";
             this.expirationDateDataGridViewTextBoxColumn.Name = "expirationDateDataGridViewTextBoxColumn";
             // 
@@ -732,7 +732,7 @@
             this.panel14.Controls.Add(this.imagePictureBox);
             this.panel14.Location = new System.Drawing.Point(19, 507);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(335, 126);
+            this.panel14.Size = new System.Drawing.Size(335, 207);
             this.panel14.TabIndex = 38;
             // 
             // imagePictureBox
@@ -740,7 +740,7 @@
             this.imagePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.productModelBindingSource, "Image", true));
             this.imagePictureBox.Location = new System.Drawing.Point(95, 2);
             this.imagePictureBox.Name = "imagePictureBox";
-            this.imagePictureBox.Size = new System.Drawing.Size(222, 123);
+            this.imagePictureBox.Size = new System.Drawing.Size(200, 200);
             this.imagePictureBox.TabIndex = 10;
             this.imagePictureBox.TabStop = false;
             // 

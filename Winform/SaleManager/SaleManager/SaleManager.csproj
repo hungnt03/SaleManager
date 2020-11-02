@@ -160,6 +160,7 @@
     </Compile>
     <Compile Include="Models\BillProductModel.cs" />
     <Compile Include="Models\ImportProductDialogModel.cs" />
+    <Compile Include="Services\MainService.cs" />
     <Compile Include="Utils\Bindable.cs" />
     <Compile Include="Models\ConvertModel.cs" />
     <Compile Include="Models\ImportProductModel.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Utils\ExtensionMethods.cs" />
     <Compile Include="Utils\StringUtil.cs" />
     <Compile Include="ViewModels\ImportProductViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Views\Dialogs\ImportProductDialog.cs">
       <SubType>Form</SubType>
@@ -247,6 +249,7 @@
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductDialogModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.MainModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ProductModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

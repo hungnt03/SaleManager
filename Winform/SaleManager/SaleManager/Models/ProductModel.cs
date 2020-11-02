@@ -3,6 +3,7 @@ using SaleManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace SaleManager.Models
     public class ProductModel : Bindable
     {
         private Bitmap _image;
+        private string _img;
         public string Barcode { get; set; }
         public string Name { get; set; }
         public int Quantity { get; set; }
@@ -22,7 +24,16 @@ namespace SaleManager.Models
         public bool Enable { get; set; }
         public DateTime ExpirationDate { get; set; }
         public int Unit { get; set; }
-        public string Img { get; set; }
+        public string Img
+        {
+            get => _img;
+            set {
+                Set(ref _img, value);         
+                if(new FileInfo(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Resources\\Product\\" + _img).Exists)
+                    Image = new Bitmap(System.Drawing.Image.FromFile(
+                        Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Resources\\Product\\" + _img));
+            }
+        }
         public Bitmap Image { get => _image; set => Set(ref _image, value); }
         public int PriceBuy { get; set; }
         public int Interest { get; set; }

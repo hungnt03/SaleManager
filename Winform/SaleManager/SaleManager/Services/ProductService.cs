@@ -17,11 +17,6 @@ namespace SaleManager.Services
 {
     public class ProductService : ServiceBase
     {
-        public ProductService()
-        {
-            _db = new SaleManagerEntities();
-        }
-
         public List<Product> GetAll()
         {
             return _db.Products.ToList();
@@ -52,7 +47,7 @@ namespace SaleManager.Services
             {
                 foreach (var p in datas)
                 {
-                    product = _db.Products.Find(new string[] { p.Barcode, p.Unit.ToString() });
+                    product = _db.Products.Find(p.Barcode, p.Unit);
                     if (product != null)
                     {
                         p.DumpProduct(ref product);
@@ -88,7 +83,7 @@ namespace SaleManager.Services
                 var file = new FileInfo(imgRootPath + imgName);
                 if (file.Exists)
                     file.Delete();
-                p.Image.Save(imgRootPath + imgName, ImageFormat.Jpeg);
+                if(p.Image != null) p.Image.Save(imgRootPath + imgName, ImageFormat.Jpeg);
             }
         }
 
