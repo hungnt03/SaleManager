@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,5 +15,6 @@ namespace SaleManager.Utils
         public static bool NOT_PAY = false;
         public static int INSERT = 1;
         public static int UPDATE = 2;
+        public static string ROOT_PATH = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
     }
 }

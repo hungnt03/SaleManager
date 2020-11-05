@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SaleManager.Controls;
+using SaleManager.Entities;
+using SaleManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -13,13 +16,20 @@ namespace SaleManager.Services
         public List<CardViewModel> GetPinProducts()
         {
             var products = _db.Products.Where(x => (x.Pin != null) && x.Pin == true && x.Enable == true).Select(x=>new CardViewModel() {
-                id = x.Barcode,
+                Barcode = x.Barcode,
                 Name =  x.Name,
                 Price = x.Price,
-                //Picture = x.Img != null ? new Bitmap(System.Drawing.Image.FromFile(
-                //        Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Resources\\Product\\" + x.Img)) : null
+                Img = x.Img,
+                Unit = x.Unit
             }).ToList();
             return products;
+        }
+
+        public BillProductModel SearchBillProduct(string barcode)
+        {
+            var product = _db.Products.Where(x => (x.Barcode.Contains(barcode))).FirstOrDefault();
+            if (product == null) return null;
+            return (new BillProductModel(product));
         }
     }
 }

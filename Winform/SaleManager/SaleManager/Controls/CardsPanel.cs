@@ -1,21 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace SaleManager.Controls
 {
-    public class CardsPanel : FlowLayoutPanel
+    public class CardsPanel : FlowLayoutPanel, INotifyPropertyChanged
     {
         const int CardWidth = 200;
         const int CardHeight = 150;
 
-        public CardsViewModel ViewModel { get; set; }
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void Notify([CallerMemberName] string property = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+        private CardsViewModel _viewModel;
+        public CardsViewModel ViewModel
+        {
+            get { return _viewModel; }
+            set
+            {
+                _viewModel = value;
+                Notify("ViewModel");
+                DataBind();
+            }
+        }
         public CardsPanel()
         {
         }
@@ -38,7 +48,11 @@ namespace SaleManager.Controls
         {
             SuspendLayout();
             Controls.Clear();
-
+            if(ViewModel == null)
+            {
+                ResumeLayout();
+                return;
+            }
             for (int i = 0; i < ViewModel.Cards.Count; i++)
             {
                 var newCtl = new CardControl(ViewModel.Cards[i]);
@@ -69,17 +83,4 @@ namespace SaleManager.Controls
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         }
     }
-}
-
-public class CardsViewModel
-{
-    public ObservableCollection<CardViewModel> Cards { get; set; }
-}
-
-public class CardViewModel
-{
-    public string Name { get; set; }
-    public int Price { get; set; }
-    public Bitmap Picture { get; set; }
-    public string id { set; get; }
 }

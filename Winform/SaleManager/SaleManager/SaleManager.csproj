@@ -82,6 +82,8 @@
     <Compile Include="Controls\CardsPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\CardsViewModel.cs" />
+    <Compile Include="Controls\CardViewModel.cs" />
     <Compile Include="Entities\AspNetRole.cs">
       <DependentUpon>SaleManagerDb.tt</DependentUpon>
     </Compile>
@@ -243,9 +245,12 @@
       <DependentUpon>SaleManagerDb.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SaleManager.Controls.CardsViewModel.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Controls.CardViewModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Entities.Category.datasource" />
     <None Include="Properties\DataSources\SaleManager.Entities.Supplier.datasource" />
     <None Include="Properties\DataSources\SaleManager.Entities.Unit.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.BillProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductDialogModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />

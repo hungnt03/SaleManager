@@ -42,7 +42,7 @@ namespace SaleManager.ViewModels
         }
 
         public void Initialize() { 
-            _source.CurrentChanged += delegate { Notify("Title"); }; 
+            _source.CurrentChanged += delegate { Notify("Title"); };
         }
 
         public void Import(string filePath)

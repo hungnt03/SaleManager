@@ -9,74 +9,51 @@ using System.Threading.Tasks;
 
 namespace SaleManager.Models
 {
-    public class BillProductModel
+    public class BillProductModel : Bindable
     {
-        public string barcode { set; get; }
-        public string name { set; get; }
-        public int _quantity { set; get; }
-        public int quantity
+        public string Barcode { set; get; }
+        public string ProductName { set; get; }
+        private int _price;
+        public int Price { set => Set(ref _price, value); get => _price; }
+        private int _quantity;
+        public int Quantity
         {
-            get
-            {
-                return _quantity;
-            }
             set
             {
-                _quantity = value;
-                _total = (int.Parse(this._price) * quantity).ToString();
+                Set(ref _quantity, value);
+                Total = this.Price * this.Quantity;
             }
+            get => _quantity;
         }
-        public string quantityDown;
-        public string quantityUp;
-        private string _price;
-        public string price
-        {
-            get
-            {
-                return _price.ToCurrentcy();
-            }
-            set
-            {
-                if (value.IsNumberic())
-                {
-                    _price = value;
-                }
-            }
-        }
-        public string _total;
-        public string total {
-            set
-            {
-                _total = value;
-            }
-            get 
-            {
-                if (this._total.IsNumberic())
-                    return _total.ToCurrentcy();
-                return "0";
-            }
-        }
-        public string del;
+        private int _unit;
+        public int Unit { set => Set(ref _unit, value); get => _unit; }
+        public string QuantityDown { set; get; }
+        public string QuantityUp { set; get; }
+
+        private int _total;
+        public int Total { set => Set(ref _total, value); get => _total; }
+        public string Del { set; get; }
 
         public BillProductModel()
         {
-
+            this.Quantity = 1;
         }
 
-        public BillProductModel(string barcode, string name, string price)
+        public BillProductModel(string barcode, string name, int price)
         {
-            this.barcode = barcode;
-            this.name = name;
-            this.price = price;
-            this.quantity = 1;
+            this.Barcode = barcode;
+            this.ProductName = name;
+            this.Price = price;
+            this.Quantity = 1;
         }
 
         public BillProductModel(Product product)
         {
-            this.barcode = product.Barcode;
-            this.name = product.Name;
-            this.price = product.Price.ToString();
-            this.quantity = 1;
+            this.Barcode = product.Barcode;
+            this.ProductName = product.Name;
+            this.Price = product.Price;
+            this.Quantity = 1;
+            this.Unit = product.Unit;
         }
     }
 }

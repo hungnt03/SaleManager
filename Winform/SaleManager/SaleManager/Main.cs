@@ -1,20 +1,12 @@
 ﻿using SaleManager.Controls;
-using SaleManager.Models;
-using SaleManager.Services;
 using SaleManager.Utils;
 using SaleManager.ViewModels;
 using SaleManager.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SaleManager
@@ -28,46 +20,37 @@ namespace SaleManager
         {
             InitializeComponent();
             this.Load += delegate { _vm.Load(); };
+            cardViewModelBindingSource.DataSourceChanged += CardViewModelBindingSource_DataSourceChanged;
+            dgvData.CellFormatting += DgvData_CellFormatting;
+            txtSearch.TextChanged += delegate { _vm.Search(txtSearch.Text); };
 
-            _vm._productSource = productModelBindingSource;
-
-            //_productService = new ProductService();
-            //_models = new Dictionary<int, MainModel>();
-            //InitView();
-            //this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckEnterKeyPress);
-            //cardsPanel1.ViewModel = LoadSomeData();
-            //cardsPanel1.DataBind();
-            //for(var idx = 0; idx<5; idx++)
-            //{
-            //    AddTab(idx);
-            //}
-
-            //foreach (CardControl card in cardsPanel1.Controls)
-            //{
-            //    foreach (Control child in card.Controls)
-            //    {
-            //        child.DoubleClick += Card_DoubleClick;
-            //    }
-            //}
-            //this.tabControl1.SelectedIndexChanged += TabControl1_SelectedIndexChanged;
+            _vm._productSource = cardViewModelBindingSource;
+            _vm._billSource = billProductModelBindingSource;
+            _vm._unitSource = unitBindingSource;
 
         }
 
-        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void DgvData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //UpdateTotal();
+            if (new List<string>() { "Price", "Total" }.Contains(dgvData.Columns[e.ColumnIndex].DataPropertyName) && e.Value != null)
+                e.Value = e.Value.ToString().ToCurrentcy();
+        }
+
+        private void CardViewModelBindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            cardsPanel1.ViewModel = new CardsViewModel((ObservableCollection<CardViewModel>)cardViewModelBindingSource.DataSource);
+            foreach (CardControl card in cardsPanel1.Controls)
+            {
+                foreach (Control child in card.Controls)
+                {
+                    child.DoubleClick += Card_DoubleClick;
+                }
+            }
         }
 
         private void Card_DoubleClick(object sender, EventArgs e)
         {
-            //var data = ((CardControl)((Control)sender).Parent)._model;
-            //var product = _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(data.id)).FirstOrDefault();
-            //if (product == null)
-            //    _models[tabControl1.SelectedIndex].products.Add(new BillProductModel(_productService.GetById(data.id)));
-            //else
-            //    _models[tabControl1.SelectedIndex].products.Where(x => x.barcode.Equals(data.id)).First().quantity += 1;
-            //_models[tabControl1.SelectedIndex].Refesh();
-            //UpdateTotal();
+            _vm.CardSelected(sender, e);
         }
 
         private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,20 +75,17 @@ namespace SaleManager
                 Price = 120000,
                 Name = "Bánh Sampa Balocco Savoiardi 200g",
                 Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg")),
-                id = "3110354325000"
+                Barcode = "3110354325000"
             });
             cards.Add(new CardViewModel()
             {
                 Price = 16000,
                 Name = "Sốt ướp thịt nướng",
                 Picture = new Bitmap(Image.FromFile(imgRootPath + "8934637514871.jpg")),
-                id = "8934637514871"
+                Barcode = "8934637514871"
             });
 
-            CardsViewModel VM = new CardsViewModel()
-            {
-                Cards = cards
-            };
+            CardsViewModel VM = new CardsViewModel(cards);
             return VM;
         }
 
@@ -264,16 +244,6 @@ namespace SaleManager
             e.Handled = !(Char.IsDigit(e.KeyChar) || e.KeyChar.Equals('\b'));
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (txtSearch.Text.Length == 13)
-            {
-                AddProduct(txtSearch.Text);
-                txtSearch.Text = string.Empty;
-            }
-
-        }
-
         #region "event"
 
         private void btn100_Click(object sender, EventArgs e)
@@ -331,8 +301,6 @@ namespace SaleManager
             txtMoneyCustomer.Text = txtMoneyCustomer.Text.CurrentcyToNumber().ToCurrentcy();
             lblChange.Text = (txtMoneyCustomer.Text.CurrentcyToNumber() - lbTotal.Text.CurrentcyToNumber()).ToCurrentcy();
         }
-
-
     }
     #endregion
 
