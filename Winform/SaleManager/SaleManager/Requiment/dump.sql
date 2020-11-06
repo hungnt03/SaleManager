@@ -82,3 +82,6 @@ ALTER TABLE [HungTest].[dbo].TransactionDetail
 ALTER COLUMN Barcode nvarchar(16) not null;
 ALTER TABLE [HungTest].[dbo].Discount
 ALTER COLUMN Barcode nvarchar(16) not null;
+
+--20201106
+alter table [HungTest].[dbo].[Product] add IsDefault [bit]

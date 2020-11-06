@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace SaleManager.Services
 {
@@ -26,7 +26,7 @@ namespace SaleManager.Services
                     Unit1 = x.ConvertProducts.Unit1,
                     Quantity2 = x.ConvertProducts.Quantity2,
                     Unit2 = x.ConvertProducts.Unit2,
-                }).ToList();
+                }).Distinct().ToList();
 
             var results = new List<ConvertModel>();
             foreach (var elm in query)
@@ -44,13 +44,22 @@ namespace SaleManager.Services
             return results;
         }
 
-        public void Update(List<ConvertModel> models)
+        public void Save(List<ConvertModel> models)
         {
-            var converts = _db.ConvertProducts.ToList();
-            ConvertProduct convert; 
-            foreach(var elm in models)
+            _db.Database.BeginTransaction();
+            try
             {
-                //convert = converts.Where(x=>x.Barcode.Equals(elm.Barcode) && x.Unit1.Equals())
+                var converts = Mapper.Map<List<ConvertModel>, List<ConvertProduct>>(models);
+                _db.ConvertProducts.RemoveRange(_db.ConvertProducts.ToList());
+                _db.ConvertProducts.AddRange(converts);
+                _db.SaveChanges();
+                _db.Database.CurrentTransaction.Commit();
+                MessageBox.Show("Lưu thành công.");
+            }
+            catch (Exception)
+            {
+                _db.Database.CurrentTransaction.Rollback();
+                throw;
             }
         }
     }

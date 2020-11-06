@@ -42,6 +42,7 @@
             System.Windows.Forms.Label quantityLabel;
             System.Windows.Forms.Label supplierIdLabel;
             System.Windows.Forms.Label unitIdLabel;
+            System.Windows.Forms.Label label2;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -88,6 +89,8 @@
             this.pinCheckBox = new System.Windows.Forms.CheckBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.enableCheckBox = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.imgTextBox = new System.Windows.Forms.TextBox();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -108,6 +111,7 @@
             quantityLabel = new System.Windows.Forms.Label();
             supplierIdLabel = new System.Windows.Forms.Label();
             unitIdLabel = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
@@ -133,6 +137,7 @@
             this.panel5.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel16.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imagePictureBox)).BeginInit();
@@ -203,7 +208,7 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nameLabel.Location = new System.Drawing.Point(-1, 20);
+            nameLabel.Location = new System.Drawing.Point(-1, 17);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(91, 14);
             nameLabel.TabIndex = 15;
@@ -268,6 +273,16 @@
             unitIdLabel.Size = new System.Drawing.Size(49, 14);
             unitIdLabel.TabIndex = 27;
             unitIdLabel.Text = "Đơn vị";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(1, 10);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(63, 14);
+            label2.TabIndex = 17;
+            label2.Text = "Mặc định";
             // 
             // flowLayoutPanel1
             // 
@@ -463,6 +478,7 @@
             this.flowLayoutPanel3.Controls.Add(this.panel5);
             this.flowLayoutPanel3.Controls.Add(this.panel10);
             this.flowLayoutPanel3.Controls.Add(this.panel16);
+            this.flowLayoutPanel3.Controls.Add(this.panel2);
             this.flowLayoutPanel3.Controls.Add(this.panel13);
             this.flowLayoutPanel3.Controls.Add(this.panel14);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -498,24 +514,24 @@
             this.panel11.Controls.Add(nameLabel);
             this.panel11.Location = new System.Drawing.Point(19, 56);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(335, 36);
+            this.panel11.Size = new System.Drawing.Size(335, 30);
             this.panel11.TabIndex = 36;
             // 
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productModelBindingSource, "Name", true));
             this.nameTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTextBox.Location = new System.Drawing.Point(94, 3);
+            this.nameTextBox.Location = new System.Drawing.Point(94, 5);
             this.nameTextBox.Multiline = true;
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(222, 31);
+            this.nameTextBox.Size = new System.Drawing.Size(222, 25);
             this.nameTextBox.TabIndex = 16;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.quantityTextBox);
             this.panel6.Controls.Add(quantityLabel);
-            this.panel6.Location = new System.Drawing.Point(19, 98);
+            this.panel6.Location = new System.Drawing.Point(19, 92);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(335, 30);
             this.panel6.TabIndex = 31;
@@ -534,7 +550,7 @@
             // 
             this.panel8.Controls.Add(this.priceBuyTextBox);
             this.panel8.Controls.Add(priceBuyLabel);
-            this.panel8.Location = new System.Drawing.Point(19, 134);
+            this.panel8.Location = new System.Drawing.Point(19, 128);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(335, 30);
             this.panel8.TabIndex = 33;
@@ -553,7 +569,7 @@
             // 
             this.panel12.Controls.Add(this.interestTextBox);
             this.panel12.Controls.Add(interestLabel);
-            this.panel12.Location = new System.Drawing.Point(19, 170);
+            this.panel12.Location = new System.Drawing.Point(19, 164);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(335, 30);
             this.panel12.TabIndex = 37;
@@ -572,7 +588,7 @@
             // 
             this.panel9.Controls.Add(this.priceTextBox);
             this.panel9.Controls.Add(priceLabel);
-            this.panel9.Location = new System.Drawing.Point(19, 206);
+            this.panel9.Location = new System.Drawing.Point(19, 200);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(335, 30);
             this.panel9.TabIndex = 34;
@@ -591,7 +607,7 @@
             // 
             this.panel4.Controls.Add(this.unitComboBox);
             this.panel4.Controls.Add(unitIdLabel);
-            this.panel4.Location = new System.Drawing.Point(19, 242);
+            this.panel4.Location = new System.Drawing.Point(19, 236);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(335, 30);
             this.panel4.TabIndex = 29;
@@ -616,7 +632,7 @@
             // 
             this.panel15.Controls.Add(expirationDateLabel);
             this.panel15.Controls.Add(this.expirationDateDateTimePicker);
-            this.panel15.Location = new System.Drawing.Point(19, 278);
+            this.panel15.Location = new System.Drawing.Point(19, 272);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(335, 30);
             this.panel15.TabIndex = 39;
@@ -633,7 +649,7 @@
             // 
             this.panel17.Controls.Add(this.categoryComboBox);
             this.panel17.Controls.Add(categoryIdLabel);
-            this.panel17.Location = new System.Drawing.Point(19, 314);
+            this.panel17.Location = new System.Drawing.Point(19, 308);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(335, 30);
             this.panel17.TabIndex = 41;
@@ -654,7 +670,7 @@
             // 
             this.panel5.Controls.Add(this.supplierComboBox);
             this.panel5.Controls.Add(supplierIdLabel);
-            this.panel5.Location = new System.Drawing.Point(19, 350);
+            this.panel5.Location = new System.Drawing.Point(19, 344);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(335, 30);
             this.panel5.TabIndex = 30;
@@ -675,7 +691,7 @@
             // 
             this.panel10.Controls.Add(this.pinCheckBox);
             this.panel10.Controls.Add(pinLabel);
-            this.panel10.Location = new System.Drawing.Point(19, 386);
+            this.panel10.Location = new System.Drawing.Point(19, 380);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(335, 30);
             this.panel10.TabIndex = 35;
@@ -687,14 +703,13 @@
             this.pinCheckBox.Name = "pinCheckBox";
             this.pinCheckBox.Size = new System.Drawing.Size(200, 21);
             this.pinCheckBox.TabIndex = 18;
-            this.pinCheckBox.Text = "checkBox1";
             this.pinCheckBox.UseVisualStyleBackColor = true;
             // 
             // panel16
             // 
             this.panel16.Controls.Add(enableLabel);
             this.panel16.Controls.Add(this.enableCheckBox);
-            this.panel16.Location = new System.Drawing.Point(19, 422);
+            this.panel16.Location = new System.Drawing.Point(19, 416);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(335, 30);
             this.panel16.TabIndex = 40;
@@ -706,14 +721,31 @@
             this.enableCheckBox.Name = "enableCheckBox";
             this.enableCheckBox.Size = new System.Drawing.Size(200, 21);
             this.enableCheckBox.TabIndex = 6;
-            this.enableCheckBox.Text = "checkBox1";
             this.enableCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.checkBox1);
+            this.panel2.Controls.Add(label2);
+            this.panel2.Location = new System.Drawing.Point(19, 452);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(335, 30);
+            this.panel2.TabIndex = 36;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.productModelBindingSource, "IsDefault", true));
+            this.checkBox1.Location = new System.Drawing.Point(94, 8);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(200, 21);
+            this.checkBox1.TabIndex = 18;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // panel13
             // 
             this.panel13.Controls.Add(this.imgTextBox);
             this.panel13.Controls.Add(imgLabel);
-            this.panel13.Location = new System.Drawing.Point(19, 458);
+            this.panel13.Location = new System.Drawing.Point(19, 488);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(335, 43);
             this.panel13.TabIndex = 33;
@@ -730,7 +762,7 @@
             // panel14
             // 
             this.panel14.Controls.Add(this.imagePictureBox);
-            this.panel14.Location = new System.Drawing.Point(19, 507);
+            this.panel14.Location = new System.Drawing.Point(19, 537);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(335, 207);
             this.panel14.TabIndex = 38;
@@ -824,6 +856,8 @@
             this.panel10.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.panel14.ResumeLayout(false);
@@ -888,5 +922,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnAddImage;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

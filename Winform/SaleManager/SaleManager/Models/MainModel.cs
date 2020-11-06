@@ -23,12 +23,18 @@ namespace SaleManager.Models
         public int Total { get => _total; set => Set(ref _total, value); }
         public int Payment
         {
-            get => _payment; set
+            get => _payment;
+            set
             {
                 Set(ref _payment, value);
-                Payback = value - Payment;
+                Payback = value - Total;
             }
         }
         public int Payback { get => _payback; set => Set(ref _payback, value); }
+        public MainModel()
+        {
+            Total = 0;
+            Payment = 0;
+        }
     }
 }

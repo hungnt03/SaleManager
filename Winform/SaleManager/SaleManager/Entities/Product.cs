@@ -31,5 +31,6 @@ namespace SaleManager.Entities
         public string Img { get; set; }
         public Nullable<int> PriceBuy { get; set; }
         public Nullable<int> Interest { get; set; }
+        public Nullable<bool> IsDefault { get; set; }
     }
 }

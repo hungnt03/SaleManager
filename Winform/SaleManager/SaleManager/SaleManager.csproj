@@ -71,6 +71,7 @@
     <Reference Include="Unity.Container, Version=5.9.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.9.7\lib\net47\Unity.Container.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\CardControl.cs">
@@ -160,6 +161,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BillProductModel.cs" />
     <Compile Include="Models\ImportProductDialogModel.cs" />
     <Compile Include="Services\MainService.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\ExtensionMethods.cs" />
     <Compile Include="Utils\StringUtil.cs" />
+    <Compile Include="ViewModels\ConvertProductViewModel.cs" />
     <Compile Include="ViewModels\ImportProductViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -251,6 +254,7 @@
     <None Include="Properties\DataSources\SaleManager.Entities.Supplier.datasource" />
     <None Include="Properties\DataSources\SaleManager.Entities.Unit.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.BillProductModel.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.ConvertModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductDialogModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />

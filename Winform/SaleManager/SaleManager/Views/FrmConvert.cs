@@ -1,51 +1,39 @@
-﻿using AutoMapper;
-using SaleManager.Entities;
-using SaleManager.Models;
-using SaleManager.Services;
+﻿using SaleManager.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SaleManager.Views
 {
     public partial class FrmConvert : Form
     {
-        private ConvertService _convertService;
-        private UnitService _unitSrvice;
-        private BindingList<ConvertModel> _binding;
-        private List<ConvertModel> _converts;
-        public BindingSource _source { get; }
+        private ConvertProductViewModel _vm = new ConvertProductViewModel();
         public FrmConvert()
         {
             InitializeComponent();
-            _convertService = new ConvertService();
-            _unitSrvice = new UnitService();
-            dgvData.AutoGenerateColumns = false;
+            this.Load += delegate { _vm.Load(); };
+            btnAddRow.Click += delegate { _vm.AddRow(); };
+            btnSave.Click += delegate { _vm.Save(); };
+            btnExit.Click += BtnExit_Click;
+
+            _vm._convertSource = convertModelBindingSource;
+            _vm._unitSource = unitBindingSource;
         }
 
-        private void FrmConvert_Load(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
-            var converts = _convertService.GetAll();
-            converts.Add(new ConvertModel());
-            dgvData.DataSource = converts;
+            this.Owner.Show();
+            this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
         {
-            var data = (List<ConvertModel>)dgvData.DataSource;
-            var convertProducts = Mapper.Map<IEnumerable<ConvertModel>, List<ConvertProduct>>(data);
-            var a = 1;
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
     }
 }
