@@ -36,6 +36,7 @@ namespace SaleManager.ViewModels
             _mainSource.DataSource = new MainModel();
             _billSource.CurrentItemChanged += delegate { CalcTotal(); };
         }
+
         public void CardSelected(object sender, EventArgs e)
         {
             if (sender == null) return;
@@ -83,6 +84,25 @@ namespace SaleManager.ViewModels
                 _billSource.ResetBindings(false);
             }
         }
+        public void GridUnitChange(int unit)
+        {
+            Product product;
+            if (_billSource.Current is BillProductModel model)
+            {
+                product = _service._db.Products.Find(model.Barcode, unit);
+                if (product == null)
+                {
+                    MessageUtil.Warning("Sản phẩm hoặc đơn vị chưa được đăng ký.");
+                    return;
+                }                
+            }
+            if (_billSource.Current is BillProductModel model2)
+            {
+                model2.Price = 15000;
+                //model2.Quantity = model2.Quantity;
+                _billSource.ResetBindings(false);
+            }
+        }
         public void Pay()
         {
 
@@ -120,6 +140,7 @@ namespace SaleManager.ViewModels
             if (_billSource.DataSource is List<BillProductModel> b)
             {
                 var bill = b.Find(x => x.Barcode.Equals(product.Barcode) && x.Unit == product.Unit);
+                
                 if (bill == null)
                     b.Add(new BillProductModel(product));
                 else

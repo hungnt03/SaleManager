@@ -38,29 +38,18 @@
             this.danhMụcToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.khuyếnMãiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chuyểnĐổiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityUpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.quantityDownDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.billProductModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.mainModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnClearMoney = new System.Windows.Forms.Button();
@@ -77,7 +66,6 @@
             this.btn10 = new System.Windows.Forms.Button();
             this.btn50 = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.cardsPanel1 = new SaleManager.Controls.CardsPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearchProduct = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -88,9 +76,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.billProductModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mainModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cardsPanel1 = new SaleManager.Controls.CardsPanel();
             this.cardViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cardsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chuyểnĐổiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityUpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.quantityDownDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -100,13 +100,10 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.billProductModelBindingSource)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -115,6 +112,9 @@
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.billProductModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardViewModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardsViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -152,7 +152,7 @@
             // sảnPhẩmToolStripMenuItem
             // 
             this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
-            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.sảnPhẩmToolStripMenuItem.Text = "Sản Phẩm";
             this.sảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmToolStripMenuItem_Click);
             // 
@@ -161,33 +161,40 @@
             this.danhMụcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nhậpHàngToolStripMenuItem});
             this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.danhMụcToolStripMenuItem.Text = "Xuất nhập";
             // 
             // nhậpHàngToolStripMenuItem
             // 
             this.nhậpHàngToolStripMenuItem.Name = "nhậpHàngToolStripMenuItem";
-            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.nhậpHàngToolStripMenuItem.Text = "Nhập hàng";
             this.nhậpHàngToolStripMenuItem.Click += new System.EventHandler(this.nhậpHàngToolStripMenuItem_Click);
             // 
             // danhMụcToolStripMenuItem1
             // 
             this.danhMụcToolStripMenuItem1.Name = "danhMụcToolStripMenuItem1";
-            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
             this.danhMụcToolStripMenuItem1.Text = "Danh mục";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // khuyếnMãiToolStripMenuItem
             // 
             this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
-            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mại";
+            // 
+            // chuyểnĐổiToolStripMenuItem
+            // 
+            this.chuyểnĐổiToolStripMenuItem.Name = "chuyểnĐổiToolStripMenuItem";
+            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.chuyểnĐổiToolStripMenuItem.Text = "Chuyển đổi";
+            this.chuyểnĐổiToolStripMenuItem.Click += new System.EventHandler(this.chuyểnĐổiToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -263,97 +270,6 @@
             this.dgvData.Size = new System.Drawing.Size(738, 365);
             this.dgvData.TabIndex = 0;
             // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            this.productNameDataGridViewTextBoxColumn.Width = 174;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Giá";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "SL";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // quantityUpDataGridViewTextBoxColumn
-            // 
-            this.quantityUpDataGridViewTextBoxColumn.DataPropertyName = "QuantityUp";
-            this.quantityUpDataGridViewTextBoxColumn.HeaderText = "";
-            this.quantityUpDataGridViewTextBoxColumn.Name = "quantityUpDataGridViewTextBoxColumn";
-            this.quantityUpDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.quantityUpDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.quantityUpDataGridViewTextBoxColumn.Text = "▲";
-            this.quantityUpDataGridViewTextBoxColumn.ToolTipText = "▲";
-            this.quantityUpDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
-            this.quantityUpDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // quantityDownDataGridViewTextBoxColumn
-            // 
-            this.quantityDownDataGridViewTextBoxColumn.DataPropertyName = "QuantityDown";
-            this.quantityDownDataGridViewTextBoxColumn.HeaderText = "";
-            this.quantityDownDataGridViewTextBoxColumn.Name = "quantityDownDataGridViewTextBoxColumn";
-            this.quantityDownDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.quantityDownDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.quantityDownDataGridViewTextBoxColumn.Text = "▼";
-            this.quantityDownDataGridViewTextBoxColumn.ToolTipText = "▼";
-            this.quantityDownDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
-            this.quantityDownDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.DataSource = this.unitBindingSource;
-            this.unitDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            this.unitDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Thành tiền";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.Width = 77;
-            // 
-            // delDataGridViewTextBoxColumn
-            // 
-            this.delDataGridViewTextBoxColumn.DataPropertyName = "Del";
-            this.delDataGridViewTextBoxColumn.HeaderText = "";
-            this.delDataGridViewTextBoxColumn.Name = "delDataGridViewTextBoxColumn";
-            this.delDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.delDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.delDataGridViewTextBoxColumn.Text = "X";
-            this.delDataGridViewTextBoxColumn.ToolTipText = "X";
-            this.delDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
-            this.delDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // billProductModelBindingSource
-            // 
-            this.billProductModelBindingSource.DataSource = typeof(SaleManager.Models.BillProductModel);
-            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.panel10);
@@ -411,10 +327,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(120, 25);
             this.textBox1.TabIndex = 4;
-            // 
-            // mainModelBindingSource
-            // 
-            this.mainModelBindingSource.DataSource = typeof(SaleManager.Models.MainModel);
             // 
             // label2
             // 
@@ -571,17 +483,6 @@
             this.panel11.Size = new System.Drawing.Size(534, 462);
             this.panel11.TabIndex = 1;
             // 
-            // cardsPanel1
-            // 
-            this.cardsPanel1.AutoScroll = true;
-            this.cardsPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.cardsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardsPanel1.Location = new System.Drawing.Point(0, 0);
-            this.cardsPanel1.Name = "cardsPanel1";
-            this.cardsPanel1.Size = new System.Drawing.Size(534, 462);
-            this.cardsPanel1.TabIndex = 0;
-            this.cardsPanel1.ViewModel = null;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txtSearchProduct);
@@ -679,6 +580,29 @@
             this.panel12.Size = new System.Drawing.Size(1294, 501);
             this.panel12.TabIndex = 5;
             // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
+            // 
+            // billProductModelBindingSource
+            // 
+            this.billProductModelBindingSource.DataSource = typeof(SaleManager.Models.BillProductModel);
+            // 
+            // mainModelBindingSource
+            // 
+            this.mainModelBindingSource.DataSource = typeof(SaleManager.Models.MainModel);
+            // 
+            // cardsPanel1
+            // 
+            this.cardsPanel1.AutoScroll = true;
+            this.cardsPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.cardsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cardsPanel1.Location = new System.Drawing.Point(0, 0);
+            this.cardsPanel1.Name = "cardsPanel1";
+            this.cardsPanel1.Size = new System.Drawing.Size(534, 462);
+            this.cardsPanel1.TabIndex = 0;
+            this.cardsPanel1.ViewModel = null;
+            // 
             // cardViewModelBindingSource
             // 
             this.cardViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardViewModel);
@@ -687,12 +611,88 @@
             // 
             this.cardsViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardsViewModel);
             // 
-            // chuyểnĐổiToolStripMenuItem
+            // barcodeDataGridViewTextBoxColumn
             // 
-            this.chuyểnĐổiToolStripMenuItem.Name = "chuyểnĐổiToolStripMenuItem";
-            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.chuyểnĐổiToolStripMenuItem.Text = "Chuyển đổi";
-            this.chuyểnĐổiToolStripMenuItem.Click += new System.EventHandler(this.chuyểnĐổiToolStripMenuItem_Click);
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.Width = 174;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Giá";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "SL";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // quantityUpDataGridViewTextBoxColumn
+            // 
+            this.quantityUpDataGridViewTextBoxColumn.DataPropertyName = "QuantityUp";
+            this.quantityUpDataGridViewTextBoxColumn.HeaderText = "";
+            this.quantityUpDataGridViewTextBoxColumn.Name = "quantityUpDataGridViewTextBoxColumn";
+            this.quantityUpDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.quantityUpDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.quantityUpDataGridViewTextBoxColumn.Text = "▲";
+            this.quantityUpDataGridViewTextBoxColumn.ToolTipText = "▲";
+            this.quantityUpDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
+            this.quantityUpDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // quantityDownDataGridViewTextBoxColumn
+            // 
+            this.quantityDownDataGridViewTextBoxColumn.DataPropertyName = "QuantityDown";
+            this.quantityDownDataGridViewTextBoxColumn.HeaderText = "";
+            this.quantityDownDataGridViewTextBoxColumn.Name = "quantityDownDataGridViewTextBoxColumn";
+            this.quantityDownDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.quantityDownDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.quantityDownDataGridViewTextBoxColumn.Text = "▼";
+            this.quantityDownDataGridViewTextBoxColumn.ToolTipText = "▼";
+            this.quantityDownDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
+            this.quantityDownDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // unitDataGridViewTextBoxColumn
+            // 
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn.DataSource = this.unitBindingSource;
+            this.unitDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Thành tiền";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.Width = 83;
+            // 
+            // delDataGridViewTextBoxColumn
+            // 
+            this.delDataGridViewTextBoxColumn.DataPropertyName = "Del";
+            this.delDataGridViewTextBoxColumn.HeaderText = "";
+            this.delDataGridViewTextBoxColumn.Name = "delDataGridViewTextBoxColumn";
+            this.delDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.delDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.delDataGridViewTextBoxColumn.Text = "X";
+            this.delDataGridViewTextBoxColumn.ToolTipText = "X";
+            this.delDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
+            this.delDataGridViewTextBoxColumn.Width = 30;
             // 
             // Main
             // 
@@ -716,15 +716,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.billProductModelBindingSource)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -737,6 +734,9 @@
             this.panel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.billProductModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardViewModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardsViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -798,6 +798,7 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.ToolStripMenuItem chuyểnĐổiToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
@@ -807,7 +808,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn unitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn delDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem chuyểnĐổiToolStripMenuItem;
     }
 }
 

@@ -1,10 +1,14 @@
 ﻿using SaleManager.Controls;
+using SaleManager.Entities;
+using SaleManager.Models;
 using SaleManager.Utils;
 using SaleManager.ViewModels;
 using SaleManager.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -23,6 +27,8 @@ namespace SaleManager
             cardViewModelBindingSource.DataSourceChanged += CardViewModelBindingSource_DataSourceChanged;
             dgvData.CellFormatting += DgvData_CellFormatting;
             dgvData.CellContentClick += DgvData_CellContentClick;
+            //Unit
+            dgvData.EditingControlShowing += DgvData_EditingControlShowing;
             txtSearchBillProduct.TextChanged += delegate { _vm.SearchBillProduct(txtSearchBillProduct.Text); };            
             txtSearchProduct.TextChanged += TxtSearchProduct_TextChanged;            
             btnClearMoney.Click += delegate { _vm.ClearPayment(); };
@@ -35,6 +41,25 @@ namespace SaleManager
             _vm._mainSource = mainModelBindingSource;
         }
 
+        private void DgvData_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            ComboBox combo = e.Control as ComboBox;
+            if (combo != null)
+            {
+                // Remove an existing event-handler, if present, to avoid 
+                // adding multiple handlers when the editing control is reused.
+                combo.SelectedIndexChanged -=
+                    new EventHandler(ComboBox_SelectedIndexChanged);
+
+                // Add the event handler. 
+                combo.SelectedIndexChanged +=
+                    new EventHandler(ComboBox_SelectedIndexChanged);
+            }
+        }
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(((ComboBox)sender).SelectedItem is Unit u) _vm.GridUnitChange(u.Id);
+        }
         private void OnSearchTimerTick(object sender, EventArgs e)
         {
             _searchTimer.Stop();
@@ -49,9 +74,8 @@ namespace SaleManager
 
         private void DgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _vm.GridButtonClick(sender, e);
+            _vm.GridButtonClick(sender, e);            
         }
-
         private void DgvData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (new List<string>() { "Price", "Total" }.Contains(dgvData.Columns[e.ColumnIndex].DataPropertyName) && e.Value != null)

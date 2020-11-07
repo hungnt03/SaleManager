@@ -42,6 +42,7 @@ namespace SaleManager.Models
         public ProductModel()
         {
             this.ExpirationDate = DateTime.Now;
+            this.Enable = true;
         }
 
         public void DumpProduct(ref Product product)
@@ -56,7 +57,7 @@ namespace SaleManager.Models
             product.IsDefault = this.IsDefault;
             product.ExpirationDate = this.ExpirationDate;
             product.Unit = this.Unit;
-            product.Img = Barcode + ".jpg";
+            if(!string.IsNullOrEmpty(this.Img)) product.Img = Barcode + ".jpg";
             product.PriceBuy = this.PriceBuy;
             product.Interest = this.Interest;
             product.UpdatedAt = DateTime.Now;

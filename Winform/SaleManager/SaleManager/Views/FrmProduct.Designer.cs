@@ -56,8 +56,9 @@
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.expirationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pinDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.productModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnBack = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -65,6 +66,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnRecycling = new System.Windows.Forms.Button();
             this.barcodeTextBox = new System.Windows.Forms.TextBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.nameTextBox = new System.Windows.Forms.TextBox();
@@ -78,7 +80,6 @@
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.unitComboBox = new System.Windows.Forms.ComboBox();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel15 = new System.Windows.Forms.Panel();
             this.expirationDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -117,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -131,7 +133,6 @@
             this.panel12.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel15.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -148,7 +149,7 @@
             // 
             barcodeLabel.AutoSize = true;
             barcodeLabel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            barcodeLabel.Location = new System.Drawing.Point(-1, 6);
+            barcodeLabel.Location = new System.Drawing.Point(1, 16);
             barcodeLabel.Name = "barcodeLabel";
             barcodeLabel.Size = new System.Drawing.Size(56, 14);
             barcodeLabel.TabIndex = 1;
@@ -290,7 +291,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(661, 43);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(694, 43);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -362,13 +363,13 @@
             this.barcodeDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
-            this.expirationDateDataGridViewTextBoxColumn,
-            this.pinDataGridViewCheckBoxColumn});
+            this.Unit,
+            this.expirationDateDataGridViewTextBoxColumn});
             this.dgvData.DataSource = this.productModelBindingSource;
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 43);
             this.dgvData.Name = "dgvData";
-            this.dgvData.Size = new System.Drawing.Size(661, 542);
+            this.dgvData.Size = new System.Drawing.Size(694, 542);
             this.dgvData.TabIndex = 1;
             // 
             // barcodeDataGridViewTextBoxColumn
@@ -392,6 +393,20 @@
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Width = 70;
             // 
+            // Unit
+            // 
+            this.Unit.DataPropertyName = "Unit";
+            this.Unit.DataSource = this.unitBindingSource;
+            this.Unit.DisplayMember = "Name";
+            this.Unit.HeaderText = "Đơn vị";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            this.Unit.ValueMember = "Id";
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
+            // 
             // expirationDateDataGridViewTextBoxColumn
             // 
             this.expirationDateDataGridViewTextBoxColumn.DataPropertyName = "ExpirationDate";
@@ -401,20 +416,13 @@
             this.expirationDateDataGridViewTextBoxColumn.HeaderText = "Hạn sử dụng";
             this.expirationDateDataGridViewTextBoxColumn.Name = "expirationDateDataGridViewTextBoxColumn";
             // 
-            // pinDataGridViewCheckBoxColumn
-            // 
-            this.pinDataGridViewCheckBoxColumn.DataPropertyName = "Pin";
-            this.pinDataGridViewCheckBoxColumn.HeaderText = "Pin";
-            this.pinDataGridViewCheckBoxColumn.Name = "pinDataGridViewCheckBoxColumn";
-            this.pinDataGridViewCheckBoxColumn.Width = 50;
-            // 
             // productModelBindingSource
             // 
             this.productModelBindingSource.DataSource = typeof(SaleManager.Models.ProductModel);
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(963, 3);
+            this.btnBack.Location = new System.Drawing.Point(1015, 3);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 33);
             this.btnBack.TabIndex = 2;
@@ -430,12 +438,12 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 585);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1041, 40);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1093, 40);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(882, 3);
+            this.btnSave.Location = new System.Drawing.Point(934, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 33);
             this.btnSave.TabIndex = 3;
@@ -458,8 +466,8 @@
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel3);
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel4);
-            this.splitContainer1.Size = new System.Drawing.Size(1041, 585);
-            this.splitContainer1.SplitterDistance = 661;
+            this.splitContainer1.Size = new System.Drawing.Size(1093, 585);
+            this.splitContainer1.SplitterDistance = 694;
             this.splitContainer1.TabIndex = 4;
             // 
             // flowLayoutPanel3
@@ -485,18 +493,29 @@
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(376, 549);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(395, 549);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btnRecycling);
             this.panel7.Controls.Add(this.barcodeTextBox);
             this.panel7.Controls.Add(barcodeLabel);
-            this.panel7.Location = new System.Drawing.Point(19, 20);
+            this.panel7.Location = new System.Drawing.Point(23, 20);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(335, 30);
+            this.panel7.Size = new System.Drawing.Size(350, 30);
             this.panel7.TabIndex = 32;
+            // 
+            // btnRecycling
+            // 
+            this.btnRecycling.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecycling.Location = new System.Drawing.Point(315, 2);
+            this.btnRecycling.Name = "btnRecycling";
+            this.btnRecycling.Size = new System.Drawing.Size(25, 27);
+            this.btnRecycling.TabIndex = 3;
+            this.btnRecycling.Text = "♺";
+            this.btnRecycling.UseVisualStyleBackColor = true;
             // 
             // barcodeTextBox
             // 
@@ -512,9 +531,9 @@
             // 
             this.panel11.Controls.Add(this.nameTextBox);
             this.panel11.Controls.Add(nameLabel);
-            this.panel11.Location = new System.Drawing.Point(19, 56);
+            this.panel11.Location = new System.Drawing.Point(23, 56);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(335, 30);
+            this.panel11.Size = new System.Drawing.Size(350, 30);
             this.panel11.TabIndex = 36;
             // 
             // nameTextBox
@@ -531,9 +550,9 @@
             // 
             this.panel6.Controls.Add(this.quantityTextBox);
             this.panel6.Controls.Add(quantityLabel);
-            this.panel6.Location = new System.Drawing.Point(19, 92);
+            this.panel6.Location = new System.Drawing.Point(23, 92);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(335, 30);
+            this.panel6.Size = new System.Drawing.Size(350, 30);
             this.panel6.TabIndex = 31;
             // 
             // quantityTextBox
@@ -550,9 +569,9 @@
             // 
             this.panel8.Controls.Add(this.priceBuyTextBox);
             this.panel8.Controls.Add(priceBuyLabel);
-            this.panel8.Location = new System.Drawing.Point(19, 128);
+            this.panel8.Location = new System.Drawing.Point(23, 128);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(335, 30);
+            this.panel8.Size = new System.Drawing.Size(350, 30);
             this.panel8.TabIndex = 33;
             // 
             // priceBuyTextBox
@@ -569,9 +588,9 @@
             // 
             this.panel12.Controls.Add(this.interestTextBox);
             this.panel12.Controls.Add(interestLabel);
-            this.panel12.Location = new System.Drawing.Point(19, 164);
+            this.panel12.Location = new System.Drawing.Point(23, 164);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(335, 30);
+            this.panel12.Size = new System.Drawing.Size(350, 30);
             this.panel12.TabIndex = 37;
             // 
             // interestTextBox
@@ -588,9 +607,9 @@
             // 
             this.panel9.Controls.Add(this.priceTextBox);
             this.panel9.Controls.Add(priceLabel);
-            this.panel9.Location = new System.Drawing.Point(19, 200);
+            this.panel9.Location = new System.Drawing.Point(23, 200);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(335, 30);
+            this.panel9.Size = new System.Drawing.Size(350, 30);
             this.panel9.TabIndex = 34;
             // 
             // priceTextBox
@@ -607,9 +626,9 @@
             // 
             this.panel4.Controls.Add(this.unitComboBox);
             this.panel4.Controls.Add(unitIdLabel);
-            this.panel4.Location = new System.Drawing.Point(19, 236);
+            this.panel4.Location = new System.Drawing.Point(23, 236);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(335, 30);
+            this.panel4.Size = new System.Drawing.Size(350, 30);
             this.panel4.TabIndex = 29;
             // 
             // unitComboBox
@@ -624,17 +643,13 @@
             this.unitComboBox.TabIndex = 29;
             this.unitComboBox.ValueMember = "Id";
             // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
             // panel15
             // 
             this.panel15.Controls.Add(expirationDateLabel);
             this.panel15.Controls.Add(this.expirationDateDateTimePicker);
-            this.panel15.Location = new System.Drawing.Point(19, 272);
+            this.panel15.Location = new System.Drawing.Point(23, 272);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(335, 30);
+            this.panel15.Size = new System.Drawing.Size(350, 30);
             this.panel15.TabIndex = 39;
             // 
             // expirationDateDateTimePicker
@@ -649,9 +664,9 @@
             // 
             this.panel17.Controls.Add(this.categoryComboBox);
             this.panel17.Controls.Add(categoryIdLabel);
-            this.panel17.Location = new System.Drawing.Point(19, 308);
+            this.panel17.Location = new System.Drawing.Point(23, 308);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(335, 30);
+            this.panel17.Size = new System.Drawing.Size(350, 30);
             this.panel17.TabIndex = 41;
             // 
             // categoryComboBox
@@ -670,9 +685,9 @@
             // 
             this.panel5.Controls.Add(this.supplierComboBox);
             this.panel5.Controls.Add(supplierIdLabel);
-            this.panel5.Location = new System.Drawing.Point(19, 344);
+            this.panel5.Location = new System.Drawing.Point(23, 344);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(335, 30);
+            this.panel5.Size = new System.Drawing.Size(350, 30);
             this.panel5.TabIndex = 30;
             // 
             // supplierComboBox
@@ -691,9 +706,9 @@
             // 
             this.panel10.Controls.Add(this.pinCheckBox);
             this.panel10.Controls.Add(pinLabel);
-            this.panel10.Location = new System.Drawing.Point(19, 380);
+            this.panel10.Location = new System.Drawing.Point(23, 380);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(335, 30);
+            this.panel10.Size = new System.Drawing.Size(350, 30);
             this.panel10.TabIndex = 35;
             // 
             // pinCheckBox
@@ -709,9 +724,9 @@
             // 
             this.panel16.Controls.Add(enableLabel);
             this.panel16.Controls.Add(this.enableCheckBox);
-            this.panel16.Location = new System.Drawing.Point(19, 416);
+            this.panel16.Location = new System.Drawing.Point(23, 416);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(335, 30);
+            this.panel16.Size = new System.Drawing.Size(350, 30);
             this.panel16.TabIndex = 40;
             // 
             // enableCheckBox
@@ -727,9 +742,9 @@
             // 
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Controls.Add(label2);
-            this.panel2.Location = new System.Drawing.Point(19, 452);
+            this.panel2.Location = new System.Drawing.Point(23, 452);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(335, 30);
+            this.panel2.Size = new System.Drawing.Size(350, 30);
             this.panel2.TabIndex = 36;
             // 
             // checkBox1
@@ -745,9 +760,9 @@
             // 
             this.panel13.Controls.Add(this.imgTextBox);
             this.panel13.Controls.Add(imgLabel);
-            this.panel13.Location = new System.Drawing.Point(19, 488);
+            this.panel13.Location = new System.Drawing.Point(23, 488);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(335, 43);
+            this.panel13.Size = new System.Drawing.Size(350, 43);
             this.panel13.TabIndex = 33;
             // 
             // imgTextBox
@@ -762,9 +777,9 @@
             // panel14
             // 
             this.panel14.Controls.Add(this.imagePictureBox);
-            this.panel14.Location = new System.Drawing.Point(19, 537);
+            this.panel14.Location = new System.Drawing.Point(23, 537);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(335, 207);
+            this.panel14.Size = new System.Drawing.Size(350, 207);
             this.panel14.TabIndex = 38;
             // 
             // imagePictureBox
@@ -785,14 +800,14 @@
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 549);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(376, 36);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(395, 36);
             this.flowLayoutPanel4.TabIndex = 42;
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.Yellow;
             this.btnAdd.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(296, 3);
+            this.btnAdd.Location = new System.Drawing.Point(315, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 28);
             this.btnAdd.TabIndex = 4;
@@ -802,7 +817,7 @@
             // btnAddImage
             // 
             this.btnAddImage.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddImage.Location = new System.Drawing.Point(215, 3);
+            this.btnAddImage.Location = new System.Drawing.Point(234, 3);
             this.btnAddImage.Name = "btnAddImage";
             this.btnAddImage.Size = new System.Drawing.Size(75, 28);
             this.btnAddImage.TabIndex = 5;
@@ -813,7 +828,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 625);
+            this.ClientSize = new System.Drawing.Size(1093, 625);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Name = "FrmProduct";
@@ -824,6 +839,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -845,7 +861,6 @@
             this.panel9.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel17.ResumeLayout(false);
@@ -878,12 +893,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expirationDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn pinDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource productModelBindingSource;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -924,5 +934,11 @@
         private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expirationDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnRecycling;
     }
 }

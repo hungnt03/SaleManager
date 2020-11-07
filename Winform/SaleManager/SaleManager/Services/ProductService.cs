@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SaleManager.Services
 {
@@ -58,7 +59,7 @@ namespace SaleManager.Services
                         product = Mapper.Map<ProductModel, Product>(p);
                         product.CreatedAt = DateTime.Now;
                         product.CreatedBy = "Administrator";
-                        product.Img = product.Barcode + ".jpg";
+                        if (!string.IsNullOrEmpty(p.Img)) product.Img = product.Barcode + ".jpg";
                         adds.Add(product);
                     }
                 }
@@ -66,6 +67,7 @@ namespace SaleManager.Services
 
                 isSuccess = _db.SaveChanges() != 0;
                 _db.Database.CurrentTransaction.Commit();
+                MessageBox.Show("Lưu thành công.");
             }
             catch (Exception e)
             {
@@ -75,7 +77,7 @@ namespace SaleManager.Services
 
             //Upload image
             if (!isSuccess) return;
-            foreach(var p in datas)
+            foreach (var p in datas)
             {
                 if (string.IsNullOrEmpty(p.Img)) continue;
                 var imgRootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\Resources\\Product\\";
@@ -83,7 +85,7 @@ namespace SaleManager.Services
                 var file = new FileInfo(imgRootPath + imgName);
                 if (file.Exists)
                     file.Delete();
-                if(p.Image != null) p.Image.Save(imgRootPath + imgName, ImageFormat.Jpeg);
+                if (p.Image != null) p.Image.Save(imgRootPath + imgName, ImageFormat.Jpeg);
             }
         }
 
@@ -136,8 +138,13 @@ namespace SaleManager.Services
                     graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
-
             return destImage;
+        }
+        public string CreateRandomBarcode(ref string barcode)
+        {
+            var rand = new Random();
+            barcode = "999" + rand.Next(1000000000, Int32.MaxValue);
+            return barcode;
         }
     }
 }

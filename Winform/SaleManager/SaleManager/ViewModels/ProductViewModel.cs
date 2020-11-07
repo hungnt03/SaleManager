@@ -23,9 +23,18 @@ namespace SaleManager.ViewModels
         public BindingSource _unitSource { set; get; }
         public BindingSource _supplierSource { set; get; }
         public BindingSource _categorySource { set; get; }
+        public Command RecyclingCommand { get; set; }
+        public Command BarcodeCommand { get; set; }
         public ProductViewModel()
         {
             _service = new ProductService();
+        }
+        public void Initialize()
+        {
+            _source.CurrentChanged += delegate { RecyclingCommand.NotifyChange(); BarcodeCommand.NotifyChange(); };
+            _source.CurrentItemChanged += delegate { RecyclingCommand.NotifyChange(); BarcodeCommand.NotifyChange(); };
+            RecyclingCommand = new Command(GenerateBarcode, RecyclingCanExecute);
+            BarcodeCommand = new Command(ActionBarcode, BarcodeCanExecute);
         }
         public void Load()
         {
@@ -67,9 +76,41 @@ namespace SaleManager.ViewModels
         }
         public void Save()
         {
-            if(_source.DataSource is List<ProductModel> ps) _service.Save(ps);
+            if (_source.DataSource is List<ProductModel> ps) _service.Save(ps);
         }
-        public void Add()
+        public void GenerateBarcode()
+        {
+            var rand = new Random();
+            var barcode = string.Empty;
+            var products = _service._db.Products.ToList();
+            while (products.Find(x => x.Barcode.Equals(_service.CreateRandomBarcode(ref barcode))) == null)
+            {
+                if (_source.DataSource is List<ProductModel> ps) ps.Last().Barcode = barcode;
+                _source.ResetBindings(false);
+                return;
+            }
+        }
+        public void AddRow()
+        {
+            if (_source.DataSource is List<ProductModel> ps)
+            {
+                if (ps.Find(x => string.IsNullOrEmpty(x.Barcode)) != null) return;
+                var unit = _service._db.Units.First().Id;
+                ps.Add(new ProductModel() { Unit = unit });
+                _source.ResetBindings(false);
+            }
+        }
+        private bool RecyclingCanExecute()
+        {
+            if (_source.Current is ProductModel p) return string.IsNullOrEmpty(p.Barcode);
+            return false;
+        }
+        private bool BarcodeCanExecute()
+        {
+            if (_source.Current is ProductModel p) return string.IsNullOrEmpty(p.Barcode);
+            return false;
+        }
+        private void ActionBarcode()
         {
 
         }

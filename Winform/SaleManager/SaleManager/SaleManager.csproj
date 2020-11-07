@@ -184,6 +184,7 @@
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\ExtensionMethods.cs" />
+    <Compile Include="Utils\MessageUtil.cs" />
     <Compile Include="Utils\StringUtil.cs" />
     <Compile Include="ViewModels\ConvertProductViewModel.cs" />
     <Compile Include="ViewModels\ImportProductViewModel.cs" />

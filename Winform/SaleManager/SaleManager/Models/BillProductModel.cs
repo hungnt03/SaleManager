@@ -1,11 +1,5 @@
-﻿using Microsoft.SqlServer.Server;
-using SaleManager.Entities;
+﻿using SaleManager.Entities;
 using SaleManager.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SaleManager.Models
 {
@@ -26,7 +20,9 @@ namespace SaleManager.Models
             get => _quantity;
         }
         private int _unit;
-        public int Unit { set => Set(ref _unit, value); get => _unit; }
+        public int Unit { set {
+                Set(ref _unit, value);
+            }  get => _unit; }
         public string QuantityDown { set; get; }
         public string QuantityUp { set; get; }
 
