@@ -23,9 +23,9 @@ namespace SaleManager.Entities
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> SuplierId { get; set; }
         public bool IsPayment { get; set; }
-        public decimal Amount { get; set; }
-        public decimal Payment { get; set; }
-        public decimal PayBack { get; set; }
+        public Nullable<int> Amount { get; set; }
+        public Nullable<int> Payment { get; set; }
+        public Nullable<int> PayBack { get; set; }
         public string BillNumber { get; set; }
         public string Note { get; set; }
     }

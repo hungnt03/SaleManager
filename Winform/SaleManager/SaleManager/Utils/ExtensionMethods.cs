@@ -35,5 +35,9 @@ namespace SaleManager.Utils
                 return false;
             return str.ToCharArray().All(x => Char.IsDigit(x) || x.Equals("."));
         }
+        public static string ToStringOrEmpty(this object val)
+        {
+            return val == null ? null : val.ToString();
+        }
     }
 }

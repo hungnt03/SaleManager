@@ -36,6 +36,9 @@
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="C1.Win.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
+    <Reference Include="C1.Win.C1Command.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=e808566f358766d8" />
+    <Reference Include="C1.Win.C1Input.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -164,7 +167,11 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BillProductModel.cs" />
     <Compile Include="Models\ImportProductDialogModel.cs" />
+    <Compile Include="Models\TransactionDetailModel.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Services\MainService.cs" />
+    <Compile Include="Services\TransactionDetailService.cs" />
+    <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Utils\Bindable.cs" />
     <Compile Include="Models\ConvertModel.cs" />
     <Compile Include="Models\ImportProductModel.cs" />
@@ -190,6 +197,8 @@
     <Compile Include="ViewModels\ImportProductViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\TransactionDetailViewModel.cs" />
+    <Compile Include="ViewModels\TransitionViewModel.cs" />
     <Compile Include="Views\Dialogs\ImportProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +211,12 @@
     <Compile Include="Views\FrmConvert.Designer.cs">
       <DependentUpon>FrmConvert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmTransaction.Designer.cs">
+      <DependentUpon>FrmTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +228,12 @@
     </Compile>
     <Compile Include="Views\FrmImportProduct.Designer.cs">
       <DependentUpon>FrmImportProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmTransactionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmTransactionDetail.Designer.cs">
+      <DependentUpon>FrmTransactionDetail.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Controls\CardControl.resx">
       <DependentUpon>CardControl.cs</DependentUpon>
@@ -235,11 +256,17 @@
     <EmbeddedResource Include="Views\FrmConvert.resx">
       <DependentUpon>FrmConvert.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmTransaction.resx">
+      <DependentUpon>FrmTransaction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmImportProduct.resx">
       <DependentUpon>FrmImportProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmTransactionDetail.resx">
+      <DependentUpon>FrmTransactionDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Entities\SaleManagerDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -261,6 +288,8 @@
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.MainModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ProductModel.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.TransactionDetailModel.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.TransactionModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -270,6 +299,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="SaleManager.gclicx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -16,6 +16,10 @@ namespace SaleManager.Utils
         {
             MessageBox.Show(mess, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        public static System.Windows.Forms.DialogResult InformationConfirm(string mess)
+        {
+            return MessageBox.Show(mess, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        }
         public static void Error(string mess)
         {
             MessageBox.Show(mess, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

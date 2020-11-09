@@ -118,5 +118,12 @@ namespace SaleManager
             frm.Show(this);
             this.Hide();
         }
+
+        private void giaoDịchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmTransaction();
+            frm.Show(this);
+            this.Hide();
+        }
     }
 }

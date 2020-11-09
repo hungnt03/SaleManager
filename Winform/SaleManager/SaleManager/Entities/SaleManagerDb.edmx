@@ -231,9 +231,9 @@
           <Property Name="CustomerId" Type="int" />
           <Property Name="SuplierId" Type="int" />
           <Property Name="IsPayment" Type="bit" Nullable="false" />
-          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Payment" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="PayBack" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Payment" Type="int" />
+          <Property Name="PayBack" Type="int" />
           <Property Name="BillNumber" Type="nvarchar" MaxLength="15" />
           <Property Name="Note" Type="varchar" MaxLength="255" />
         </EntityType>
@@ -252,6 +252,7 @@
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="IsPayment" Type="bit" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="int" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -536,25 +537,6 @@
           <Property Name="Contact2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Note" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Transaction">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="7" />
-          <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Type" Type="Int32" Nullable="false" />
-          <Property Name="CustomerId" Type="Int32" />
-          <Property Name="SuplierId" Type="Int32" />
-          <Property Name="IsPayment" Type="Boolean" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="PayBack" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="BillNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
             <PropertyRef Name="Barcode" />
@@ -570,6 +552,7 @@
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="IsPayment" Type="Boolean" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="Int32" />
         </EntityType>
         <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="1">
@@ -643,7 +626,6 @@
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Discounts" EntityType="Self.Discount" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
-          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
           <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetail" />
           <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -669,6 +651,7 @@
           <EntitySet Name="Products" EntityType="SaleManagerModel.Product" />
           <EntitySet Name="Units" EntityType="SaleManagerModel.Unit" />
           <EntitySet Name="ProductHistories" EntityType="SaleManagerModel.ProductHistory" />
+          <EntitySet Name="Transactions" EntityType="SaleManagerModel.Transaction" />
         </EntityContainer>
         <EntityType Name="ConvertProduct">
           <Key>
@@ -755,6 +738,25 @@
           <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="SuplierId" Type="Int32" />
+          <Property Name="IsPayment" Type="Boolean" Nullable="false" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Payment" Type="Int32" />
+          <Property Name="PayBack" Type="Int32" />
+          <Property Name="BillNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -900,29 +902,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Transactions">
-            <EntityTypeMapping TypeName="SaleManagerModel.Transaction">
-              <MappingFragment StoreEntitySet="Transaction">
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="SuplierId" ColumnName="SuplierId" />
-                <ScalarProperty Name="IsPayment" ColumnName="IsPayment" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Payment" ColumnName="Payment" />
-                <ScalarProperty Name="PayBack" ColumnName="PayBack" />
-                <ScalarProperty Name="BillNumber" ColumnName="BillNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TransactionDetails">
             <EntityTypeMapping TypeName="SaleManagerModel.TransactionDetail">
               <MappingFragment StoreEntitySet="TransactionDetail">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
                 <ScalarProperty Name="TracsactionId" ColumnName="TracsactionId" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
@@ -1027,6 +1010,26 @@
                 <ScalarProperty Name="NameOld" ColumnName="NameOld" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="SaleManagerModel.Transaction">
+              <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="BillNumber" ColumnName="BillNumber" />
+                <ScalarProperty Name="PayBack" ColumnName="PayBack" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsPayment" ColumnName="IsPayment" />
+                <ScalarProperty Name="SuplierId" ColumnName="SuplierId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

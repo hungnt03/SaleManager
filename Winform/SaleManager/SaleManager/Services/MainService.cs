@@ -84,6 +84,7 @@ namespace SaleManager.Services
                         CreatedBy = "Administrator",
                         Quantity = bill.Quantity,
                         Amount = bill.Total,
+                        Unit = bill.Unit,
                         IsPayment = model.Payment < model.Total ? Constants.NOT_PAY : Constants.PAID,
                     });
 

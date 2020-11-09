@@ -81,6 +81,7 @@ namespace SaleManager.Models
             result.Quantity = this.Quantity;
             result.IsPayment = FrmImportProduct._dialogModel.IsDebt ? Constants.NOT_PAY : Constants.PAID;
             result.Amount = this.Total;
+            result.Unit = this.Unit;
             return result;
         }
 

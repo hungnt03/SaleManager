@@ -58,10 +58,10 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.mainModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.mainModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnClearMoney = new System.Windows.Forms.Button();
@@ -91,6 +91,7 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.cardViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cardsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.giaoDịchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -104,9 +105,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.billProductModelBindingSource)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -152,47 +153,48 @@
             // sảnPhẩmToolStripMenuItem
             // 
             this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
-            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sảnPhẩmToolStripMenuItem.Text = "Sản Phẩm";
             this.sảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmToolStripMenuItem_Click);
             // 
             // danhMụcToolStripMenuItem
             // 
             this.danhMụcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nhậpHàngToolStripMenuItem});
+            this.nhậpHàngToolStripMenuItem,
+            this.giaoDịchToolStripMenuItem});
             this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.danhMụcToolStripMenuItem.Text = "Xuất nhập";
             // 
             // nhậpHàngToolStripMenuItem
             // 
             this.nhậpHàngToolStripMenuItem.Name = "nhậpHàngToolStripMenuItem";
-            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nhậpHàngToolStripMenuItem.Text = "Nhập hàng";
             this.nhậpHàngToolStripMenuItem.Click += new System.EventHandler(this.nhậpHàngToolStripMenuItem_Click);
             // 
             // danhMụcToolStripMenuItem1
             // 
             this.danhMụcToolStripMenuItem1.Name = "danhMụcToolStripMenuItem1";
-            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
+            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.danhMụcToolStripMenuItem1.Text = "Danh mục";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // khuyếnMãiToolStripMenuItem
             // 
             this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
-            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mại";
             // 
             // chuyểnĐổiToolStripMenuItem
             // 
             this.chuyểnĐổiToolStripMenuItem.Name = "chuyểnĐổiToolStripMenuItem";
-            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.chuyểnĐổiToolStripMenuItem.Text = "Chuyển đổi";
             this.chuyểnĐổiToolStripMenuItem.Click += new System.EventHandler(this.chuyểnĐổiToolStripMenuItem_Click);
             // 
@@ -389,6 +391,10 @@
             this.textBox2.Size = new System.Drawing.Size(222, 86);
             this.textBox2.TabIndex = 8;
             // 
+            // mainModelBindingSource
+            // 
+            this.mainModelBindingSource.DataSource = typeof(SaleManager.Models.MainModel);
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.panel4);
@@ -419,10 +425,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(120, 25);
             this.textBox1.TabIndex = 4;
-            // 
-            // mainModelBindingSource
-            // 
-            this.mainModelBindingSource.DataSource = typeof(SaleManager.Models.MainModel);
             // 
             // label2
             // 
@@ -695,6 +697,13 @@
             // 
             this.cardsViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardsViewModel);
             // 
+            // giaoDịchToolStripMenuItem
+            // 
+            this.giaoDịchToolStripMenuItem.Name = "giaoDịchToolStripMenuItem";
+            this.giaoDịchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.giaoDịchToolStripMenuItem.Text = "Giao dịch";
+            this.giaoDịchToolStripMenuItem.Click += new System.EventHandler(this.giaoDịchToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -722,10 +731,10 @@
             this.panel7.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainModelBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -809,6 +818,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn unitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn delDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem giaoDịchToolStripMenuItem;
     }
 }
 
