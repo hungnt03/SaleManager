@@ -12,11 +12,11 @@ namespace SaleManager.Models
 {
     public class MainModel : Bindable
     {
-        public string _billKey;
-        public string _cardKey;
-        public int _total;
-        public int _payment;
-        public int _payback;
+        private string _billKey;
+        private string _cardKey;
+        private int _total;
+        private int _payment;
+        private int _payback;
         public string Note { set; get; }
         public string BillKey { get => _billKey; set => Set(ref _billKey, value); }
         public string CardKey { get => _cardKey; set => Set(ref _cardKey, value); }

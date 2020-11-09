@@ -104,8 +104,14 @@ namespace SaleManager.ViewModels
             }
         }
         public void Pay()
-        {
-
+        {                       
+            var bills = (List<BillProductModel>)_billSource.DataSource;
+            var model = (MainModel)_mainSource.DataSource;
+            if (model.Payment < model.Total && 
+                MessageUtil.WarningConfirm("Khách chưa thanh toán toàn bộ tiền hàng"+ 
+                System.Environment.NewLine +"Bạn có muốn ghi nợ đơn này") == DialogResult.No) return;
+            //Pay success, refesh screen
+            if (_service.Save(bills, model)) this.Load();
         }
         public void ClearPayment()
         {

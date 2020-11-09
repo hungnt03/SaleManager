@@ -8,6 +8,10 @@ namespace SaleManager.Utils
         {
             MessageBox.Show(mess, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+        public static System.Windows.Forms.DialogResult WarningConfirm(string mess)
+        {
+            return MessageBox.Show(mess, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        }
         public static void Information(string mess)
         {
             MessageBox.Show(mess, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

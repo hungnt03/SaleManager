@@ -228,13 +228,14 @@
           <Property Name="UpdatedAt" Type="datetime2" Precision="7" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="256" />
           <Property Name="Type" Type="int" Nullable="false" />
-          <Property Name="CustomerId" Type="int" Nullable="false" />
-          <Property Name="SuplierId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="SuplierId" Type="int" />
           <Property Name="IsPayment" Type="bit" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Payment" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PayBack" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="BillNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
@@ -545,13 +546,14 @@
           <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="Int32" Nullable="false" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="SuplierId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="SuplierId" Type="Int32" />
           <Property Name="IsPayment" Type="Boolean" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PayBack" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="BillNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
@@ -901,6 +903,7 @@
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="SaleManagerModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
