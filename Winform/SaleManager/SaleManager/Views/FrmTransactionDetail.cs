@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaleManager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,19 @@ namespace SaleManager.Views
     public partial class FrmTransactionDetail : Form
     {
         private int Id { set; get; }
-        public FrmTransactionDetail(int Id)
+        private TransactionDetailViewModel _vm = new TransactionDetailViewModel();
+        public FrmTransactionDetail(int id)
         {
             InitializeComponent();
+            this.Load += delegate { _vm.Load(id); };
+            btnBack.Click += BtnBack_Click;
+            btnDelete.Click += delegate { _vm.Delete(); };
+
+        }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace SaleManager.Models
 {
     public class TransactionDetailModel
     {
+        public int Id { set; get; }
         public string Barcode { get; set; }
         public string ProductName { set; get; }
         public int TracsactionId { get; set; }

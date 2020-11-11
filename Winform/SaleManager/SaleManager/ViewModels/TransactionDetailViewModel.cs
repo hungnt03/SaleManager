@@ -1,9 +1,7 @@
-﻿using SaleManager.Services;
-using System;
+﻿using SaleManager.Models;
+using SaleManager.Services;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SaleManager.ViewModels
@@ -23,9 +21,14 @@ namespace SaleManager.ViewModels
             _source.DataSource = _service.FindById(id);
             _unitSource.DataSource = _service._db.Units.ToList();
         }
-        public void Delete(string barcode, int unit)
+        public void Delete()
         {
-            if(_source.DataSource is List<TransactionDetail> trans)
+            if(_source.Current is TransactionDetailModel model)
+                ((List<TransactionDetailModel>)_source.DataSource).Remove(model);
+        }
+        public void Save()
+        {
+
         }
     }
 }
