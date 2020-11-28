@@ -16,5 +16,6 @@ namespace SaleManager.Utils
         public static int INSERT = 1;
         public static int UPDATE = 2;
         public static string ROOT_PATH = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+        public const int CP_NOCLOSE_BUTTON = 0x200;
     }
 }

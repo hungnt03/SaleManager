@@ -83,5 +83,14 @@ namespace SaleManager.Views
             _vm.Search(ckbIsPayment.Checked, txtKey.Text, ckbType.SelectedItem.ToStringOrEmpty(),
                     ckbEnableDate.Checked, dtpFrom.Value, dtpTo.Value);
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | Constants.CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
     }
 }

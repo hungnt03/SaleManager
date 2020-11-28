@@ -1,6 +1,7 @@
 ﻿
 using SaleManager.Models;
 using SaleManager.Services;
+using SaleManager.Utils;
 using SaleManager.ViewModels;
 using SaleManager.Views.Dialogs;
 using System;
@@ -33,7 +34,14 @@ namespace SaleManager.Views
             btnImport.Click += BtnImport_Click;
             this.Load += delegate { _vm.Load(); };
             btnSave.Click += BtnSave_Click; ;
+            btnExit.Click += BtnExit_Click;
             DataBindings.Add("Text", _vm, "Title");
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Owner.Show();
+            this.Close();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -66,6 +74,15 @@ namespace SaleManager.Views
             _service.CreateTemplate();
             Cursor.Current = Cursors.Default;
             MessageBox.Show("done.");
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | Constants.CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
     }
 }

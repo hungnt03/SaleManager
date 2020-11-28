@@ -35,25 +35,18 @@
             this.sảnPhẩmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.giaoDịchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhMụcToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.khuyếnMãiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chuyểnĐổiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mãVạchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityUpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.quantityDownDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.billProductModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -91,7 +84,15 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.cardViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cardsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.giaoDịchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityUpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.quantityDownDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -145,7 +146,8 @@
             this.danhMụcToolStripMenuItem1,
             this.kháchHàngToolStripMenuItem,
             this.khuyếnMãiToolStripMenuItem,
-            this.chuyểnĐổiToolStripMenuItem});
+            this.chuyểnĐổiToolStripMenuItem,
+            this.mãVạchToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
@@ -153,7 +155,7 @@
             // sảnPhẩmToolStripMenuItem
             // 
             this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
-            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.sảnPhẩmToolStripMenuItem.Text = "Sản Phẩm";
             this.sảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmToolStripMenuItem_Click);
             // 
@@ -163,40 +165,54 @@
             this.nhậpHàngToolStripMenuItem,
             this.giaoDịchToolStripMenuItem});
             this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.danhMụcToolStripMenuItem.Text = "Xuất nhập";
             // 
             // nhậpHàngToolStripMenuItem
             // 
             this.nhậpHàngToolStripMenuItem.Name = "nhậpHàngToolStripMenuItem";
-            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.nhậpHàngToolStripMenuItem.Text = "Nhập hàng";
             this.nhậpHàngToolStripMenuItem.Click += new System.EventHandler(this.nhậpHàngToolStripMenuItem_Click);
+            // 
+            // giaoDịchToolStripMenuItem
+            // 
+            this.giaoDịchToolStripMenuItem.Name = "giaoDịchToolStripMenuItem";
+            this.giaoDịchToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.giaoDịchToolStripMenuItem.Text = "Giao dịch";
+            this.giaoDịchToolStripMenuItem.Click += new System.EventHandler(this.giaoDịchToolStripMenuItem_Click);
             // 
             // danhMụcToolStripMenuItem1
             // 
             this.danhMụcToolStripMenuItem1.Name = "danhMụcToolStripMenuItem1";
-            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
             this.danhMụcToolStripMenuItem1.Text = "Danh mục";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // khuyếnMãiToolStripMenuItem
             // 
             this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
-            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mại";
             // 
             // chuyểnĐổiToolStripMenuItem
             // 
             this.chuyểnĐổiToolStripMenuItem.Name = "chuyểnĐổiToolStripMenuItem";
-            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.chuyểnĐổiToolStripMenuItem.Text = "Chuyển đổi";
             this.chuyểnĐổiToolStripMenuItem.Click += new System.EventHandler(this.chuyểnĐổiToolStripMenuItem_Click);
+            // 
+            // mãVạchToolStripMenuItem
+            // 
+            this.mãVạchToolStripMenuItem.Name = "mãVạchToolStripMenuItem";
+            this.mãVạchToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.mãVạchToolStripMenuItem.Text = "Mã vạch";
+            this.mãVạchToolStripMenuItem.Click += new System.EventHandler(this.mãVạchToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -272,92 +288,9 @@
             this.dgvData.Size = new System.Drawing.Size(738, 365);
             this.dgvData.TabIndex = 0;
             // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            this.productNameDataGridViewTextBoxColumn.Width = 174;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Giá";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "SL";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // quantityUpDataGridViewTextBoxColumn
-            // 
-            this.quantityUpDataGridViewTextBoxColumn.DataPropertyName = "QuantityUp";
-            this.quantityUpDataGridViewTextBoxColumn.HeaderText = "";
-            this.quantityUpDataGridViewTextBoxColumn.Name = "quantityUpDataGridViewTextBoxColumn";
-            this.quantityUpDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.quantityUpDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.quantityUpDataGridViewTextBoxColumn.Text = "▲";
-            this.quantityUpDataGridViewTextBoxColumn.ToolTipText = "▲";
-            this.quantityUpDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
-            this.quantityUpDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // quantityDownDataGridViewTextBoxColumn
-            // 
-            this.quantityDownDataGridViewTextBoxColumn.DataPropertyName = "QuantityDown";
-            this.quantityDownDataGridViewTextBoxColumn.HeaderText = "";
-            this.quantityDownDataGridViewTextBoxColumn.Name = "quantityDownDataGridViewTextBoxColumn";
-            this.quantityDownDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.quantityDownDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.quantityDownDataGridViewTextBoxColumn.Text = "▼";
-            this.quantityDownDataGridViewTextBoxColumn.ToolTipText = "▼";
-            this.quantityDownDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
-            this.quantityDownDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.DataSource = this.unitBindingSource;
-            this.unitDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            this.unitDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
-            // 
             // unitBindingSource
             // 
             this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Thành tiền";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.Width = 77;
-            // 
-            // delDataGridViewTextBoxColumn
-            // 
-            this.delDataGridViewTextBoxColumn.DataPropertyName = "Del";
-            this.delDataGridViewTextBoxColumn.HeaderText = "";
-            this.delDataGridViewTextBoxColumn.Name = "delDataGridViewTextBoxColumn";
-            this.delDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.delDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.delDataGridViewTextBoxColumn.Text = "X";
-            this.delDataGridViewTextBoxColumn.ToolTipText = "X";
-            this.delDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
-            this.delDataGridViewTextBoxColumn.Width = 30;
             // 
             // billProductModelBindingSource
             // 
@@ -697,12 +630,89 @@
             // 
             this.cardsViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardsViewModel);
             // 
-            // giaoDịchToolStripMenuItem
+            // barcodeDataGridViewTextBoxColumn
             // 
-            this.giaoDịchToolStripMenuItem.Name = "giaoDịchToolStripMenuItem";
-            this.giaoDịchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.giaoDịchToolStripMenuItem.Text = "Giao dịch";
-            this.giaoDịchToolStripMenuItem.Click += new System.EventHandler(this.giaoDịchToolStripMenuItem_Click);
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.Width = 174;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Giá";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "SL";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // quantityUpDataGridViewTextBoxColumn
+            // 
+            this.quantityUpDataGridViewTextBoxColumn.DataPropertyName = "QuantityUp";
+            this.quantityUpDataGridViewTextBoxColumn.HeaderText = "";
+            this.quantityUpDataGridViewTextBoxColumn.Name = "quantityUpDataGridViewTextBoxColumn";
+            this.quantityUpDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.quantityUpDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.quantityUpDataGridViewTextBoxColumn.Text = "▲";
+            this.quantityUpDataGridViewTextBoxColumn.ToolTipText = "▲";
+            this.quantityUpDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
+            this.quantityUpDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // quantityDownDataGridViewTextBoxColumn
+            // 
+            this.quantityDownDataGridViewTextBoxColumn.DataPropertyName = "QuantityDown";
+            this.quantityDownDataGridViewTextBoxColumn.HeaderText = "";
+            this.quantityDownDataGridViewTextBoxColumn.Name = "quantityDownDataGridViewTextBoxColumn";
+            this.quantityDownDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.quantityDownDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.quantityDownDataGridViewTextBoxColumn.Text = "▼";
+            this.quantityDownDataGridViewTextBoxColumn.ToolTipText = "▼";
+            this.quantityDownDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
+            this.quantityDownDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // unitDataGridViewTextBoxColumn
+            // 
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn.DataSource = this.unitBindingSource;
+            this.unitDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Thành tiền";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.Width = 83;
+            // 
+            // delDataGridViewTextBoxColumn
+            // 
+            this.delDataGridViewTextBoxColumn.DataPropertyName = "Del";
+            this.delDataGridViewTextBoxColumn.HeaderText = "";
+            this.delDataGridViewTextBoxColumn.Name = "delDataGridViewTextBoxColumn";
+            this.delDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.delDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.delDataGridViewTextBoxColumn.Text = "X";
+            this.delDataGridViewTextBoxColumn.ToolTipText = "X";
+            this.delDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
+            this.delDataGridViewTextBoxColumn.Width = 30;
             // 
             // Main
             // 
@@ -809,6 +819,8 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.ToolStripMenuItem chuyểnĐổiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem giaoDịchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mãVạchToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
@@ -818,7 +830,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn unitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn delDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem giaoDịchToolStripMenuItem;
     }
 }
 

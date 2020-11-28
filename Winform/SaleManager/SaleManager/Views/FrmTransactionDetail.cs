@@ -1,4 +1,5 @@
-﻿using SaleManager.ViewModels;
+﻿using SaleManager.Utils;
+using SaleManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,15 @@ namespace SaleManager.Views
         private void BtnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | Constants.CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
     }
 }

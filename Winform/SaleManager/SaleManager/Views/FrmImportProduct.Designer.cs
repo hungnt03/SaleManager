@@ -297,7 +297,7 @@
             dgvData.Location = new System.Drawing.Point(0, 0);
             dgvData.Name = "dgvData";
             dgvData.RowTemplate.Height = 21;
-            dgvData.Size = new System.Drawing.Size(700, 403);
+            dgvData.Size = new System.Drawing.Size(700, 395);
             dgvData.TabIndex = 0;
             // 
             // Barcode
@@ -417,10 +417,10 @@
             this.flowLayoutPanel1.Controls.Add(this.btnImport);
             this.flowLayoutPanel1.Controls.Add(this.btnTemplate);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 403);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 395);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1027, 36);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1027, 42);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnExit
@@ -474,7 +474,7 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(1027, 403);
+            this.splitContainer1.Size = new System.Drawing.Size(1027, 395);
             this.splitContainer1.SplitterDistance = 700;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -493,7 +493,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(323, 403);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(323, 395);
             this.flowLayoutPanel2.TabIndex = 20;
             // 
             // panel1
@@ -689,7 +689,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 439);
+            this.ClientSize = new System.Drawing.Size(1027, 437);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FrmImportProduct";

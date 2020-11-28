@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>E:\H\Angular\SaleManager\Winform\SaleManager\SaleManager\Requiment\Release\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,11 +48,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>BC166BE06FD08D4754A5C5510AEB3BD7D33A43C4</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SaleManager_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="BarcodeStandard, Version=2.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarcodeLib.2.2.6\lib\netstandard2.0\BarcodeStandard.dll</HintPath>
+    </Reference>
     <Reference Include="C1.Win.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
+    <Reference Include="C1.Win.BarCode.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Command.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=e808566f358766d8" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20202.438, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -56,6 +88,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
@@ -164,11 +199,13 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BarcodeModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BillProductModel.cs" />
     <Compile Include="Models\ImportProductDialogModel.cs" />
     <Compile Include="Models\TransactionDetailModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
+    <Compile Include="Services\BarcodeService.cs" />
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Services\TransactionDetailService.cs" />
     <Compile Include="Services\TransactionService.cs" />
@@ -193,12 +230,19 @@
     <Compile Include="Utils\ExtensionMethods.cs" />
     <Compile Include="Utils\MessageUtil.cs" />
     <Compile Include="Utils\StringUtil.cs" />
+    <Compile Include="ViewModels\BarcodeViewModel.cs" />
     <Compile Include="ViewModels\ConvertProductViewModel.cs" />
     <Compile Include="ViewModels\ImportProductViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\TransactionDetailViewModel.cs" />
     <Compile Include="ViewModels\TransitionViewModel.cs" />
+    <Compile Include="Views\FrmBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmBarcode.Designer.cs">
+      <DependentUpon>FrmBarcode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ImportProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +294,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\FrmBarcode.resx">
+      <DependentUpon>FrmBarcode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialogs\ImportProductDialog.resx">
       <DependentUpon>ImportProductDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,6 +328,7 @@
     <None Include="Properties\DataSources\SaleManager.Entities.Category.datasource" />
     <None Include="Properties\DataSources\SaleManager.Entities.Supplier.datasource" />
     <None Include="Properties\DataSources\SaleManager.Entities.Unit.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.BarcodeModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.BillProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ConvertModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductDialogModel.datasource" />
@@ -300,6 +348,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="SaleManager.gclicx" />
+    <None Include="SaleManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -322,11 +371,24 @@
     <Content Include="Requiment\sale-manager.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Requiment\Release\" />
     <Folder Include="Resources\Product\" />
     <Folder Include="Resources\Template\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

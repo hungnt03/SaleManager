@@ -125,5 +125,21 @@ namespace SaleManager
             frm.Show(this);
             this.Hide();
         }
+
+        private void mãVạchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmBarcode();
+            frm.Show(this);
+            this.Hide();
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | Constants.CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
     }
 }
