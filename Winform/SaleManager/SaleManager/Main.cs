@@ -34,11 +34,17 @@ namespace SaleManager
             btnClearMoney.Click += delegate { _vm.ClearPayment(); };
             btnPay.Click += delegate { _vm.Pay(); };
             _searchTimer.Tick += OnSearchTimerTick;
+            btnExit.Click += BtnExit_Click;
 
             _vm._productSource = cardViewModelBindingSource;
             _vm._billSource = billProductModelBindingSource;
             _vm._unitSource = unitBindingSource;
             _vm._mainSource = mainModelBindingSource;
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void DgvData_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

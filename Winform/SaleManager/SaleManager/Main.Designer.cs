@@ -46,7 +46,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvData = new System.Windows.Forms.DataGridView();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityUpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.quantityDownDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.billProductModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -78,21 +87,12 @@
             this.txtSearchBillProduct = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.cardViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cardsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityUpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.quantityDownDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -149,13 +149,13 @@
             this.chuyểnĐổiToolStripMenuItem,
             this.mãVạchToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
             // 
             // sảnPhẩmToolStripMenuItem
             // 
             this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
-            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.sảnPhẩmToolStripMenuItem.Text = "Sản Phẩm";
             this.sảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmToolStripMenuItem_Click);
             // 
@@ -165,52 +165,52 @@
             this.nhậpHàngToolStripMenuItem,
             this.giaoDịchToolStripMenuItem});
             this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.danhMụcToolStripMenuItem.Text = "Xuất nhập";
             // 
             // nhậpHàngToolStripMenuItem
             // 
             this.nhậpHàngToolStripMenuItem.Name = "nhậpHàngToolStripMenuItem";
-            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.nhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.nhậpHàngToolStripMenuItem.Text = "Nhập hàng";
             this.nhậpHàngToolStripMenuItem.Click += new System.EventHandler(this.nhậpHàngToolStripMenuItem_Click);
             // 
             // giaoDịchToolStripMenuItem
             // 
             this.giaoDịchToolStripMenuItem.Name = "giaoDịchToolStripMenuItem";
-            this.giaoDịchToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.giaoDịchToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.giaoDịchToolStripMenuItem.Text = "Giao dịch";
             this.giaoDịchToolStripMenuItem.Click += new System.EventHandler(this.giaoDịchToolStripMenuItem_Click);
             // 
             // danhMụcToolStripMenuItem1
             // 
             this.danhMụcToolStripMenuItem1.Name = "danhMụcToolStripMenuItem1";
-            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
+            this.danhMụcToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
             this.danhMụcToolStripMenuItem1.Text = "Danh mục";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // khuyếnMãiToolStripMenuItem
             // 
             this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
-            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mại";
             // 
             // chuyểnĐổiToolStripMenuItem
             // 
             this.chuyểnĐổiToolStripMenuItem.Name = "chuyểnĐổiToolStripMenuItem";
-            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.chuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.chuyểnĐổiToolStripMenuItem.Text = "Chuyển đổi";
             this.chuyểnĐổiToolStripMenuItem.Click += new System.EventHandler(this.chuyểnĐổiToolStripMenuItem_Click);
             // 
             // mãVạchToolStripMenuItem
             // 
             this.mãVạchToolStripMenuItem.Name = "mãVạchToolStripMenuItem";
-            this.mãVạchToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.mãVạchToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.mãVạchToolStripMenuItem.Text = "Mã vạch";
             this.mãVạchToolStripMenuItem.Click += new System.EventHandler(this.mãVạchToolStripMenuItem_Click);
             // 
@@ -231,7 +231,7 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.Panel2.Controls.Add(this.panel11);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1294, 501);
+            this.splitContainer1.Size = new System.Drawing.Size(1294, 545);
             this.splitContainer1.SplitterDistance = 754;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -241,7 +241,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(752, 397);
+            this.panel8.Size = new System.Drawing.Size(752, 432);
             this.panel8.TabIndex = 2;
             // 
             // tabControl1
@@ -251,7 +251,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(752, 397);
+            this.tabControl1.Size = new System.Drawing.Size(752, 432);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -260,7 +260,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(744, 371);
+            this.tabPage1.Size = new System.Drawing.Size(744, 406);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -285,350 +285,8 @@
             this.dgvData.Location = new System.Drawing.Point(3, 3);
             this.dgvData.Name = "dgvData";
             this.dgvData.RowTemplate.Height = 21;
-            this.dgvData.Size = new System.Drawing.Size(738, 365);
+            this.dgvData.Size = new System.Drawing.Size(738, 400);
             this.dgvData.TabIndex = 0;
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
-            // billProductModelBindingSource
-            // 
-            this.billProductModelBindingSource.DataSource = typeof(SaleManager.Models.BillProductModel);
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.panel10);
-            this.panel7.Controls.Add(this.panel9);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 397);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(752, 102);
-            this.panel7.TabIndex = 1;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.textBox2);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(347, 102);
-            this.panel10.TabIndex = 9;
-            // 
-            // textBox2
-            // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Note", true));
-            this.textBox2.Location = new System.Drawing.Point(3, 6);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(222, 86);
-            this.textBox2.TabIndex = 8;
-            // 
-            // mainModelBindingSource
-            // 
-            this.mainModelBindingSource.DataSource = typeof(SaleManager.Models.MainModel);
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.panel4);
-            this.panel9.Controls.Add(this.panel5);
-            this.panel9.Controls.Add(this.panel6);
-            this.panel9.Controls.Add(this.panel3);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(347, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(405, 102);
-            this.panel9.TabIndex = 9;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(106, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(296, 26);
-            this.panel4.TabIndex = 4;
-            // 
-            // textBox1
-            // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Total", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(155, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 25);
-            this.textBox1.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 1);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 24);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Tiền hàng";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btnClearMoney);
-            this.panel5.Controls.Add(this.txtMoneyCustomer);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(106, 30);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(296, 32);
-            this.panel5.TabIndex = 5;
-            // 
-            // btnClearMoney
-            // 
-            this.btnClearMoney.Location = new System.Drawing.Point(272, 2);
-            this.btnClearMoney.Name = "btnClearMoney";
-            this.btnClearMoney.Size = new System.Drawing.Size(24, 26);
-            this.btnClearMoney.TabIndex = 3;
-            this.btnClearMoney.Text = "X";
-            this.btnClearMoney.UseVisualStyleBackColor = true;
-            // 
-            // txtMoneyCustomer
-            // 
-            this.txtMoneyCustomer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Payment", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
-            this.txtMoneyCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMoneyCustomer.Location = new System.Drawing.Point(155, 3);
-            this.txtMoneyCustomer.Multiline = true;
-            this.txtMoneyCustomer.Name = "txtMoneyCustomer";
-            this.txtMoneyCustomer.Size = new System.Drawing.Size(120, 25);
-            this.txtMoneyCustomer.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 24);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Khách đưa";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.textBox3);
-            this.panel6.Controls.Add(this.label6);
-            this.panel6.Location = new System.Drawing.Point(106, 64);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(296, 35);
-            this.panel6.TabIndex = 6;
-            // 
-            // textBox3
-            // 
-            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Payback", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(155, 3);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(120, 25);
-            this.textBox3.TabIndex = 4;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 18);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Tiền thừa";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btn5);
-            this.panel3.Controls.Add(this.btn01);
-            this.panel3.Controls.Add(this.btn1);
-            this.panel3.Controls.Add(this.btn100);
-            this.panel3.Controls.Add(this.btn10);
-            this.panel3.Controls.Add(this.btn50);
-            this.panel3.Location = new System.Drawing.Point(33, 30);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(70, 69);
-            this.panel3.TabIndex = 3;
-            // 
-            // btn5
-            // 
-            this.btn5.Location = new System.Drawing.Point(3, 2);
-            this.btn5.Name = "btn5";
-            this.btn5.Size = new System.Drawing.Size(34, 21);
-            this.btn5.TabIndex = 11;
-            this.btn5.Text = "5";
-            this.btn5.UseVisualStyleBackColor = true;
-            // 
-            // btn01
-            // 
-            this.btn01.Location = new System.Drawing.Point(3, 47);
-            this.btn01.Name = "btn01";
-            this.btn01.Size = new System.Drawing.Size(34, 21);
-            this.btn01.TabIndex = 13;
-            this.btn01.Text = "0.1";
-            this.btn01.UseVisualStyleBackColor = true;
-            // 
-            // btn1
-            // 
-            this.btn1.Location = new System.Drawing.Point(3, 25);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(34, 21);
-            this.btn1.TabIndex = 12;
-            this.btn1.Text = "1";
-            this.btn1.UseVisualStyleBackColor = true;
-            // 
-            // btn100
-            // 
-            this.btn100.Location = new System.Drawing.Point(36, 2);
-            this.btn100.Name = "btn100";
-            this.btn100.Size = new System.Drawing.Size(34, 21);
-            this.btn100.TabIndex = 7;
-            this.btn100.Text = "100";
-            this.btn100.UseVisualStyleBackColor = true;
-            // 
-            // btn10
-            // 
-            this.btn10.Location = new System.Drawing.Point(36, 47);
-            this.btn10.Name = "btn10";
-            this.btn10.Size = new System.Drawing.Size(34, 21);
-            this.btn10.TabIndex = 9;
-            this.btn10.Text = "10";
-            this.btn10.UseVisualStyleBackColor = true;
-            // 
-            // btn50
-            // 
-            this.btn50.Location = new System.Drawing.Point(36, 25);
-            this.btn50.Name = "btn50";
-            this.btn50.Size = new System.Drawing.Size(34, 21);
-            this.btn50.TabIndex = 8;
-            this.btn50.Text = "50";
-            this.btn50.UseVisualStyleBackColor = true;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.cardsPanel1);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(0, 37);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(534, 462);
-            this.panel11.TabIndex = 1;
-            // 
-            // cardsPanel1
-            // 
-            this.cardsPanel1.AutoScroll = true;
-            this.cardsPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.cardsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardsPanel1.Location = new System.Drawing.Point(0, 0);
-            this.cardsPanel1.Name = "cardsPanel1";
-            this.cardsPanel1.Size = new System.Drawing.Size(534, 462);
-            this.cardsPanel1.TabIndex = 0;
-            this.cardsPanel1.ViewModel = null;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtSearchProduct);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(534, 37);
-            this.panel1.TabIndex = 0;
-            // 
-            // txtSearchProduct
-            // 
-            this.txtSearchProduct.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "CardKey", true));
-            this.txtSearchProduct.Location = new System.Drawing.Point(3, 7);
-            this.txtSearchProduct.Multiline = true;
-            this.txtSearchProduct.Name = "txtSearchProduct";
-            this.txtSearchProduct.Size = new System.Drawing.Size(472, 27);
-            this.txtSearchProduct.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Barcode";
-            // 
-            // txtSearchBillProduct
-            // 
-            this.txtSearchBillProduct.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "BillKey", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.txtSearchBillProduct.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBillProduct.Location = new System.Drawing.Point(56, 2);
-            this.txtSearchBillProduct.MaxLength = 13;
-            this.txtSearchBillProduct.Name = "txtSearchBillProduct";
-            this.txtSearchBillProduct.Size = new System.Drawing.Size(379, 26);
-            this.txtSearchBillProduct.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txtSearchBillProduct);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 24);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1294, 30);
-            this.panel2.TabIndex = 3;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.button7);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.btnPay);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 555);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1294, 41);
-            this.flowLayoutPanel1.TabIndex = 4;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(1216, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 34);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Thoát";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.Location = new System.Drawing.Point(1135, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Hủy";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // btnPay
-            // 
-            this.btnPay.BackColor = System.Drawing.Color.Orange;
-            this.btnPay.Location = new System.Drawing.Point(1054, 3);
-            this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(75, 34);
-            this.btnPay.TabIndex = 0;
-            this.btnPay.Text = "Thanh toán";
-            this.btnPay.UseVisualStyleBackColor = false;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.splitContainer1);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(0, 54);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(1294, 501);
-            this.panel12.TabIndex = 5;
-            // 
-            // cardViewModelBindingSource
-            // 
-            this.cardViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardViewModel);
-            // 
-            // cardsViewModelBindingSource
-            // 
-            this.cardsViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardsViewModel);
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
@@ -694,6 +352,10 @@
             this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
             // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
+            // 
             // totalDataGridViewTextBoxColumn
             // 
             this.totalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -714,11 +376,349 @@
             this.delDataGridViewTextBoxColumn.UseColumnTextForButtonValue = true;
             this.delDataGridViewTextBoxColumn.Width = 30;
             // 
+            // billProductModelBindingSource
+            // 
+            this.billProductModelBindingSource.DataSource = typeof(SaleManager.Models.BillProductModel);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.panel10);
+            this.panel7.Controls.Add(this.panel9);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 432);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(752, 111);
+            this.panel7.TabIndex = 1;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.textBox2);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(347, 111);
+            this.panel10.TabIndex = 9;
+            // 
+            // textBox2
+            // 
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Note", true));
+            this.textBox2.Location = new System.Drawing.Point(3, 7);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(222, 93);
+            this.textBox2.TabIndex = 8;
+            // 
+            // mainModelBindingSource
+            // 
+            this.mainModelBindingSource.DataSource = typeof(SaleManager.Models.MainModel);
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.panel4);
+            this.panel9.Controls.Add(this.panel5);
+            this.panel9.Controls.Add(this.panel6);
+            this.panel9.Controls.Add(this.panel3);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(347, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(405, 111);
+            this.panel9.TabIndex = 9;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Location = new System.Drawing.Point(106, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(296, 28);
+            this.panel4.TabIndex = 4;
+            // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Total", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(155, 0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(120, 27);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 24);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Tiền hàng";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnClearMoney);
+            this.panel5.Controls.Add(this.txtMoneyCustomer);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Location = new System.Drawing.Point(106, 33);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(296, 35);
+            this.panel5.TabIndex = 5;
+            // 
+            // btnClearMoney
+            // 
+            this.btnClearMoney.Location = new System.Drawing.Point(272, 2);
+            this.btnClearMoney.Name = "btnClearMoney";
+            this.btnClearMoney.Size = new System.Drawing.Size(24, 28);
+            this.btnClearMoney.TabIndex = 3;
+            this.btnClearMoney.Text = "X";
+            this.btnClearMoney.UseVisualStyleBackColor = true;
+            // 
+            // txtMoneyCustomer
+            // 
+            this.txtMoneyCustomer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Payment", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
+            this.txtMoneyCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMoneyCustomer.Location = new System.Drawing.Point(155, 3);
+            this.txtMoneyCustomer.Multiline = true;
+            this.txtMoneyCustomer.Name = "txtMoneyCustomer";
+            this.txtMoneyCustomer.Size = new System.Drawing.Size(120, 27);
+            this.txtMoneyCustomer.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(111, 24);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Khách đưa";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.textBox3);
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Location = new System.Drawing.Point(106, 69);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(296, 38);
+            this.panel6.TabIndex = 6;
+            // 
+            // textBox3
+            // 
+            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "Payback", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(155, 3);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(120, 27);
+            this.textBox3.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 18);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Tiền thừa";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btn5);
+            this.panel3.Controls.Add(this.btn01);
+            this.panel3.Controls.Add(this.btn1);
+            this.panel3.Controls.Add(this.btn100);
+            this.panel3.Controls.Add(this.btn10);
+            this.panel3.Controls.Add(this.btn50);
+            this.panel3.Location = new System.Drawing.Point(33, 33);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(70, 75);
+            this.panel3.TabIndex = 3;
+            // 
+            // btn5
+            // 
+            this.btn5.Location = new System.Drawing.Point(3, 2);
+            this.btn5.Name = "btn5";
+            this.btn5.Size = new System.Drawing.Size(34, 23);
+            this.btn5.TabIndex = 11;
+            this.btn5.Text = "5";
+            this.btn5.UseVisualStyleBackColor = true;
+            // 
+            // btn01
+            // 
+            this.btn01.Location = new System.Drawing.Point(3, 51);
+            this.btn01.Name = "btn01";
+            this.btn01.Size = new System.Drawing.Size(34, 23);
+            this.btn01.TabIndex = 13;
+            this.btn01.Text = "0.1";
+            this.btn01.UseVisualStyleBackColor = true;
+            // 
+            // btn1
+            // 
+            this.btn1.Location = new System.Drawing.Point(3, 27);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(34, 23);
+            this.btn1.TabIndex = 12;
+            this.btn1.Text = "1";
+            this.btn1.UseVisualStyleBackColor = true;
+            // 
+            // btn100
+            // 
+            this.btn100.Location = new System.Drawing.Point(36, 2);
+            this.btn100.Name = "btn100";
+            this.btn100.Size = new System.Drawing.Size(34, 23);
+            this.btn100.TabIndex = 7;
+            this.btn100.Text = "100";
+            this.btn100.UseVisualStyleBackColor = true;
+            // 
+            // btn10
+            // 
+            this.btn10.Location = new System.Drawing.Point(36, 51);
+            this.btn10.Name = "btn10";
+            this.btn10.Size = new System.Drawing.Size(34, 23);
+            this.btn10.TabIndex = 9;
+            this.btn10.Text = "10";
+            this.btn10.UseVisualStyleBackColor = true;
+            // 
+            // btn50
+            // 
+            this.btn50.Location = new System.Drawing.Point(36, 27);
+            this.btn50.Name = "btn50";
+            this.btn50.Size = new System.Drawing.Size(34, 23);
+            this.btn50.TabIndex = 8;
+            this.btn50.Text = "50";
+            this.btn50.UseVisualStyleBackColor = true;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.cardsPanel1);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 40);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(534, 503);
+            this.panel11.TabIndex = 1;
+            // 
+            // cardsPanel1
+            // 
+            this.cardsPanel1.AutoScroll = true;
+            this.cardsPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.cardsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cardsPanel1.Location = new System.Drawing.Point(0, 0);
+            this.cardsPanel1.Name = "cardsPanel1";
+            this.cardsPanel1.Size = new System.Drawing.Size(534, 503);
+            this.cardsPanel1.TabIndex = 0;
+            this.cardsPanel1.ViewModel = null;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtSearchProduct);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(534, 40);
+            this.panel1.TabIndex = 0;
+            // 
+            // txtSearchProduct
+            // 
+            this.txtSearchProduct.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "CardKey", true));
+            this.txtSearchProduct.Location = new System.Drawing.Point(3, 8);
+            this.txtSearchProduct.Multiline = true;
+            this.txtSearchProduct.Name = "txtSearchProduct";
+            this.txtSearchProduct.Size = new System.Drawing.Size(472, 29);
+            this.txtSearchProduct.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Barcode";
+            // 
+            // txtSearchBillProduct
+            // 
+            this.txtSearchBillProduct.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mainModelBindingSource, "BillKey", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.txtSearchBillProduct.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchBillProduct.Location = new System.Drawing.Point(56, 2);
+            this.txtSearchBillProduct.MaxLength = 13;
+            this.txtSearchBillProduct.Name = "txtSearchBillProduct";
+            this.txtSearchBillProduct.Size = new System.Drawing.Size(379, 26);
+            this.txtSearchBillProduct.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtSearchBillProduct);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 24);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1294, 33);
+            this.panel2.TabIndex = 3;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnExit);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnPay);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 602);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1294, 44);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(1216, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 37);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button1.Location = new System.Drawing.Point(1135, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 37);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Hủy";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnPay
+            // 
+            this.btnPay.BackColor = System.Drawing.Color.Orange;
+            this.btnPay.Location = new System.Drawing.Point(1054, 3);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(75, 37);
+            this.btnPay.TabIndex = 0;
+            this.btnPay.Text = "Thanh toán";
+            this.btnPay.UseVisualStyleBackColor = false;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.splitContainer1);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(0, 57);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(1294, 545);
+            this.panel12.TabIndex = 5;
+            // 
+            // cardViewModelBindingSource
+            // 
+            this.cardViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardViewModel);
+            // 
+            // cardsViewModelBindingSource
+            // 
+            this.cardsViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardsViewModel);
+            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1294, 596);
+            this.ClientSize = new System.Drawing.Size(1294, 646);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
@@ -798,7 +798,7 @@
         private System.Windows.Forms.Button btn100;
         private System.Windows.Forms.Button btn10;
         private System.Windows.Forms.Button btn50;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnClearMoney;
         private System.Windows.Forms.TextBox txtSearchProduct;
         private System.Windows.Forms.ToolStripMenuItem nhậpHàngToolStripMenuItem;
