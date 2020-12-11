@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace SaleManager.Services
@@ -38,7 +40,6 @@ namespace SaleManager.Services
                     Price = (sheet.Cells["G" + row].Value != null && sheet.Cells["G" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["G" + row].Value.ToString()) : 0,
                     Ex = DateTime.FromOADate(double.Parse(sheet.Cells["I" + row].Value.ToString())),
                     Supplier = suppliers.Where(x => x.Value.Equals(sheet.Cells["J" + row].Value.ToString())).Select(x => x.Key).First(),
-                    Interest = (sheet.Cells["K" + row].Value != null && sheet.Cells["K" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["K" + row].Value.ToString()) : 0
                 };
                 elm.Cal();
                 results.Add(elm);
@@ -75,7 +76,6 @@ namespace SaleManager.Services
             workSheet.Cells["H1"].Value = "Hsd(tháng)";
             workSheet.Cells["I1"].Value = "Hsd";
             workSheet.Cells["J1"].Value = "Nhà phân phối";
-            workSheet.Cells["K1"].Value = "Tiền lãi";
             //Format
             workSheet.Cells["A2"].Style.Numberformat.Format = "@";
             workSheet.Cells["C2"].Style.Numberformat.Format = "#,###";
@@ -86,7 +86,6 @@ namespace SaleManager.Services
             workSheet.Cells["H2"].Style.Numberformat.Format = "#0.0";
             workSheet.Cells["I2"].Formula = "IF(H2<1, NOW()+30*H2, EDATE(NOW(),H2))";
             workSheet.Cells["I2"].Style.Numberformat.Format = "dd/mm/yyyy";
-            workSheet.Cells["K2"].Style.Numberformat.Format = "#,###";
             var units = _db.Units.Select(x => x.Name).ToList();
             var unitValid = workSheet.DataValidations.AddListValidation("F2");
             foreach (var elm in units)
@@ -112,46 +111,26 @@ namespace SaleManager.Services
 
         public void Save(List<ImportProductModel> datas)
         {
-            var keys = datas.Select(x => x.Barcode + x.Unit).ToList();
-            var products = _db.Products.Where(x => keys.Contains(x.Barcode + x.Unit)).ToList();
+            var keys = datas.Select(x => x.Barcode).ToList();
+            //var products = _db.Products.Where(x => keys.Contains(x.Barcode + x.Unit)).ToList();
+            var products = _db.Products.ToList();
+            var converts = _db.ConvertProducts.Where(x => keys.Contains(x.Barcode)).ToList();
+            var units = _db.Units.ToList();
+            ConvertProduct convert;
+            var messages = new StringBuilder();
 
             List<Product> adds = new List<Product>();
             List<Product> edits = new List<Product>();
             List<ProductHistory> histories = new List<ProductHistory>();
             List<TransactionDetail> tranDetails = new List<TransactionDetail>();
-            _db.Database.BeginTransaction();
 
-            try
+            var options = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
+
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, options))
             {
-                var tranId = 0;
-                if (_db.Transactions.Count() > 0) tranId = _db.Transactions.OrderByDescending(x => x.Id).Select(x => x.Id).First().ToString().ToInt() + 1;
-
-                foreach (var elm in datas)
+                // transaction
+                Entities.Transaction tran = new Entities.Transaction()
                 {
-                    var product = products.Where(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit)).FirstOrDefault();
-                    // not exist
-                    if (product == null)
-                    {
-                        var add = elm.ToProduct();
-                        add.CreatedAt = DateTime.Now;
-                        add.CreatedBy = "Administrator";
-                        adds.Add(add);
-                        histories.Add(elm.ToProductHistory());
-                    }
-                    else
-                    {
-                        elm.DumpProduct(ref product);
-                        _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
-                        histories.Add(elm.ToProductHistory(product));
-                    }
-                    tranDetails.Add(elm.ToTransactionDetail(tranId));
-                }
-
-                if (adds.Count > 0) _db.Products.AddRange(adds);
-                _db.ProductHistories.AddRange(histories);
-                _db.Transactions.Add(new Transaction()
-                {
-                    Id = tranId,
                     CreatedAt = DateTime.Now,
                     CreatedBy = "Administrator",
                     Type = Constants.PURCHASE,
@@ -160,16 +139,66 @@ namespace SaleManager.Services
                     Amount = FrmImportProduct._dialogModel.Total,
                     Payment = FrmImportProduct._dialogModel.Payment,
                     PayBack = FrmImportProduct._dialogModel.Payback
-                });
-                _db.TransactionDetails.AddRange(tranDetails);
+                };
+                _db.Transactions.Add(tran);
                 _db.SaveChanges();
-                //_db
-                _db.Database.CurrentTransaction.Commit();
-            }
-            catch (Exception e)
-            {
-                _db.Database.CurrentTransaction.Rollback();
-                throw e;
+
+                foreach (var elm in datas)
+                {
+                    // product + history
+                    convert = converts.Find(x => x.Barcode.Equals(elm.Barcode) && x.IsDefault);
+                    // if present product of unit is not default unit, get convert
+                    if(convert != null)
+                    {
+                        if (convert.Unit2 != elm.Unit)
+                            convert = converts.Find(x => x.Barcode.Equals(elm.Barcode) && x.Unit1 == elm.Unit && x.Unit2 == convert.Unit2);
+                        if (convert == null)
+                        {
+                            messages.AppendLine(elm.ProductName + "：chuyển đổi từ đơn vị " + units.Find(x => x.Id == elm.Unit).Name + " chưa được định nghĩa.");
+                            continue;
+                        }
+                    }
+                    
+                    var product = products.Where(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit)).FirstOrDefault();
+                    // not exist
+                    if (product == null)
+                    {
+                        var add = elm.ToProduct();
+                        add.CreatedAt = DateTime.Now;
+                        add.CreatedBy = "Administrator";
+                        if (convert != null && !convert.IsDefault)
+                        {
+                            add.Unit = convert.Unit2;
+                            add.Quantity *= convert.Quantity2;
+                        }
+                        adds.Add(add);
+                        histories.Add(elm.ToProductHistory());
+                    }
+                    else
+                    {
+                        elm.DumpProduct(ref product);
+                        if (convert != null && !convert.IsDefault)
+                        {
+                            elm.Unit = convert.Unit2;
+                            elm.Quantity *= convert.Quantity2;
+                        }
+                        _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                        histories.Add(elm.ToProductHistory(product));
+                    }
+                    // transaction detail
+                    tranDetails.Add(elm.ToTransactionDetail(tran.Id));
+                }
+
+                // insert
+                if (adds.Count > 0) _db.Products.AddRange(adds);
+                _db.ProductHistories.AddRange(histories);
+                _db.TransactionDetails.AddRange(tranDetails);
+                if (messages.Length == 0)
+                    _db.SaveChanges();
+                else
+                    throw new Exception(messages.ToString());
+
+                scope.Complete();
             }
         }
     }

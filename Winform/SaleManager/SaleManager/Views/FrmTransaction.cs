@@ -46,9 +46,9 @@ namespace SaleManager.Views
 
         private void DgvTransition_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvTransition.DataSource is List<TransactionModel> trans)
+            if(((BindingSource)dgvTransition.DataSource).Current is TransactionModel tran)
             {
-                var detail = new FrmTransactionDetail(trans[e.RowIndex].Id);
+                var detail = new FrmTransactionDetail(tran.Id);
                 detail.ShowDialog(this);
             }
         }

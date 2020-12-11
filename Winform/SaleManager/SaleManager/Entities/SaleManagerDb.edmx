@@ -115,6 +115,7 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="256" />
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -668,6 +669,7 @@
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -930,6 +932,7 @@
           <EntitySetMapping Name="ConvertProducts">
             <EntityTypeMapping TypeName="SaleManagerModel.ConvertProduct">
               <MappingFragment StoreEntitySet="ConvertProduct">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />

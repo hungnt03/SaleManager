@@ -31,23 +31,24 @@
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnAddRow = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.convertModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddRow = new System.Windows.Forms.Button();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quantity2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.convertModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.IsDefault = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.convertModelBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -59,22 +60,31 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 411);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(744, 39);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(795, 39);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(680, 3);
+            this.btnExit.Location = new System.Drawing.Point(731, 3);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 31);
             this.btnExit.TabIndex = 0;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // btnAddRow
+            // 
+            this.btnAddRow.Location = new System.Drawing.Point(664, 3);
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.Size = new System.Drawing.Size(61, 31);
+            this.btnAddRow.TabIndex = 2;
+            this.btnAddRow.Text = "Thêm";
+            this.btnAddRow.UseVisualStyleBackColor = true;
+            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnSave.Location = new System.Drawing.Point(546, 3);
+            this.btnSave.Location = new System.Drawing.Point(597, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(61, 31);
             this.btnSave.TabIndex = 1;
@@ -92,14 +102,23 @@
             this.quantity1DataGridViewTextBoxColumn,
             this.unit1DataGridViewTextBoxColumn,
             this.quantity2DataGridViewTextBoxColumn,
-            this.unit2DataGridViewTextBoxColumn});
+            this.unit2DataGridViewTextBoxColumn,
+            this.IsDefault});
             this.dgvData.DataSource = this.convertModelBindingSource;
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.Location = new System.Drawing.Point(0, 0);
             this.dgvData.Name = "dgvData";
             this.dgvData.RowTemplate.Height = 21;
-            this.dgvData.Size = new System.Drawing.Size(744, 411);
+            this.dgvData.Size = new System.Drawing.Size(795, 411);
             this.dgvData.TabIndex = 2;
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
+            // 
+            // convertModelBindingSource
+            // 
+            this.convertModelBindingSource.DataSource = typeof(SaleManager.Models.ConvertModel);
             // 
             // panel1
             // 
@@ -107,17 +126,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(744, 411);
+            this.panel1.Size = new System.Drawing.Size(795, 411);
             this.panel1.TabIndex = 3;
-            // 
-            // btnAddRow
-            // 
-            this.btnAddRow.Location = new System.Drawing.Point(613, 3);
-            this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(61, 31);
-            this.btnAddRow.TabIndex = 2;
-            this.btnAddRow.Text = "Thêm";
-            this.btnAddRow.UseVisualStyleBackColor = true;
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
@@ -130,7 +140,7 @@
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Width = 200;
+            this.nameDataGridViewTextBoxColumn.Width = 150;
             // 
             // quantity1DataGridViewTextBoxColumn
             // 
@@ -149,10 +159,6 @@
             this.unit1DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.unit1DataGridViewTextBoxColumn.ValueMember = "Id";
             // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
             // quantity2DataGridViewTextBoxColumn
             // 
             this.quantity2DataGridViewTextBoxColumn.DataPropertyName = "Quantity2";
@@ -170,24 +176,26 @@
             this.unit2DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.unit2DataGridViewTextBoxColumn.ValueMember = "Id";
             // 
-            // convertModelBindingSource
+            // IsDefault
             // 
-            this.convertModelBindingSource.DataSource = typeof(SaleManager.Models.ConvertModel);
+            this.IsDefault.DataPropertyName = "IsDefault";
+            this.IsDefault.HeaderText = "ĐV mặc định";
+            this.IsDefault.Name = "IsDefault";
             // 
             // FrmConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 450);
+            this.ClientSize = new System.Drawing.Size(795, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FrmConvert";
             this.Text = "FrmConvert";
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.convertModelBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -200,12 +208,13 @@
         private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.BindingSource convertModelBindingSource;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnAddRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn unit1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn unit2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnAddRow;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsDefault;
     }
 }

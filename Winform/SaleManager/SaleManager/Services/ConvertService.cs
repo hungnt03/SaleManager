@@ -26,6 +26,7 @@ namespace SaleManager.Services
                     Unit1 = x.ConvertProducts.Unit1,
                     Quantity2 = x.ConvertProducts.Quantity2,
                     Unit2 = x.ConvertProducts.Unit2,
+                    IsDefault = x.ConvertProducts.IsDefault,
                 }).Distinct().ToList();
 
             var results = new List<ConvertModel>();
@@ -39,6 +40,7 @@ namespace SaleManager.Services
                     Unit1 = elm.Unit1,
                     Quantity2 = elm.Quantity2,
                     Unit2 = elm.Unit2,
+                    IsDefault = elm.IsDefault
                 });
             }
             return results;

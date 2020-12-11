@@ -50,7 +50,8 @@ namespace SaleManager.ViewModels
                     Quantity1 = 1,
                     Quantity2 = 1,
                     Unit1 = defaultUnit,
-                    Unit2 = defaultUnit
+                    Unit2 = defaultUnit,
+                    IsDefault = false
                 }) ;
                 _convertSource.ResetBindings(false);
             }

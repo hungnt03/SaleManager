@@ -21,5 +21,6 @@ namespace SaleManager.Models
         public int Unit2 { get; set; }
         [Required]
         public int Quantity2 { get; set; }
+        public bool IsDefault { set; get; }
     }
 }

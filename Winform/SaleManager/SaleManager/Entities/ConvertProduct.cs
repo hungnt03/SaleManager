@@ -23,5 +23,6 @@ namespace SaleManager.Entities
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
+        public bool IsDefault { get; set; }
     }
 }

@@ -59,6 +59,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             amountLabel = new System.Windows.Forms.Label();
             barcodeLabel = new System.Windows.Forms.Label();
             quantityLabel = new System.Windows.Forms.Label();
@@ -78,6 +79,7 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // amountLabel
@@ -337,11 +339,14 @@
             // unitComboBox
             // 
             this.unitComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionDetailModelBindingSource, "Unit", true));
+            this.unitComboBox.DataSource = this.unitBindingSource;
+            this.unitComboBox.DisplayMember = "Name";
             this.unitComboBox.FormattingEnabled = true;
             this.unitComboBox.Location = new System.Drawing.Point(82, 1);
             this.unitComboBox.Name = "unitComboBox";
             this.unitComboBox.Size = new System.Drawing.Size(198, 22);
             this.unitComboBox.TabIndex = 13;
+            this.unitComboBox.ValueMember = "Id";
             // 
             // panel7
             // 
@@ -366,6 +371,10 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(283, 35);
             this.panel8.TabIndex = 19;
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
             // 
             // FrmTransactionDetail
             // 
@@ -396,6 +405,7 @@
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -427,5 +437,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox priceTextBox;
+        private System.Windows.Forms.BindingSource unitBindingSource;
     }
 }

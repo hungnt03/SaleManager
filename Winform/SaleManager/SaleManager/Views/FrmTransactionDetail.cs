@@ -23,11 +23,13 @@ namespace SaleManager.Views
             btnBack.Click += BtnBack_Click;
             btnDelete.Click += delegate { _vm.Delete(); };
 
+            _vm._source = transactionDetailModelBindingSource;
+            _vm._unitSource = unitBindingSource;
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();            
         }
         protected override CreateParams CreateParams
         {
