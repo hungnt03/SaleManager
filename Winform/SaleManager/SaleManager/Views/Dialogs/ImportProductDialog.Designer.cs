@@ -116,6 +116,7 @@
             this.paybackTextBox.Location = new System.Drawing.Point(160, 155);
             this.paybackTextBox.Multiline = true;
             this.paybackTextBox.Name = "paybackTextBox";
+            this.paybackTextBox.ReadOnly = true;
             this.paybackTextBox.Size = new System.Drawing.Size(196, 29);
             this.paybackTextBox.TabIndex = 1;
             // 

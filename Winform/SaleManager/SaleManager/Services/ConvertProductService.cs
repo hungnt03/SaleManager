@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaleManager.ViewModels
+namespace SaleManager.Services
 {
-    public class ConvertProductViewModel
+    public class ConvertProductService
     {
     }
 }

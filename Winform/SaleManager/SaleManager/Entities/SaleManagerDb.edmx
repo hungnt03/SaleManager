@@ -102,20 +102,17 @@
         </EntityType>
         <EntityType Name="ConvertProduct">
           <Key>
-            <PropertyRef Name="Barcode" />
-            <PropertyRef Name="Unit1" />
-            <PropertyRef Name="Unit2" />
+            <PropertyRef Name="Barcode1" />
+            <PropertyRef Name="Barcode2" />
           </Key>
-          <Property Name="Barcode" Type="nvarchar" MaxLength="16" Nullable="false" />
-          <Property Name="Unit1" Type="int" Nullable="false" />
+          <Property Name="Barcode1" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="Quantity1" Type="int" Nullable="false" />
-          <Property Name="Unit2" Type="int" Nullable="false" />
+          <Property Name="Barcode2" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="Quantity2" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="256" />
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="256" />
-          <Property Name="IsDefault" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -648,29 +645,12 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="ConvertProducts" EntityType="SaleManagerModel.ConvertProduct" />
           <EntitySet Name="Products" EntityType="SaleManagerModel.Product" />
           <EntitySet Name="Units" EntityType="SaleManagerModel.Unit" />
           <EntitySet Name="ProductHistories" EntityType="SaleManagerModel.ProductHistory" />
           <EntitySet Name="Transactions" EntityType="SaleManagerModel.Transaction" />
+          <EntitySet Name="ConvertProducts" EntityType="SaleManagerModel.ConvertProduct" />
         </EntityContainer>
-        <EntityType Name="ConvertProduct">
-          <Key>
-            <PropertyRef Name="Barcode" />
-            <PropertyRef Name="Unit1" />
-            <PropertyRef Name="Unit2" />
-          </Key>
-          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="Unit1" Type="Int32" Nullable="false" />
-          <Property Name="Quantity1" Type="Int32" Nullable="false" />
-          <Property Name="Unit2" Type="Int32" Nullable="false" />
-          <Property Name="Quantity2" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
-          <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Barcode" />
@@ -759,6 +739,20 @@
           <Property Name="PayBack" Type="Int32" />
           <Property Name="BillNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ConvertProduct">
+          <Key>
+            <PropertyRef Name="Barcode1" />
+            <PropertyRef Name="Barcode2" />
+          </Key>
+          <Property Name="Barcode1" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity1" Type="Int32" Nullable="false" />
+          <Property Name="Barcode2" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity2" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -929,22 +923,6 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="ConvertProducts">
-            <EntityTypeMapping TypeName="SaleManagerModel.ConvertProduct">
-              <MappingFragment StoreEntitySet="ConvertProduct">
-                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Quantity2" ColumnName="Quantity2" />
-                <ScalarProperty Name="Unit2" ColumnName="Unit2" />
-                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
-                <ScalarProperty Name="Unit1" ColumnName="Unit1" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="SaleManagerModel.Product">
               <MappingFragment StoreEntitySet="Product">
@@ -1034,6 +1012,20 @@
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConvertProducts">
+            <EntityTypeMapping TypeName="SaleManagerModel.ConvertProduct">
+              <MappingFragment StoreEntitySet="ConvertProduct">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Quantity2" ColumnName="Quantity2" />
+                <ScalarProperty Name="Barcode2" ColumnName="Barcode2" />
+                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
+                <ScalarProperty Name="Barcode1" ColumnName="Barcode1" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

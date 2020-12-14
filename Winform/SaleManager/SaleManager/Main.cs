@@ -118,13 +118,6 @@ namespace SaleManager
             this.Hide();
         }
 
-        private void chuyểnĐổiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var frm = new FrmConvert();
-            frm.Show(this);
-            this.Hide();
-        }
-
         private void giaoDịchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FrmTransaction();
@@ -146,6 +139,20 @@ namespace SaleManager
                 myCp.ClassStyle = myCp.ClassStyle | Constants.CP_NOCLOSE_BUTTON;
                 return myCp;
             }
+        }
+
+        private void quảnLýChuyểnĐổiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmConvertMaster();
+            frm.Show(this);
+            this.Hide();
+        }
+
+        private void chuyểnĐổiToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmConvert();
+            frm.Show(this);
+            this.Hide();
         }
     }
 }

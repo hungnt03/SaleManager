@@ -28,193 +28,178 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnAddRow = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.dgvData = new System.Windows.Forms.DataGridView();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.convertModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnConvert = new System.Windows.Forms.Button();
+            this.cbProduct1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.quantity2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.IsDefault = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cbQuantity1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbProduct2 = new System.Windows.Forms.ComboBox();
+            this.tbQuantity2 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.convertModelBindingSource)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnExit);
-            this.flowLayoutPanel1.Controls.Add(this.btnAddRow);
-            this.flowLayoutPanel1.Controls.Add(this.btnSave);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 411);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(795, 39);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(504, 231);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // btnExit
+            // flowLayoutPanel2
             // 
-            this.btnExit.Location = new System.Drawing.Point(731, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(61, 31);
-            this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.flowLayoutPanel2.Controls.Add(this.btnBack);
+            this.flowLayoutPanel2.Controls.Add(this.btnConvert);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 180);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(504, 51);
+            this.flowLayoutPanel2.TabIndex = 1;
             // 
-            // btnAddRow
+            // btnBack
             // 
-            this.btnAddRow.Location = new System.Drawing.Point(664, 3);
-            this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(61, 31);
-            this.btnAddRow.TabIndex = 2;
-            this.btnAddRow.Text = "Thêm";
-            this.btnAddRow.UseVisualStyleBackColor = true;
+            this.btnBack.Location = new System.Drawing.Point(414, 3);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(87, 44);
+            this.btnBack.TabIndex = 0;
+            this.btnBack.Text = "Quay lại";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
-            // btnSave
+            // btnConvert
             // 
-            this.btnSave.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnSave.Location = new System.Drawing.Point(597, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(61, 31);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnConvert.Location = new System.Drawing.Point(321, 3);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(87, 44);
+            this.btnConvert.TabIndex = 1;
+            this.btnConvert.Text = "Chuyển đổi";
+            this.btnConvert.UseVisualStyleBackColor = true;
             // 
-            // dgvData
+            // cbProduct1
             // 
-            this.dgvData.AllowUserToAddRows = false;
-            this.dgvData.AutoGenerateColumns = false;
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.barcodeDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.quantity1DataGridViewTextBoxColumn,
-            this.unit1DataGridViewTextBoxColumn,
-            this.quantity2DataGridViewTextBoxColumn,
-            this.unit2DataGridViewTextBoxColumn,
-            this.IsDefault});
-            this.dgvData.DataSource = this.convertModelBindingSource;
-            this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvData.Location = new System.Drawing.Point(0, 0);
-            this.dgvData.Name = "dgvData";
-            this.dgvData.RowTemplate.Height = 21;
-            this.dgvData.Size = new System.Drawing.Size(795, 411);
-            this.dgvData.TabIndex = 2;
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
-            // convertModelBindingSource
-            // 
-            this.convertModelBindingSource.DataSource = typeof(SaleManager.Models.ConvertModel);
+            this.cbProduct1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbProduct1.FormattingEnabled = true;
+            this.cbProduct1.Location = new System.Drawing.Point(126, 33);
+            this.cbProduct1.Name = "cbProduct1";
+            this.cbProduct1.Size = new System.Drawing.Size(140, 22);
+            this.cbProduct1.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dgvData);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Controls.Add(this.tbQuantity2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.cbProduct2);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbQuantity1);
+            this.panel1.Controls.Add(this.cbProduct1);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(795, 411);
-            this.panel1.TabIndex = 3;
+            this.panel1.Size = new System.Drawing.Size(497, 169);
+            this.panel1.TabIndex = 1;
             // 
-            // barcodeDataGridViewTextBoxColumn
+            // cbQuantity1
             // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.cbQuantity1.FormattingEnabled = true;
+            this.cbQuantity1.Location = new System.Drawing.Point(344, 33);
+            this.cbQuantity1.Name = "cbQuantity1";
+            this.cbQuantity1.Size = new System.Drawing.Size(86, 22);
+            this.cbQuantity1.TabIndex = 1;
             // 
-            // nameDataGridViewTextBoxColumn
+            // label1
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Width = 150;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 14);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Chuyển sản phẩm";
             // 
-            // quantity1DataGridViewTextBoxColumn
+            // label2
             // 
-            this.quantity1DataGridViewTextBoxColumn.DataPropertyName = "Quantity1";
-            this.quantity1DataGridViewTextBoxColumn.HeaderText = "Số lượng 1";
-            this.quantity1DataGridViewTextBoxColumn.Name = "quantity1DataGridViewTextBoxColumn";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(275, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 14);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Số lượng";
             // 
-            // unit1DataGridViewTextBoxColumn
+            // label3
             // 
-            this.unit1DataGridViewTextBoxColumn.DataPropertyName = "Unit1";
-            this.unit1DataGridViewTextBoxColumn.DataSource = this.unitBindingSource;
-            this.unit1DataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.unit1DataGridViewTextBoxColumn.HeaderText = "Đơn vị 1";
-            this.unit1DataGridViewTextBoxColumn.Name = "unit1DataGridViewTextBoxColumn";
-            this.unit1DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unit1DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unit1DataGridViewTextBoxColumn.ValueMember = "Id";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(275, 92);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 14);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Số lượng";
             // 
-            // quantity2DataGridViewTextBoxColumn
+            // label4
             // 
-            this.quantity2DataGridViewTextBoxColumn.DataPropertyName = "Quantity2";
-            this.quantity2DataGridViewTextBoxColumn.HeaderText = "Số lượng 2";
-            this.quantity2DataGridViewTextBoxColumn.Name = "quantity2DataGridViewTextBoxColumn";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 14);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Sang sản phẩm";
             // 
-            // unit2DataGridViewTextBoxColumn
+            // cbProduct2
             // 
-            this.unit2DataGridViewTextBoxColumn.DataPropertyName = "Unit2";
-            this.unit2DataGridViewTextBoxColumn.DataSource = this.unitBindingSource;
-            this.unit2DataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.unit2DataGridViewTextBoxColumn.HeaderText = "Đơn vị 2";
-            this.unit2DataGridViewTextBoxColumn.Name = "unit2DataGridViewTextBoxColumn";
-            this.unit2DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unit2DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unit2DataGridViewTextBoxColumn.ValueMember = "Id";
+            this.cbProduct2.FormattingEnabled = true;
+            this.cbProduct2.Location = new System.Drawing.Point(126, 83);
+            this.cbProduct2.Name = "cbProduct2";
+            this.cbProduct2.Size = new System.Drawing.Size(140, 22);
+            this.cbProduct2.TabIndex = 4;
             // 
-            // IsDefault
+            // tbQuantity2
             // 
-            this.IsDefault.DataPropertyName = "IsDefault";
-            this.IsDefault.HeaderText = "ĐV mặc định";
-            this.IsDefault.Name = "IsDefault";
+            this.tbQuantity2.Location = new System.Drawing.Point(344, 84);
+            this.tbQuantity2.Name = "tbQuantity2";
+            this.tbQuantity2.ReadOnly = true;
+            this.tbQuantity2.Size = new System.Drawing.Size(86, 22);
+            this.tbQuantity2.TabIndex = 8;
             // 
             // FrmConvert
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 450);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(504, 231);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmConvert";
             this.Text = "FrmConvert";
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.convertModelBindingSource)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.DataGridView dgvData;
-        private System.Windows.Forms.BindingSource unitBindingSource;
-        private System.Windows.Forms.BindingSource convertModelBindingSource;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnAddRow;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn unit1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn unit2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsDefault;
+        private System.Windows.Forms.TextBox tbQuantity2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbProduct2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbQuantity1;
+        private System.Windows.Forms.ComboBox cbProduct1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnConvert;
     }
 }

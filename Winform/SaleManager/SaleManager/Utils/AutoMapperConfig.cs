@@ -18,8 +18,8 @@ namespace SaleManager.Utils
                 cfg.CreateMap<Product, ProductsModel>();
                 cfg.CreateMap<Product, ProductModel>();
                 cfg.CreateMap<ProductModel, Product>();
-                cfg.CreateMap<ConvertProduct, ConvertModel>();
-                cfg.CreateMap<ConvertModel, ConvertProduct>();
+                cfg.CreateMap<ConvertProduct, ConvertMasterModel>();
+                cfg.CreateMap<ConvertMasterModel, ConvertProduct>();
                 cfg.CreateMap<TransactionDetailModel, TransactionDetail>();
             });
         }

@@ -114,10 +114,7 @@ namespace SaleManager.Services
             var keys = datas.Select(x => x.Barcode).ToList();
             //var products = _db.Products.Where(x => keys.Contains(x.Barcode + x.Unit)).ToList();
             var products = _db.Products.ToList();
-            var converts = _db.ConvertProducts.Where(x => keys.Contains(x.Barcode)).ToList();
             var units = _db.Units.ToList();
-            ConvertProduct convert;
-            var messages = new StringBuilder();
 
             List<Product> adds = new List<Product>();
             List<Product> edits = new List<Product>();
@@ -146,19 +143,6 @@ namespace SaleManager.Services
                 foreach (var elm in datas)
                 {
                     // product + history
-                    convert = converts.Find(x => x.Barcode.Equals(elm.Barcode) && x.IsDefault);
-                    // if present product of unit is not default unit, get convert
-                    if(convert != null)
-                    {
-                        if (convert.Unit2 != elm.Unit)
-                            convert = converts.Find(x => x.Barcode.Equals(elm.Barcode) && x.Unit1 == elm.Unit && x.Unit2 == convert.Unit2);
-                        if (convert == null)
-                        {
-                            messages.AppendLine(elm.ProductName + "：chuyển đổi từ đơn vị " + units.Find(x => x.Id == elm.Unit).Name + " chưa được định nghĩa.");
-                            continue;
-                        }
-                    }
-                    
                     var product = products.Where(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit)).FirstOrDefault();
                     // not exist
                     if (product == null)
@@ -166,22 +150,12 @@ namespace SaleManager.Services
                         var add = elm.ToProduct();
                         add.CreatedAt = DateTime.Now;
                         add.CreatedBy = "Administrator";
-                        if (convert != null && !convert.IsDefault)
-                        {
-                            add.Unit = convert.Unit2;
-                            add.Quantity *= convert.Quantity2;
-                        }
                         adds.Add(add);
                         histories.Add(elm.ToProductHistory());
                     }
                     else
                     {
                         elm.DumpProduct(ref product);
-                        if (convert != null && !convert.IsDefault)
-                        {
-                            elm.Unit = convert.Unit2;
-                            elm.Quantity *= convert.Quantity2;
-                        }
                         _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
                         histories.Add(elm.ToProductHistory(product));
                     }
@@ -193,10 +167,7 @@ namespace SaleManager.Services
                 if (adds.Count > 0) _db.Products.AddRange(adds);
                 _db.ProductHistories.AddRange(histories);
                 _db.TransactionDetails.AddRange(tranDetails);
-                if (messages.Length == 0)
-                    _db.SaveChanges();
-                else
-                    throw new Exception(messages.ToString());
+                _db.SaveChanges();
 
                 scope.Complete();
             }

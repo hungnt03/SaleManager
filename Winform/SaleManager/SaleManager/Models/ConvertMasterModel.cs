@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 
 namespace SaleManager.Models
 {
-    public class ConvertModel: BaseModel
+    public class ConvertMasterModel: BaseModel
     {
         [Required]
         [StringLength(13)]
-        public string Barcode { get; set; }
-        public string Name { set; get; }
-        [Required]
-        public int Unit1 { get; set; }
+        public string Barcode1 { get; set; }
+        public string Name1 { set; get; }
         [Required]
         public int Quantity1 { get; set; }
         [Required]
-        public int Unit2 { get; set; }
+        [StringLength(13)]
+        public string Barcode2 { get; set; }
+        public string Name2 { set; get; }
         [Required]
         public int Quantity2 { get; set; }
-        public bool IsDefault { set; get; }
     }
 }

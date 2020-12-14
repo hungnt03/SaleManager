@@ -200,15 +200,17 @@
     <Compile Include="Models\BarcodeModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BillProductModel.cs" />
+    <Compile Include="Models\ConvertProductModel.cs" />
     <Compile Include="Models\ImportProductDialogModel.cs" />
     <Compile Include="Models\TransactionDetailModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Services\BarcodeService.cs" />
+    <Compile Include="Services\ConvertProductService.cs" />
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Services\TransactionDetailService.cs" />
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Utils\Bindable.cs" />
-    <Compile Include="Models\ConvertModel.cs" />
+    <Compile Include="Models\ConvertMasterModel.cs" />
     <Compile Include="Models\ImportProductModel.cs" />
     <Compile Include="Models\KeyValue.cs" />
     <Compile Include="Models\KeyValueInt.cs" />
@@ -217,7 +219,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Services\ConvertService.cs" />
+    <Compile Include="Services\ConvertMasterService.cs" />
     <Compile Include="Services\ImportProductService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
@@ -229,6 +231,7 @@
     <Compile Include="Utils\MessageUtil.cs" />
     <Compile Include="Utils\StringUtil.cs" />
     <Compile Include="ViewModels\BarcodeViewModel.cs" />
+    <Compile Include="ViewModels\ConvertMasterViewModel.cs" />
     <Compile Include="ViewModels\ConvertProductViewModel.cs" />
     <Compile Include="ViewModels\ImportProductViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -252,6 +255,12 @@
     </Compile>
     <Compile Include="Views\FrmConvert.Designer.cs">
       <DependentUpon>FrmConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmConvertMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmConvertMaster.Designer.cs">
+      <DependentUpon>FrmConvertMaster.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmTransaction.cs">
       <SubType>Form</SubType>
@@ -301,6 +310,9 @@
     <EmbeddedResource Include="Views\FrmConvert.resx">
       <DependentUpon>FrmConvert.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmConvertMaster.resx">
+      <DependentUpon>FrmConvertMaster.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmTransaction.resx">
       <DependentUpon>FrmTransaction.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,7 +340,7 @@
     <None Include="Properties\DataSources\SaleManager.Entities.Unit.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.BarcodeModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.BillProductModel.datasource" />
-    <None Include="Properties\DataSources\SaleManager.Models.ConvertModel.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.ConvertMasterModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductDialogModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />
