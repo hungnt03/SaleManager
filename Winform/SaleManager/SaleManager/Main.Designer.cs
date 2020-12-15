@@ -195,6 +195,7 @@
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
             this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
+            this.kháchHàngToolStripMenuItem.Click += new System.EventHandler(this.kháchHàngToolStripMenuItem_Click);
             // 
             // khuyếnMãiToolStripMenuItem
             // 
@@ -214,14 +215,14 @@
             // quảnLýChuyểnĐổiToolStripMenuItem
             // 
             this.quảnLýChuyểnĐổiToolStripMenuItem.Name = "quảnLýChuyểnĐổiToolStripMenuItem";
-            this.quảnLýChuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quảnLýChuyểnĐổiToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.quảnLýChuyểnĐổiToolStripMenuItem.Text = "Quản lý chuyển đổi";
             this.quảnLýChuyểnĐổiToolStripMenuItem.Click += new System.EventHandler(this.quảnLýChuyểnĐổiToolStripMenuItem_Click);
             // 
             // chuyểnĐổiToolStripMenuItem1
             // 
             this.chuyểnĐổiToolStripMenuItem1.Name = "chuyểnĐổiToolStripMenuItem1";
-            this.chuyểnĐổiToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.chuyểnĐổiToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
             this.chuyểnĐổiToolStripMenuItem1.Text = "Chuyển đổi";
             this.chuyểnĐổiToolStripMenuItem1.Click += new System.EventHandler(this.chuyểnĐổiToolStripMenuItem1_Click);
             // 

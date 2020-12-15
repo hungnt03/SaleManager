@@ -154,5 +154,12 @@ namespace SaleManager
             frm.Show(this);
             this.Hide();
         }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmSupplier();
+            frm.Show(this);
+            this.Hide();
+        }
     }
 }

@@ -164,7 +164,6 @@
           <Property Name="Img" Type="nvarchar(max)" />
           <Property Name="PriceBuy" Type="int" />
           <Property Name="Interest" Type="int" />
-          <Property Name="IsDefault" Type="bit" />
         </EntityType>
         <EntityType Name="ProductHistory">
           <Key>
@@ -645,36 +644,12 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="Products" EntityType="SaleManagerModel.Product" />
           <EntitySet Name="Units" EntityType="SaleManagerModel.Unit" />
           <EntitySet Name="ProductHistories" EntityType="SaleManagerModel.ProductHistory" />
           <EntitySet Name="Transactions" EntityType="SaleManagerModel.Transaction" />
           <EntitySet Name="ConvertProducts" EntityType="SaleManagerModel.ConvertProduct" />
+          <EntitySet Name="Products" EntityType="SaleManagerModel.Product" />
         </EntityContainer>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="Barcode" />
-            <PropertyRef Name="Unit" />
-          </Key>
-          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="7" />
-          <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="SupplierId" Type="Int32" Nullable="false" />
-          <Property Name="Pin" Type="Boolean" />
-          <Property Name="Enable" Type="Boolean" Nullable="false" />
-          <Property Name="ExpirationDate" Type="DateTime" Precision="7" />
-          <Property Name="Unit" Type="Int32" Nullable="false" />
-          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PriceBuy" Type="Int32" />
-          <Property Name="Interest" Type="Int32" />
-          <Property Name="IsDefault" Type="Boolean" />
-        </EntityType>
         <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="Id" />
@@ -753,6 +728,29 @@
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Barcode" />
+            <PropertyRef Name="Unit" />
+          </Key>
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="7" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="Pin" Type="Boolean" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="7" />
+          <Property Name="Unit" Type="Int32" Nullable="false" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceBuy" Type="Int32" />
+          <Property Name="Interest" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -923,30 +921,6 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="SaleManagerModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
-                <ScalarProperty Name="Interest" ColumnName="Interest" />
-                <ScalarProperty Name="PriceBuy" ColumnName="PriceBuy" />
-                <ScalarProperty Name="Img" ColumnName="Img" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
-                <ScalarProperty Name="Enable" ColumnName="Enable" />
-                <ScalarProperty Name="Pin" ColumnName="Pin" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Units">
             <EntityTypeMapping TypeName="SaleManagerModel.Unit">
               <MappingFragment StoreEntitySet="Unit">
@@ -1026,6 +1000,29 @@
                 <ScalarProperty Name="Barcode2" ColumnName="Barcode2" />
                 <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
                 <ScalarProperty Name="Barcode1" ColumnName="Barcode1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SaleManagerModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
+                <ScalarProperty Name="PriceBuy" ColumnName="PriceBuy" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

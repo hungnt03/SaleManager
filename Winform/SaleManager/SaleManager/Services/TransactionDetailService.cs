@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using SaleManager.Entities;
 using SaleManager.Models;
+using SaleManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace SaleManager.Services
 {
@@ -54,6 +56,26 @@ namespace SaleManager.Services
                 throw;
             }
             return false;
+        }
+        public void Delete(int id, string barcode)
+        {
+            var options = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, options))
+            {
+                var detail = _db.TransactionDetails.Where(x => x.TracsactionId == id && x.Barcode.Equals(barcode)).First();
+                _db.TransactionDetails.Remove(detail);
+                _db.SaveChanges();
+                var presentCount = _db.TransactionDetails.Where(x => x.TracsactionId == id).Count();
+                // if all detail deleted, transaction is required delete
+                if(presentCount == 0)
+                {
+                    var transaction = _db.Transactions.Where(x => x.Id == id).First();
+                    _db.Transactions.Remove(transaction);
+                    _db.SaveChanges();
+                }
+                scope.Complete();
+                MessageUtil.UpdateSuccess();
+            }
         }
     }
 }

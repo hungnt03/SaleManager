@@ -30,7 +30,7 @@ namespace SaleManager.Services
         public BillProductModel SearchBillProduct(string barcode)
         {
             var product = _db.Products
-                .Where(x => x.Barcode.Contains(barcode) && x.IsDefault == true && x.Enable == true).FirstOrDefault();
+                .Where(x => x.Barcode.Contains(barcode)  && x.Enable).FirstOrDefault();
             if (product == null) return null;
             return (new BillProductModel(product));
         }

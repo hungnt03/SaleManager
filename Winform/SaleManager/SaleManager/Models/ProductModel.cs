@@ -22,7 +22,6 @@ namespace SaleManager.Models
         public int SupplierId { get; set; }
         public bool Pin { get; set; }
         public bool Enable { get; set; }
-        public bool IsDefault { get; set; }
         public DateTime ExpirationDate { get; set; }
         public int Unit { get; set; }
         public string Img
@@ -54,7 +53,6 @@ namespace SaleManager.Models
             product.SupplierId = this.SupplierId;
             product.Pin = this.Pin;
             product.Enable = this.Enable;
-            product.IsDefault = this.IsDefault;
             product.ExpirationDate = this.ExpirationDate;
             product.Unit = this.Unit;
             if(!string.IsNullOrEmpty(this.Img)) product.Img = Barcode + ".jpg";

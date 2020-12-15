@@ -22,11 +22,11 @@
         <AssociationConnector Association="SaleManagerModel.FK_AspNetUserLogins_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="SaleManagerModel.FK_AspNetUserTokens_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="SaleManagerModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="SaleManagerModel.Product" Width="1.5" PointX="3.375" PointY="12.75" />
         <EntityTypeShape EntityType="SaleManagerModel.Unit" Width="1.5" PointX="12.375" PointY="5.75" />
         <EntityTypeShape EntityType="SaleManagerModel.ProductHistory" Width="1.5" PointX="5.375" PointY="12.75" />
         <EntityTypeShape EntityType="SaleManagerModel.Transaction" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="SaleManagerModel.ConvertProduct" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SaleManagerModel.Product" Width="1.5" PointX="7.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

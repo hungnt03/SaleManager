@@ -42,7 +42,6 @@
             System.Windows.Forms.Label quantityLabel;
             System.Windows.Forms.Label supplierIdLabel;
             System.Windows.Forms.Label unitIdLabel;
-            System.Windows.Forms.Label label2;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -90,8 +89,6 @@
             this.pinCheckBox = new System.Windows.Forms.CheckBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.enableCheckBox = new System.Windows.Forms.CheckBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.imgTextBox = new System.Windows.Forms.TextBox();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -112,7 +109,6 @@
             quantityLabel = new System.Windows.Forms.Label();
             supplierIdLabel = new System.Windows.Forms.Label();
             unitIdLabel = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
@@ -138,7 +134,6 @@
             this.panel5.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel16.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imagePictureBox)).BeginInit();
@@ -274,16 +269,6 @@
             unitIdLabel.Size = new System.Drawing.Size(49, 14);
             unitIdLabel.TabIndex = 27;
             unitIdLabel.Text = "Đơn vị";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.Location = new System.Drawing.Point(1, 10);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(63, 14);
-            label2.TabIndex = 17;
-            label2.Text = "Mặc định";
             // 
             // flowLayoutPanel1
             // 
@@ -486,7 +471,6 @@
             this.flowLayoutPanel3.Controls.Add(this.panel5);
             this.flowLayoutPanel3.Controls.Add(this.panel10);
             this.flowLayoutPanel3.Controls.Add(this.panel16);
-            this.flowLayoutPanel3.Controls.Add(this.panel2);
             this.flowLayoutPanel3.Controls.Add(this.panel13);
             this.flowLayoutPanel3.Controls.Add(this.panel14);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -738,29 +722,11 @@
             this.enableCheckBox.TabIndex = 6;
             this.enableCheckBox.UseVisualStyleBackColor = true;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.checkBox1);
-            this.panel2.Controls.Add(label2);
-            this.panel2.Location = new System.Drawing.Point(23, 452);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 30);
-            this.panel2.TabIndex = 36;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.productModelBindingSource, "IsDefault", true));
-            this.checkBox1.Location = new System.Drawing.Point(94, 8);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(200, 21);
-            this.checkBox1.TabIndex = 18;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // panel13
             // 
             this.panel13.Controls.Add(this.imgTextBox);
             this.panel13.Controls.Add(imgLabel);
-            this.panel13.Location = new System.Drawing.Point(23, 488);
+            this.panel13.Location = new System.Drawing.Point(23, 452);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(350, 43);
             this.panel13.TabIndex = 33;
@@ -777,7 +743,7 @@
             // panel14
             // 
             this.panel14.Controls.Add(this.imagePictureBox);
-            this.panel14.Location = new System.Drawing.Point(23, 537);
+            this.panel14.Location = new System.Drawing.Point(23, 501);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(350, 207);
             this.panel14.TabIndex = 38;
@@ -871,8 +837,6 @@
             this.panel10.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.panel14.ResumeLayout(false);
@@ -932,8 +896,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnAddImage;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;

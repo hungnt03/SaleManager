@@ -22,9 +22,11 @@ namespace SaleManager.Views
             this.Load += delegate { _vm.Load(id); };
             btnBack.Click += BtnBack_Click;
             btnDelete.Click += delegate { _vm.Delete(); };
+            btnSave.Click += delegate { _vm.Save(); };
 
             _vm._source = transactionDetailModelBindingSource;
-            _vm._unitSource = unitBindingSource;
+            _vm._unitDetailSource = unitBindingSource;
+            _vm._unitListSource = unitBindingSource1;
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

@@ -202,11 +202,13 @@
     <Compile Include="Models\BillProductModel.cs" />
     <Compile Include="Models\ConvertProductModel.cs" />
     <Compile Include="Models\ImportProductDialogModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Models\TransactionDetailModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Services\BarcodeService.cs" />
     <Compile Include="Services\ConvertProductService.cs" />
     <Compile Include="Services\MainService.cs" />
+    <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\TransactionDetailService.cs" />
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Utils\Bindable.cs" />
@@ -236,6 +238,7 @@
     <Compile Include="ViewModels\ImportProductViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\SupplierViewModel.cs" />
     <Compile Include="ViewModels\TransactionDetailViewModel.cs" />
     <Compile Include="ViewModels\TransitionViewModel.cs" />
     <Compile Include="Views\FrmBarcode.cs">
@@ -261,6 +264,12 @@
     </Compile>
     <Compile Include="Views\FrmConvertMaster.Designer.cs">
       <DependentUpon>FrmConvertMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmSupplier.Designer.cs">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmTransaction.cs">
       <SubType>Form</SubType>
@@ -313,6 +322,9 @@
     <EmbeddedResource Include="Views\FrmConvertMaster.resx">
       <DependentUpon>FrmConvertMaster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmSupplier.resx">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmTransaction.resx">
       <DependentUpon>FrmTransaction.cs</DependentUpon>
     </EmbeddedResource>
@@ -341,11 +353,13 @@
     <None Include="Properties\DataSources\SaleManager.Models.BarcodeModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.BillProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ConvertMasterModel.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.ConvertProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductDialogModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ImportProductModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.KeyValue.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.MainModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.ProductModel.datasource" />
+    <None Include="Properties\DataSources\SaleManager.Models.SupplierModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.TransactionDetailModel.datasource" />
     <None Include="Properties\DataSources\SaleManager.Models.TransactionModel.datasource" />
     <None Include="Properties\Settings.settings">
@@ -358,6 +372,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="SaleManager.gclicx" />
+    <None Include="Requiment\temp.xlsx" />
     <None Include="SaleManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

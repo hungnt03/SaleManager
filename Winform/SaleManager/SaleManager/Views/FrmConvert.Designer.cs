@@ -28,23 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label barcode1Label;
+            System.Windows.Forms.Label barcode2Label;
+            System.Windows.Forms.Label quantity1Label;
+            System.Windows.Forms.Label quantity2Label;
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.barcode1ComboBox = new System.Windows.Forms.ComboBox();
+            this.convertProductModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.barcode2ComboBox = new System.Windows.Forms.ComboBox();
+            this.productModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.quantity1ComboBox = new System.Windows.Forms.ComboBox();
+            this.quantity2TextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnConvert = new System.Windows.Forms.Button();
-            this.cbProduct1 = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbQuantity1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbProduct2 = new System.Windows.Forms.ComboBox();
-            this.tbQuantity2 = new System.Windows.Forms.TextBox();
+            barcode1Label = new System.Windows.Forms.Label();
+            barcode2Label = new System.Windows.Forms.Label();
+            quantity1Label = new System.Windows.Forms.Label();
+            quantity2Label = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.convertProductModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource1)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // barcode1Label
+            // 
+            barcode1Label.AutoSize = true;
+            barcode1Label.Location = new System.Drawing.Point(22, 36);
+            barcode1Label.Name = "barcode1Label";
+            barcode1Label.Size = new System.Drawing.Size(70, 14);
+            barcode1Label.TabIndex = 0;
+            barcode1Label.Text = "Chuyển SP";
+            // 
+            // barcode2Label
+            // 
+            barcode2Label.AutoSize = true;
+            barcode2Label.Location = new System.Drawing.Point(22, 78);
+            barcode2Label.Name = "barcode2Label";
+            barcode2Label.Size = new System.Drawing.Size(56, 14);
+            barcode2Label.TabIndex = 2;
+            barcode2Label.Text = "Sang SP";
+            // 
+            // quantity1Label
+            // 
+            quantity1Label.AutoSize = true;
+            quantity1Label.Location = new System.Drawing.Point(328, 39);
+            quantity1Label.Name = "quantity1Label";
+            quantity1Label.Size = new System.Drawing.Size(63, 14);
+            quantity1Label.TabIndex = 8;
+            quantity1Label.Text = "Số luợng";
+            // 
+            // quantity2Label
+            // 
+            quantity2Label.AutoSize = true;
+            quantity2Label.Location = new System.Drawing.Point(328, 81);
+            quantity2Label.Name = "quantity2Label";
+            quantity2Label.Size = new System.Drawing.Size(63, 14);
+            quantity2Label.TabIndex = 10;
+            quantity2Label.Text = "Số lượng";
             // 
             // flowLayoutPanel1
             // 
@@ -52,8 +99,178 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(504, 231);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(504, 219);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(barcode1Label);
+            this.panel1.Controls.Add(this.barcode1ComboBox);
+            this.panel1.Controls.Add(barcode2Label);
+            this.panel1.Controls.Add(this.barcode2ComboBox);
+            this.panel1.Controls.Add(quantity1Label);
+            this.panel1.Controls.Add(this.quantity1ComboBox);
+            this.panel1.Controls.Add(quantity2Label);
+            this.panel1.Controls.Add(this.quantity2TextBox);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(497, 222);
+            this.panel1.TabIndex = 1;
+            // 
+            // barcode1ComboBox
+            // 
+            this.barcode1ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.convertProductModelBindingSource, "Barcode1", true));
+            this.barcode1ComboBox.DataSource = this.productModelBindingSource;
+            this.barcode1ComboBox.DisplayMember = "Name";
+            this.barcode1ComboBox.FormattingEnabled = true;
+            this.barcode1ComboBox.Location = new System.Drawing.Point(100, 33);
+            this.barcode1ComboBox.Name = "barcode1ComboBox";
+            this.barcode1ComboBox.Size = new System.Drawing.Size(215, 22);
+            this.barcode1ComboBox.TabIndex = 1;
+            this.barcode1ComboBox.ValueMember = "Barcode";
+            // 
+            // convertProductModelBindingSource
+            // 
+            this.convertProductModelBindingSource.DataSource = typeof(SaleManager.Models.ConvertProductModel);
+            // 
+            // productModelBindingSource
+            // 
+            this.productModelBindingSource.DataSource = typeof(SaleManager.Models.ProductModel);
+            // 
+            // barcode2ComboBox
+            // 
+            this.barcode2ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.convertProductModelBindingSource, "Barcode2", true));
+            this.barcode2ComboBox.DataSource = this.productModelBindingSource1;
+            this.barcode2ComboBox.DisplayMember = "Name";
+            this.barcode2ComboBox.FormattingEnabled = true;
+            this.barcode2ComboBox.Location = new System.Drawing.Point(100, 75);
+            this.barcode2ComboBox.Name = "barcode2ComboBox";
+            this.barcode2ComboBox.Size = new System.Drawing.Size(215, 22);
+            this.barcode2ComboBox.TabIndex = 3;
+            this.barcode2ComboBox.ValueMember = "Barcode";
+            // 
+            // productModelBindingSource1
+            // 
+            this.productModelBindingSource1.DataSource = typeof(SaleManager.Models.ProductModel);
+            // 
+            // quantity1ComboBox
+            // 
+            this.quantity1ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.convertProductModelBindingSource, "Quantity1", true));
+            this.quantity1ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.convertProductModelBindingSource, "Quantity1", true));
+            this.quantity1ComboBox.FormattingEnabled = true;
+            this.quantity1ComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59",
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66",
+            "67",
+            "68",
+            "69",
+            "70",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "76",
+            "77",
+            "78",
+            "79",
+            "80",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85",
+            "86",
+            "87",
+            "88",
+            "89",
+            "90",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "96",
+            "97",
+            "98",
+            "99"});
+            this.quantity1ComboBox.Location = new System.Drawing.Point(411, 36);
+            this.quantity1ComboBox.Name = "quantity1ComboBox";
+            this.quantity1ComboBox.Size = new System.Drawing.Size(69, 22);
+            this.quantity1ComboBox.TabIndex = 9;
+            // 
+            // quantity2TextBox
+            // 
+            this.quantity2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.convertProductModelBindingSource, "Quantity2", true));
+            this.quantity2TextBox.Location = new System.Drawing.Point(411, 78);
+            this.quantity2TextBox.Name = "quantity2TextBox";
+            this.quantity2TextBox.ReadOnly = true;
+            this.quantity2TextBox.Size = new System.Drawing.Size(69, 22);
+            this.quantity2TextBox.TabIndex = 11;
             // 
             // flowLayoutPanel2
             // 
@@ -61,7 +278,7 @@
             this.flowLayoutPanel2.Controls.Add(this.btnConvert);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 180);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 168);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(504, 51);
             this.flowLayoutPanel2.TabIndex = 1;
@@ -84,104 +301,23 @@
             this.btnConvert.Text = "Chuyển đổi";
             this.btnConvert.UseVisualStyleBackColor = true;
             // 
-            // cbProduct1
-            // 
-            this.cbProduct1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbProduct1.FormattingEnabled = true;
-            this.cbProduct1.Location = new System.Drawing.Point(126, 33);
-            this.cbProduct1.Name = "cbProduct1";
-            this.cbProduct1.Size = new System.Drawing.Size(140, 22);
-            this.cbProduct1.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tbQuantity2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.cbProduct2);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.cbQuantity1);
-            this.panel1.Controls.Add(this.cbProduct1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(497, 169);
-            this.panel1.TabIndex = 1;
-            // 
-            // cbQuantity1
-            // 
-            this.cbQuantity1.FormattingEnabled = true;
-            this.cbQuantity1.Location = new System.Drawing.Point(344, 33);
-            this.cbQuantity1.Name = "cbQuantity1";
-            this.cbQuantity1.Size = new System.Drawing.Size(86, 22);
-            this.cbQuantity1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 14);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Chuyển sản phẩm";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(275, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 14);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Số lượng";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(275, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 14);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Số lượng";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 92);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 14);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Sang sản phẩm";
-            // 
-            // cbProduct2
-            // 
-            this.cbProduct2.FormattingEnabled = true;
-            this.cbProduct2.Location = new System.Drawing.Point(126, 83);
-            this.cbProduct2.Name = "cbProduct2";
-            this.cbProduct2.Size = new System.Drawing.Size(140, 22);
-            this.cbProduct2.TabIndex = 4;
-            // 
-            // tbQuantity2
-            // 
-            this.tbQuantity2.Location = new System.Drawing.Point(344, 84);
-            this.tbQuantity2.Name = "tbQuantity2";
-            this.tbQuantity2.ReadOnly = true;
-            this.tbQuantity2.Size = new System.Drawing.Size(86, 22);
-            this.tbQuantity2.TabIndex = 8;
-            // 
             // FrmConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 231);
+            this.ClientSize = new System.Drawing.Size(504, 219);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmConvert";
             this.Text = "FrmConvert";
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.convertProductModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource1)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -190,16 +326,15 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox tbQuantity2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbProduct2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbQuantity1;
-        private System.Windows.Forms.ComboBox cbProduct1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.ComboBox barcode1ComboBox;
+        private System.Windows.Forms.BindingSource convertProductModelBindingSource;
+        private System.Windows.Forms.ComboBox barcode2ComboBox;
+        private System.Windows.Forms.ComboBox quantity1ComboBox;
+        private System.Windows.Forms.TextBox quantity2TextBox;
+        private System.Windows.Forms.BindingSource productModelBindingSource;
+        private System.Windows.Forms.BindingSource productModelBindingSource1;
     }
 }
