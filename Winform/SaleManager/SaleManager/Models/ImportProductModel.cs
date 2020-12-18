@@ -2,13 +2,17 @@
 using SaleManager.Utils;
 using SaleManager.Views;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace SaleManager.Models
 {
     public class ImportProductModel : Bindable
     {
+        [Required]
+        [StringLength(13)]
         public string Barcode { set; get; }
         public string ProductName { set; get; }
+        [RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Number")]
         public int Total { set; get; }
         public int PriceBuy { set; get; }
         public int Quantity { set; get; }
@@ -17,6 +21,28 @@ namespace SaleManager.Models
         public int Supplier { set; get; }
         public Nullable<DateTime> Ex { set; get; }
         public int Interest { set; get; }
+
+        [RegularExpression("([0-9.,]+)", ErrorMessage = "Please enter valid Number")]
+        public double Discount { set; get; }
+        [Required]
+        [StringLength(13)]
+        public string DiscountBarcode1 { set; get; }
+        [Required]
+        [StringLength(13)]
+        public string DiscountBarcode2 { set; get; }
+        [Required]
+        [StringLength(13)]
+        public string DiscountBarcode3 { set; get; }
+        [Required]
+        [StringLength(13)]
+        public string DiscountBarcode4 { set; get; }
+        public int DiscountQuantity1 { set; get; }
+        [RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Number")]
+        public int DiscountQuantity2 { set; get; }
+        [RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Number")]
+        public int DiscountQuantity3 { set; get; }
+        [RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Number")]
+        public int DiscountQuantity4 { set; get; }
 
         public void Cal()
         {

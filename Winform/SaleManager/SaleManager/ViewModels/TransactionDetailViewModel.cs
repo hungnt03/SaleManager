@@ -1,6 +1,8 @@
-﻿using SaleManager.Models;
+﻿using SaleManager.Entities;
+using SaleManager.Models;
 using SaleManager.Services;
 using SaleManager.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -35,7 +37,8 @@ namespace SaleManager.ViewModels
         }
         public void Save()
         {
-
+            if (_source.DataSource is List<TransactionDetailModel> sources)
+                _service.Save(sources);
         }
     }
 }

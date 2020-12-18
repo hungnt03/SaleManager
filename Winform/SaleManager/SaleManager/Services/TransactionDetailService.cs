@@ -39,23 +39,32 @@ namespace SaleManager.Services
             return details;
         }
 
-        public bool Save(int id, List<TransactionDetailModel> models)
+        public void Save(List<TransactionDetailModel> models)
         {
-            _db.Database.BeginTransaction();
+            var transaction = _db.Database.BeginTransaction();
             try
             {
-                var details = _db.TransactionDetails.Where(x => x.TracsactionId == id).ToList();
-                _db.TransactionDetails.RemoveRange(details);
-                var newDetails = new List<TransactionDetail>();
-
-
+                var trans = _db.TransactionDetails.Where(x => x.TracsactionId == models[0].Id).ToList();
+                TransactionDetail tran;
+                foreach (var model in models)
+                {
+                    tran = trans.Find(x => x.Barcode.Equals(model.Barcode));
+                    if (tran == null) continue;
+                    tran.Amount = model.Amount;
+                    tran.Unit = model.Unit;
+                    tran.Quantity = model.Quantity;
+                    tran.UpdatedAt = DateTime.Now;
+                    tran.UpdatedBy = "Administrator";
+                }
+                _db.SaveChanges();
+                transaction.Commit();
+                MessageUtil.UpdateSuccess();
             }
             catch (Exception)
             {
-
-                throw;
+                transaction.Rollback();
+                MessageUtil.UpdateFailed();
             }
-            return false;
         }
         public void Delete(int id, string barcode)
         {

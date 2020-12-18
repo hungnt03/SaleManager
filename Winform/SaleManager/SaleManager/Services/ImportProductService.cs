@@ -25,6 +25,7 @@ namespace SaleManager.Services
             var maxRow = sheet.Dimension.End.Row;
             var units = _db.Units.Select(x => new KeyValueInt() { Key = x.Id, Value = x.Name }).ToList();
             var suppliers = _db.Suppliers.Select(x => new KeyValueInt() { Key = x.Id, Value = x.Name }).ToList();
+            var products = _db.Products.ToList();
             for (var row = 2; row <= maxRow; row++)
             {
                 if (sheet.Row(row) == null)
@@ -38,8 +39,18 @@ namespace SaleManager.Services
                     PriceBuy = sheet.Cells["E" + row].Value.ToString().IsNumberic() ? int.Parse(sheet.Cells["E" + row].Value.ToString()) : 0,
                     Unit = units.Where(x => x.Value.Equals(sheet.Cells["F" + row].Value.ToString())).Select(x => x.Key).First(),
                     Price = (sheet.Cells["G" + row].Value != null && sheet.Cells["G" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["G" + row].Value.ToString()) : 0,
-                    Ex = DateTime.FromOADate(double.Parse(sheet.Cells["I" + row].Value.ToString())),
-                    Supplier = suppliers.Where(x => x.Value.Equals(sheet.Cells["J" + row].Value.ToString())).Select(x => x.Key).First(),
+                    Ex = DateTime.Parse(sheet.Cells["H" + row].Value.ToString()),
+                    Supplier = suppliers.Where(x => x.Value.Equals(sheet.Cells["I" + row].Value.ToString())).Select(x => x.Key).First(),
+
+                    Discount = (sheet.Cells["K" + row].Value != null && sheet.Cells["K" + row].Value.ToString().IsNumberic()) ? double.Parse(sheet.Cells["K" + row].Value.ToString()) : 0,
+                    DiscountBarcode1 = sheet.Cells["L" + row].Value != null ? sheet.Cells["L" + row].Value.ToString() : string.Empty,
+                    DiscountQuantity1 = (sheet.Cells["M" + row].Value != null && sheet.Cells["M" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["M" + row].Value.ToString()) : 0,
+                    DiscountBarcode2 = sheet.Cells["N" + row].Value != null ? sheet.Cells["N" + row].Value.ToString() : string.Empty,
+                    DiscountQuantity2 = (sheet.Cells["O" + row].Value != null && sheet.Cells["O" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["O" + row].Value.ToString()) : 0,
+                    DiscountBarcode3 = sheet.Cells["P" + row].Value != null ? sheet.Cells["P" + row].Value.ToString() : string.Empty,
+                    DiscountQuantity3 = (sheet.Cells["Q" + row].Value != null && sheet.Cells["Q" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["Q" + row].Value.ToString()) : 0,
+                    DiscountBarcode4 = sheet.Cells["R" + row].Value != null ? sheet.Cells["R" + row].Value.ToString() : string.Empty,
+                    DiscountQuantity4 = (sheet.Cells["S" + row].Value != null && sheet.Cells["S" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["S" + row].Value.ToString()) : 0,
                 };
                 elm.Cal();
                 results.Add(elm);

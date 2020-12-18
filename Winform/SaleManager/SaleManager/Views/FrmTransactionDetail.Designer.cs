@@ -37,6 +37,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.transactionDetailModelDataGridView = new System.Windows.Forms.DataGridView();
+            this.unitBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.transactionDetailModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnBack = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.unitBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +72,7 @@
             this.splitContainer1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelBindingSource)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -81,7 +82,6 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // amountLabel
@@ -179,6 +179,10 @@
             this.transactionDetailModelDataGridView.RowTemplate.Height = 21;
             this.transactionDetailModelDataGridView.Size = new System.Drawing.Size(788, 519);
             this.transactionDetailModelDataGridView.TabIndex = 0;
+            // 
+            // unitBindingSource1
+            // 
+            this.unitBindingSource1.DataSource = typeof(SaleManager.Entities.Unit);
             // 
             // transactionDetailModelBindingSource
             // 
@@ -340,10 +344,6 @@
             this.panel8.Size = new System.Drawing.Size(283, 35);
             this.panel8.TabIndex = 19;
             // 
-            // unitBindingSource1
-            // 
-            this.unitBindingSource1.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
@@ -401,6 +401,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelBindingSource)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -415,7 +416,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -443,11 +443,11 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.BindingSource unitBindingSource;
+        private System.Windows.Forms.BindingSource unitBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.BindingSource unitBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }
