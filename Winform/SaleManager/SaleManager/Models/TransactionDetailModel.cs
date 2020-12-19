@@ -17,5 +17,6 @@ namespace SaleManager.Models
         public decimal Amount { get; set; }
         public int Unit { set; get; }
         public int Price { set; get; }
+        public bool IsDiscount { set; get; }
     }
 }

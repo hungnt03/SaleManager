@@ -25,5 +25,6 @@ namespace SaleManager.Entities
         public bool IsPayment { get; set; }
         public decimal Amount { get; set; }
         public Nullable<int> Unit { get; set; }
+        public Nullable<bool> IsDiscount { get; set; }
     }
 }

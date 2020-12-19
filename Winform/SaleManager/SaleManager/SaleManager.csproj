@@ -372,7 +372,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="SaleManager.gclicx" />
-    <None Include="Requiment\temp.xlsx" />
+    <Content Include="Requiment\temp.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="SaleManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

@@ -250,6 +250,7 @@
           <Property Name="IsPayment" Type="bit" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Unit" Type="int" />
+          <Property Name="IsDiscount" Type="bit" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -550,6 +551,7 @@
           <Property Name="IsPayment" Type="Boolean" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Unit" Type="Int32" />
+          <Property Name="IsDiscount" Type="Boolean" />
         </EntityType>
         <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="1">
@@ -899,6 +901,7 @@
           <EntitySetMapping Name="TransactionDetails">
             <EntityTypeMapping TypeName="SaleManagerModel.TransactionDetail">
               <MappingFragment StoreEntitySet="TransactionDetail">
+                <ScalarProperty Name="IsDiscount" ColumnName="IsDiscount" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
                 <ScalarProperty Name="TracsactionId" ColumnName="TracsactionId" />

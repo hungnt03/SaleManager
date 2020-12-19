@@ -2,11 +2,12 @@
 using SaleManager.Utils;
 using SaleManager.Views;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SaleManager.Models
 {
-    public class ImportProductModel : Bindable
+    public class ImportProductModel : BaseModel
     {
         [Required]
         [StringLength(13)]
@@ -27,15 +28,19 @@ namespace SaleManager.Models
         [Required]
         [StringLength(13)]
         public string DiscountBarcode1 { set; get; }
+        public string DiscountName1 { set; get; }
         [Required]
         [StringLength(13)]
         public string DiscountBarcode2 { set; get; }
+        public string DiscountName2 { set; get; }
         [Required]
         [StringLength(13)]
         public string DiscountBarcode3 { set; get; }
+        public string DiscountName3 { set; get; }
         [Required]
         [StringLength(13)]
         public string DiscountBarcode4 { set; get; }
+        public string DiscountName4 { set; get; }
         public int DiscountQuantity1 { set; get; }
         [RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Number")]
         public int DiscountQuantity2 { set; get; }
@@ -121,6 +126,32 @@ namespace SaleManager.Models
             data.Interest = this.Interest;
             data.UpdatedAt = DateTime.Now;
             data.UpdatedBy = "Administrator";
+        }
+
+        public List<Product> ToDiscount()
+        {
+            List<Product> results = new List<Product>();
+            if (!string.IsNullOrEmpty(DiscountBarcode1)) results.Add(new Product()
+            {
+                Barcode = DiscountBarcode1,
+                Quantity = DiscountQuantity1
+            });
+            if (!string.IsNullOrEmpty(DiscountBarcode2)) results.Add(new Product()
+            {
+                Barcode = DiscountBarcode2,
+                Quantity = DiscountQuantity2
+            });
+            if (!string.IsNullOrEmpty(DiscountBarcode3)) results.Add(new Product()
+            {
+                Barcode = DiscountBarcode3,
+                Quantity = DiscountQuantity3
+            });
+            if (!string.IsNullOrEmpty(DiscountBarcode4)) results.Add(new Product()
+            {
+                Barcode = DiscountBarcode4,
+                Quantity = DiscountQuantity4
+            });
+            return results;
         }
     }
 }

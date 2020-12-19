@@ -1,12 +1,11 @@
 ﻿using SaleManager.Models;
 using SaleManager.Services;
+using SaleManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SaleManager.ViewModels
@@ -56,7 +55,7 @@ namespace SaleManager.ViewModels
         {            
             if(_source.DataSource is List<ImportProductModel> datas)
                 _service.Save(datas);
-            MessageBox.Show("done");
+            MessageUtil.UpdateSuccess();
         }
 
         private void Notify([CallerMemberName] string property = "") 

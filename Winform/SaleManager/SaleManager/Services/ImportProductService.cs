@@ -52,10 +52,52 @@ namespace SaleManager.Services
                     DiscountBarcode4 = sheet.Cells["R" + row].Value != null ? sheet.Cells["R" + row].Value.ToString() : string.Empty,
                     DiscountQuantity4 = (sheet.Cells["S" + row].Value != null && sheet.Cells["S" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["S" + row].Value.ToString()) : 0,
                 };
+                CalcDiscount(ref elm, products);
                 elm.Cal();
                 results.Add(elm);
             }
+            var validMess = Valid(results, products);
+            if (validMess.Length > 0) MessageUtil.Error(validMess);
             return results;
+        }
+
+        private string Valid(List<ImportProductModel> models, List<Product> products)
+        {
+            var mess = new StringBuilder();
+            Product product;
+            List<Product> discounts;
+            foreach(var model in models)
+            {
+                product = products.FirstOrDefault(x => x.Barcode.Equals(model.Barcode));
+                if (product == null) mess.AppendLine("Không tìm thấy sản phẩm: " + model.ProductName + ". Vui lòng kiểm tra lại.");
+                discounts = model.ToDiscount();
+                foreach(var discount in discounts)
+                {
+                    if (string.IsNullOrEmpty(discount.Barcode)) continue;
+                    product = products.FirstOrDefault(x => x.Barcode.Equals(discount.Barcode));
+                    if (product == null) mess.AppendLine("Không tìm thấy sản phẩm khuyến mại " + discount.Barcode +  " của: " + model.ProductName + ". Vui lòng kiểm tra lại.");
+                }
+            }
+            return mess.ToString();
+        }
+
+        private void CalcDiscount(ref ImportProductModel model, List<Product> products)
+        {
+            int total = model.Total;
+            if (model.Discount > 0) total = total - Convert.ToInt32(Math.Round((model.Discount * total) / 100));
+            Product product;
+            var discounts = model.ToDiscount();
+            foreach (var discount in discounts)
+            {
+                if (string.IsNullOrEmpty(discount.Barcode)) continue;
+                product = products.FirstOrDefault(x => x.Barcode.Equals(discount.Barcode));
+                if (product != null) 
+                {
+                    total += product.PriceBuy.Value * model.DiscountQuantity1;
+                }
+                
+            }
+            model.PriceBuy = total / model.Quantity;
         }
 
         public List<KeyValue> GetSuppliers()
@@ -65,46 +107,19 @@ namespace SaleManager.Services
 
         public void CreateTemplate()
         {
-            var excelPackage = new ExcelPackage();
-            // Tạo author cho file Excel
-            excelPackage.Workbook.Properties.Author = "Hanker";
-            // Tạo title cho file Excel
-            excelPackage.Workbook.Properties.Title = "EPP test background";
-            // thêm tí comments vào làm màu 
-            excelPackage.Workbook.Properties.Comments = "This is my fucking generated Comments";
-            // Add Sheet vào file Excel
-            excelPackage.Workbook.Worksheets.Add("First Sheet");
-            // Lấy Sheet bạn vừa mới tạo ra để thao tác 
+            var excelPackage = new ExcelPackage(new FileInfo(Constants.ROOT_PATH + "\\Requiment\\temp.xlsx"));
             var workSheet = excelPackage.Workbook.Worksheets[1];
-            // Header
-            workSheet.Cells["A1"].Value = "Barcode";
-            workSheet.Cells["B1"].Value = "Tên sản phẩm";
-            workSheet.Cells["C1"].Value = "Thành tiền";
-            workSheet.Cells["D1"].Value = "Số lượng";
-            workSheet.Cells["E1"].Value = "Giá mua";
-            workSheet.Cells["F1"].Value = "Đơn vị";
-            workSheet.Cells["G1"].Value = "Giá bán";
-            workSheet.Cells["H1"].Value = "Hsd(tháng)";
-            workSheet.Cells["I1"].Value = "Hsd";
-            workSheet.Cells["J1"].Value = "Nhà phân phối";
-            //Format
-            workSheet.Cells["A2"].Style.Numberformat.Format = "@";
-            workSheet.Cells["C2"].Style.Numberformat.Format = "#,###";
-            workSheet.Cells["D2"].Style.Numberformat.Format = "#";
-            workSheet.Cells["E2"].Style.Numberformat.Format = "#,###";
-            workSheet.Cells["E2"].Formula = "ROUND(C2/D2,1)";
-            workSheet.Cells["G2"].Style.Numberformat.Format = "#,###";
-            workSheet.Cells["H2"].Style.Numberformat.Format = "#0.0";
-            workSheet.Cells["I2"].Formula = "IF(H2<1, NOW()+30*H2, EDATE(NOW(),H2))";
-            workSheet.Cells["I2"].Style.Numberformat.Format = "dd/mm/yyyy";
+
             var units = _db.Units.Select(x => x.Name).ToList();
-            var unitValid = workSheet.DataValidations.AddListValidation("F2");
+            units.Sort();
+            var unitValid = workSheet.DataValidations.AddListValidation("F2:F3");
             foreach (var elm in units)
             {
                 unitValid.Formula.Values.Add(elm);
             }
             var suppliers = _db.Suppliers.Select(x => x.Name).ToList();
-            var supplierValid = workSheet.DataValidations.AddListValidation("J2");
+            suppliers.Sort();
+            var supplierValid = workSheet.DataValidations.AddListValidation("I2:I3");
             foreach (var elm in suppliers)
             {
                 supplierValid.Formula.Values.Add(elm);
@@ -122,8 +137,8 @@ namespace SaleManager.Services
 
         public void Save(List<ImportProductModel> datas)
         {
-            var keys = datas.Select(x => x.Barcode).ToList();
-            //var products = _db.Products.Where(x => keys.Contains(x.Barcode + x.Unit)).ToList();
+            var mess = datas.Select(x => x.Error).ToList();
+            if (mess.Count > 0) return;
             var products = _db.Products.ToList();
             var units = _db.Units.ToList();
 
@@ -131,6 +146,7 @@ namespace SaleManager.Services
             List<Product> edits = new List<Product>();
             List<ProductHistory> histories = new List<ProductHistory>();
             List<TransactionDetail> tranDetails = new List<TransactionDetail>();
+            Product product;
 
             var options = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
 
@@ -151,10 +167,12 @@ namespace SaleManager.Services
                 _db.Transactions.Add(tran);
                 _db.SaveChanges();
 
+                List<Product> discounts;
                 foreach (var elm in datas)
                 {
+                    discounts = elm.ToDiscount();
                     // product + history
-                    var product = products.Where(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit)).FirstOrDefault();
+                    product = products.FirstOrDefault(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit));
                     // not exist
                     if (product == null)
                     {
@@ -170,8 +188,38 @@ namespace SaleManager.Services
                         _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
                         histories.Add(elm.ToProductHistory(product));
                     }
+
                     // transaction detail
                     tranDetails.Add(elm.ToTransactionDetail(tran.Id));
+
+                    // discount
+                    foreach (var discount in discounts)
+                    {
+                        product = products.First(x => x.Barcode.Equals(discount.Barcode));
+
+                        histories.Add(new ProductHistory()
+                        {
+                            Barcode = discount.Barcode,
+                            QuantityOld = product.Quantity,
+                            QuantityNew = product.Quantity + discount.Quantity
+                        });
+
+                        tranDetails.Add(new TransactionDetail()
+                        {
+                            Barcode = discount.Barcode,
+                            TracsactionId = tran.Id,
+                            Quantity = discount.Quantity,
+                            IsDiscount = true,
+                            Amount = product.PriceBuy.Value * discount.Quantity,
+                            Unit = product.Unit,
+                            CreatedAt = DateTime.Now,
+                            CreatedBy = "Administrator"
+                        });
+
+                        product.Quantity += discount.Quantity;
+                        product.UpdatedAt = DateTime.Now;
+                        _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                    }
                 }
 
                 // insert

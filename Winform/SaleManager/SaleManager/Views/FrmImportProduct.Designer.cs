@@ -45,24 +45,6 @@
             System.Windows.Forms.DataGridView dgvData;
             this.importProductModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceBuyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.interestDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -92,6 +74,27 @@
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.exDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiscountName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceBuyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiscountName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiscountName3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiscountName4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             barcodeLabel = new System.Windows.Forms.Label();
             exLabel = new System.Windows.Forms.Label();
             interestLabel = new System.Windows.Forms.Label();
@@ -284,14 +287,17 @@
             this.Ex,
             this.barcodeDataGridViewTextBoxColumn,
             this.productNameDataGridViewTextBoxColumn,
+            this.DiscountName1,
             this.totalDataGridViewTextBoxColumn,
             this.priceBuyDataGridViewTextBoxColumn,
+            this.DiscountName2,
             this.quantityDataGridViewTextBoxColumn,
             this.unitDataGridViewTextBoxColumn,
+            this.DiscountName3,
             this.priceDataGridViewTextBoxColumn,
             this.supplierDataGridViewTextBoxColumn,
-            this.exDataGridViewTextBoxColumn,
-            this.interestDataGridViewTextBoxColumn});
+            this.DiscountName4,
+            this.exDataGridViewTextBoxColumn});
             dgvData.DataSource = this.importProductModelBindingSource;
             dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             dgvData.Location = new System.Drawing.Point(0, 0);
@@ -299,115 +305,6 @@
             dgvData.RowTemplate.Height = 21;
             dgvData.Size = new System.Drawing.Size(700, 395);
             dgvData.TabIndex = 0;
-            // 
-            // Barcode
-            // 
-            this.Barcode.DataPropertyName = "Barcode";
-            this.Barcode.HeaderText = "Barcode";
-            this.Barcode.Name = "Barcode";
-            // 
-            // ProductName
-            // 
-            this.ProductName.DataPropertyName = "ProductName";
-            this.ProductName.HeaderText = "Tên sản phẩm";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.Width = 200;
-            // 
-            // Total
-            // 
-            this.Total.DataPropertyName = "Total";
-            this.Total.HeaderText = "Thành tiền";
-            this.Total.Name = "Total";
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Số lượng";
-            this.Quantity.Name = "Quantity";
-            // 
-            // PriceBuy
-            // 
-            this.PriceBuy.DataPropertyName = "PriceBuy";
-            this.PriceBuy.HeaderText = "Giá mua";
-            this.PriceBuy.Name = "PriceBuy";
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Giá bán";
-            this.Price.Name = "Price";
-            // 
-            // Interest
-            // 
-            this.Interest.DataPropertyName = "Interest";
-            this.Interest.HeaderText = "Tiền lãi";
-            this.Interest.Name = "Interest";
-            // 
-            // Ex
-            // 
-            this.Ex.DataPropertyName = "Ex";
-            this.Ex.HeaderText = "Hsd";
-            this.Ex.Name = "Ex";
-            // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            // 
-            // priceBuyDataGridViewTextBoxColumn
-            // 
-            this.priceBuyDataGridViewTextBoxColumn.DataPropertyName = "PriceBuy";
-            this.priceBuyDataGridViewTextBoxColumn.HeaderText = "PriceBuy";
-            this.priceBuyDataGridViewTextBoxColumn.Name = "priceBuyDataGridViewTextBoxColumn";
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Unit";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // supplierDataGridViewTextBoxColumn
-            // 
-            this.supplierDataGridViewTextBoxColumn.DataPropertyName = "Supplier";
-            this.supplierDataGridViewTextBoxColumn.HeaderText = "Supplier";
-            this.supplierDataGridViewTextBoxColumn.Name = "supplierDataGridViewTextBoxColumn";
-            // 
-            // exDataGridViewTextBoxColumn
-            // 
-            this.exDataGridViewTextBoxColumn.DataPropertyName = "Ex";
-            this.exDataGridViewTextBoxColumn.HeaderText = "Ex";
-            this.exDataGridViewTextBoxColumn.Name = "exDataGridViewTextBoxColumn";
-            // 
-            // interestDataGridViewTextBoxColumn
-            // 
-            this.interestDataGridViewTextBoxColumn.DataPropertyName = "Interest";
-            this.interestDataGridViewTextBoxColumn.HeaderText = "Interest";
-            this.interestDataGridViewTextBoxColumn.Name = "interestDataGridViewTextBoxColumn";
             // 
             // flowLayoutPanel1
             // 
@@ -429,7 +326,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(67, 33);
             this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "Thoát";
+            this.btnExit.Text = "Quay lại";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
             // btnSave
@@ -480,6 +377,7 @@
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.Controls.Add(this.panel1);
             this.flowLayoutPanel2.Controls.Add(this.panel9);
             this.flowLayoutPanel2.Controls.Add(this.panel7);
@@ -685,6 +583,137 @@
             this.exDateTimePicker.Size = new System.Drawing.Size(200, 19);
             this.exDateTimePicker.TabIndex = 3;
             // 
+            // Barcode
+            // 
+            this.Barcode.DataPropertyName = "Barcode";
+            this.Barcode.HeaderText = "Barcode";
+            this.Barcode.Name = "Barcode";
+            // 
+            // ProductName
+            // 
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "Tên sản phẩm";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.Width = 200;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Thành tiền";
+            this.Total.Name = "Total";
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Số lượng";
+            this.Quantity.Name = "Quantity";
+            // 
+            // PriceBuy
+            // 
+            this.PriceBuy.DataPropertyName = "PriceBuy";
+            this.PriceBuy.HeaderText = "Giá mua";
+            this.PriceBuy.Name = "PriceBuy";
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Giá bán";
+            this.Price.Name = "Price";
+            // 
+            // Interest
+            // 
+            this.Interest.DataPropertyName = "Interest";
+            this.Interest.HeaderText = "Tiền lãi";
+            this.Interest.Name = "Interest";
+            // 
+            // Ex
+            // 
+            this.Ex.DataPropertyName = "Ex";
+            this.Ex.HeaderText = "Hsd";
+            this.Ex.Name = "Ex";
+            // 
+            // barcodeDataGridViewTextBoxColumn
+            // 
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Discount";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Chiết khấu %";
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "DiscountBarcode1";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "CK Barcode 1";
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            // 
+            // DiscountName1
+            // 
+            this.DiscountName1.DataPropertyName = "DiscountName1";
+            this.DiscountName1.HeaderText = "CK TênSP 1";
+            this.DiscountName1.Name = "DiscountName1";
+            this.DiscountName1.ReadOnly = true;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "DiscountQuantity1";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "CK SL 1";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            // 
+            // priceBuyDataGridViewTextBoxColumn
+            // 
+            this.priceBuyDataGridViewTextBoxColumn.DataPropertyName = "DiscountBarcode2";
+            this.priceBuyDataGridViewTextBoxColumn.HeaderText = "CK Barcode 2";
+            this.priceBuyDataGridViewTextBoxColumn.Name = "priceBuyDataGridViewTextBoxColumn";
+            // 
+            // DiscountName2
+            // 
+            this.DiscountName2.DataPropertyName = "DiscountName2";
+            this.DiscountName2.HeaderText = "CK TênSP 2";
+            this.DiscountName2.Name = "DiscountName2";
+            this.DiscountName2.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "DiscountQuantity2";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "CK SL 2";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // unitDataGridViewTextBoxColumn
+            // 
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "DiscountBarcode3";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "CK Barcode 3";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            // 
+            // DiscountName3
+            // 
+            this.DiscountName3.DataPropertyName = "DiscountName3";
+            this.DiscountName3.HeaderText = "CK TênSP 3";
+            this.DiscountName3.Name = "DiscountName3";
+            this.DiscountName3.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "DiscountQuantity3";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "CK SL 3";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // supplierDataGridViewTextBoxColumn
+            // 
+            this.supplierDataGridViewTextBoxColumn.DataPropertyName = "DiscountBarcode4";
+            this.supplierDataGridViewTextBoxColumn.HeaderText = "CK Barcode 4";
+            this.supplierDataGridViewTextBoxColumn.Name = "supplierDataGridViewTextBoxColumn";
+            // 
+            // DiscountName4
+            // 
+            this.DiscountName4.DataPropertyName = "DiscountName4";
+            this.DiscountName4.HeaderText = "CK TênSP 4";
+            this.DiscountName4.Name = "DiscountName4";
+            this.DiscountName4.ReadOnly = true;
+            // 
+            // exDataGridViewTextBoxColumn
+            // 
+            this.exDataGridViewTextBoxColumn.DataPropertyName = "DiscountQuantity4";
+            this.exDataGridViewTextBoxColumn.HeaderText = "CK SL 4";
+            this.exDataGridViewTextBoxColumn.Name = "exDataGridViewTextBoxColumn";
+            // 
             // FrmImportProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -737,14 +766,6 @@
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnTemplate;
         private System.Windows.Forms.BindingSource importProductModelBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PriceBuy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Interest;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ex;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel6;
@@ -764,21 +785,32 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox quantityTextBox;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceBuyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn exDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn interestDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.ComboBox supplierCombobox;
         private System.Windows.Forms.BindingSource supplierBindingSource;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceBuy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Interest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiscountName1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceBuyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiscountName2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiscountName3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiscountName4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exDataGridViewTextBoxColumn;
     }
 }
