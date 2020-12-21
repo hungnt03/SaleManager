@@ -44,7 +44,7 @@ namespace SaleManager.Services
             var transaction = _db.Database.BeginTransaction();
             try
             {
-                var trans = _db.TransactionDetails.Where(x => x.TracsactionId == models[0].Id).ToList();
+                var trans = _db.TransactionDetails.ToList().FindAll(x=>x.TracsactionId== models[0].Id);
                 TransactionDetail tran;
                 foreach (var model in models)
                 {
@@ -60,7 +60,7 @@ namespace SaleManager.Services
                 transaction.Commit();
                 MessageUtil.UpdateSuccess();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 transaction.Rollback();
                 MessageUtil.UpdateFailed();

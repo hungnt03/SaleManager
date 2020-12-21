@@ -39,5 +39,11 @@ namespace SaleManager.Utils
         {
             return val == null ? null : val.ToString();
         }
+        public static int Round100(this int val)
+        {
+            double result = Convert.ToDouble(val) / 1000;
+            result = Math.Round(result, 1, MidpointRounding.AwayFromZero);
+            return Convert.ToInt32(result * 1000);
+        }
     }
 }

@@ -54,8 +54,7 @@ namespace SaleManager.ViewModels
         public void Save()
         {            
             if(_source.DataSource is List<ImportProductModel> datas)
-                _service.Save(datas);
-            MessageUtil.UpdateSuccess();
+                _service.Save(datas);            
         }
 
         private void Notify([CallerMemberName] string property = "") 

@@ -25,19 +25,15 @@ namespace SaleManager.Models
 
         [RegularExpression("([0-9.,]+)", ErrorMessage = "Please enter valid Number")]
         public double Discount { set; get; }
-        [Required]
         [StringLength(13)]
         public string DiscountBarcode1 { set; get; }
         public string DiscountName1 { set; get; }
-        [Required]
         [StringLength(13)]
         public string DiscountBarcode2 { set; get; }
         public string DiscountName2 { set; get; }
-        [Required]
         [StringLength(13)]
         public string DiscountBarcode3 { set; get; }
         public string DiscountName3 { set; get; }
-        [Required]
         [StringLength(13)]
         public string DiscountBarcode4 { set; get; }
         public string DiscountName4 { set; get; }

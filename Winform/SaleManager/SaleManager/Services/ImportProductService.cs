@@ -52,6 +52,7 @@ namespace SaleManager.Services
                     DiscountBarcode4 = sheet.Cells["R" + row].Value != null ? sheet.Cells["R" + row].Value.ToString() : string.Empty,
                     DiscountQuantity4 = (sheet.Cells["S" + row].Value != null && sheet.Cells["S" + row].Value.ToString().IsNumberic()) ? int.Parse(sheet.Cells["S" + row].Value.ToString()) : 0,
                 };
+                FillNameDiscount(ref elm, products);
                 CalcDiscount(ref elm, products);
                 elm.Cal();
                 results.Add(elm);
@@ -60,22 +61,21 @@ namespace SaleManager.Services
             if (validMess.Length > 0) MessageUtil.Error(validMess);
             return results;
         }
-
         private string Valid(List<ImportProductModel> models, List<Product> products)
         {
             var mess = new StringBuilder();
             Product product;
             List<Product> discounts;
-            foreach(var model in models)
+            foreach (var model in models)
             {
                 product = products.FirstOrDefault(x => x.Barcode.Equals(model.Barcode));
                 if (product == null) mess.AppendLine("Không tìm thấy sản phẩm: " + model.ProductName + ". Vui lòng kiểm tra lại.");
                 discounts = model.ToDiscount();
-                foreach(var discount in discounts)
+                foreach (var discount in discounts)
                 {
                     if (string.IsNullOrEmpty(discount.Barcode)) continue;
                     product = products.FirstOrDefault(x => x.Barcode.Equals(discount.Barcode));
-                    if (product == null) mess.AppendLine("Không tìm thấy sản phẩm khuyến mại " + discount.Barcode +  " của: " + model.ProductName + ". Vui lòng kiểm tra lại.");
+                    if (product == null) mess.AppendLine("Không tìm thấy sản phẩm khuyến mại " + discount.Barcode + " của: " + model.ProductName + ". Vui lòng kiểm tra lại.");
                 }
             }
             return mess.ToString();
@@ -83,21 +83,41 @@ namespace SaleManager.Services
 
         private void CalcDiscount(ref ImportProductModel model, List<Product> products)
         {
-            int total = model.Total;
-            if (model.Discount > 0) total = total - Convert.ToInt32(Math.Round((model.Discount * total) / 100));
             Product product;
             var discounts = model.ToDiscount();
+            var totalQuantity = model.Quantity;
+            var totalDiscount = 0;
+
             foreach (var discount in discounts)
             {
                 if (string.IsNullOrEmpty(discount.Barcode)) continue;
                 product = products.FirstOrDefault(x => x.Barcode.Equals(discount.Barcode));
-                if (product != null) 
+                if (product != null)
                 {
-                    total += product.PriceBuy.Value * model.DiscountQuantity1;
+                    if (model.Barcode.Equals(discount.Barcode))
+                        totalQuantity += 1;
+                    else
+                        totalDiscount += product.PriceBuy.Value * discount.Quantity;
                 }
-                
             }
-            model.PriceBuy = total / model.Quantity;
+            if (model.Discount > 0) model.Total = model.Total - Convert.ToInt32((model.Discount / 100) * model.Total);
+            model.PriceBuy = ((model.Total - totalDiscount) / totalQuantity).Round100();
+        }
+        private void FillNameDiscount(ref ImportProductModel model, List<Product> products)
+        {
+            Product product = null;
+            var tempModel = model;
+            if(!string.IsNullOrEmpty(model.DiscountBarcode1)) product = products.FirstOrDefault(x => x.Barcode.Equals(tempModel.DiscountBarcode1));
+            if (product != null) model.DiscountName1 = product.Name;
+            product = null;
+            if (!string.IsNullOrEmpty(model.DiscountBarcode2)) product = products.FirstOrDefault(x => x.Barcode.Equals(tempModel.DiscountBarcode2));
+            if (product != null) model.DiscountName2 = product.Name;
+            product = null;
+            if (!string.IsNullOrEmpty(model.DiscountBarcode3)) product = products.FirstOrDefault(x => x.Barcode.Equals(tempModel.DiscountBarcode3));
+            if (product != null) model.DiscountName3 = product.Name;
+            product = null;
+            if (!string.IsNullOrEmpty(model.DiscountBarcode4)) product = products.FirstOrDefault(x => x.Barcode.Equals(tempModel.DiscountBarcode4));
+            if (product != null) model.DiscountName4 = product.Name;
         }
 
         public List<KeyValue> GetSuppliers()
@@ -137,8 +157,8 @@ namespace SaleManager.Services
 
         public void Save(List<ImportProductModel> datas)
         {
-            var mess = datas.Select(x => x.Error).ToList();
-            if (mess.Count > 0) return;
+            var mess = datas.Count(x => x.Error != null && x.Error.Length > 0);
+            if (mess > 0) return;
             var products = _db.Products.ToList();
             var units = _db.Units.ToList();
 
@@ -168,11 +188,12 @@ namespace SaleManager.Services
                 _db.SaveChanges();
 
                 List<Product> discounts;
+                TransactionDetail tranDetail;
                 foreach (var elm in datas)
                 {
                     discounts = elm.ToDiscount();
                     // product + history
-                    product = products.FirstOrDefault(x => x.Barcode.Equals(elm.Barcode) && x.Unit.Equals(elm.Unit));
+                    product = products.FirstOrDefault(x => x.Barcode.Equals(elm.Barcode));
                     // not exist
                     if (product == null)
                     {
@@ -190,7 +211,7 @@ namespace SaleManager.Services
                     }
 
                     // transaction detail
-                    tranDetails.Add(elm.ToTransactionDetail(tran.Id));
+                    tranDetail = elm.ToTransactionDetail(tran.Id);
 
                     // discount
                     foreach (var discount in discounts)
@@ -204,22 +225,26 @@ namespace SaleManager.Services
                             QuantityNew = product.Quantity + discount.Quantity
                         });
 
-                        tranDetails.Add(new TransactionDetail()
-                        {
-                            Barcode = discount.Barcode,
-                            TracsactionId = tran.Id,
-                            Quantity = discount.Quantity,
-                            IsDiscount = true,
-                            Amount = product.PriceBuy.Value * discount.Quantity,
-                            Unit = product.Unit,
-                            CreatedAt = DateTime.Now,
-                            CreatedBy = "Administrator"
-                        });
+                        if (discount.Barcode.Equals(elm.Barcode))
+                            tranDetail.Quantity += discount.Quantity;
+                        else
+                            tranDetails.Add(new TransactionDetail()
+                            {
+                                Barcode = discount.Barcode,
+                                TracsactionId = tran.Id,
+                                Quantity = discount.Quantity,
+                                IsDiscount = true,
+                                Amount = product.PriceBuy.Value * discount.Quantity,
+                                Unit = product.Unit,
+                                CreatedAt = DateTime.Now,
+                                CreatedBy = "Administrator"
+                            });
 
                         product.Quantity += discount.Quantity;
                         product.UpdatedAt = DateTime.Now;
                         _db.Entry(product).State = System.Data.Entity.EntityState.Modified;
                     }
+                    tranDetails.Add(tranDetail);
                 }
 
                 // insert
@@ -229,6 +254,7 @@ namespace SaleManager.Services
                 _db.SaveChanges();
 
                 scope.Complete();
+                MessageUtil.UpdateSuccess();
             }
         }
     }

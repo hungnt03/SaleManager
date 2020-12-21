@@ -32,13 +32,11 @@
             System.Windows.Forms.Label amountLabel;
             System.Windows.Forms.Label barcodeLabel;
             System.Windows.Forms.Label quantityLabel;
-            System.Windows.Forms.Label unitLabel;
             System.Windows.Forms.Label priceLabel;
+            System.Windows.Forms.Label label1;
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.transactionDetailModelDataGridView = new System.Windows.Forms.DataGridView();
-            this.unitBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.transactionDetailModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -50,38 +48,39 @@
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.quantityTextBox = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.unitComboBox = new System.Windows.Forms.ComboBox();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionDetailModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             amountLabel = new System.Windows.Forms.Label();
             barcodeLabel = new System.Windows.Forms.Label();
             quantityLabel = new System.Windows.Forms.Label();
-            unitLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelBindingSource)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // amountLabel
@@ -105,25 +104,16 @@
             // quantityLabel
             // 
             quantityLabel.AutoSize = true;
-            quantityLabel.Location = new System.Drawing.Point(3, 7);
+            quantityLabel.Location = new System.Drawing.Point(3, 18);
             quantityLabel.Name = "quantityLabel";
             quantityLabel.Size = new System.Drawing.Size(63, 14);
             quantityLabel.TabIndex = 8;
             quantityLabel.Text = "Số lượng";
             // 
-            // unitLabel
-            // 
-            unitLabel.AutoSize = true;
-            unitLabel.Location = new System.Drawing.Point(3, 10);
-            unitLabel.Name = "unitLabel";
-            unitLabel.Size = new System.Drawing.Size(49, 14);
-            unitLabel.TabIndex = 12;
-            unitLabel.Text = "Đơn vị";
-            // 
             // priceLabel
             // 
             priceLabel.AutoSize = true;
-            priceLabel.Location = new System.Drawing.Point(3, 15);
+            priceLabel.Location = new System.Drawing.Point(3, 16);
             priceLabel.Name = "priceLabel";
             priceLabel.Size = new System.Drawing.Size(56, 14);
             priceLabel.TabIndex = 0;
@@ -180,14 +170,6 @@
             this.transactionDetailModelDataGridView.Size = new System.Drawing.Size(788, 519);
             this.transactionDetailModelDataGridView.TabIndex = 0;
             // 
-            // unitBindingSource1
-            // 
-            this.unitBindingSource1.DataSource = typeof(SaleManager.Entities.Unit);
-            // 
-            // transactionDetailModelBindingSource
-            // 
-            this.transactionDetailModelBindingSource.DataSource = typeof(SaleManager.Models.TransactionDetailModel);
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnBack);
@@ -231,11 +213,10 @@
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.panel8);
             this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
-            this.flowLayoutPanel1.Controls.Add(this.panel6);
             this.flowLayoutPanel1.Controls.Add(this.panel7);
-            this.flowLayoutPanel1.Controls.Add(this.panel8);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -264,7 +245,7 @@
             // 
             this.panel4.Controls.Add(priceLabel);
             this.panel4.Controls.Add(this.priceTextBox);
-            this.panel4.Location = new System.Drawing.Point(3, 44);
+            this.panel4.Location = new System.Drawing.Point(3, 93);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(283, 35);
             this.panel4.TabIndex = 15;
@@ -272,7 +253,7 @@
             // priceTextBox
             // 
             this.priceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionDetailModelBindingSource, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
-            this.priceTextBox.Location = new System.Drawing.Point(82, 12);
+            this.priceTextBox.Location = new System.Drawing.Point(82, 8);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.ReadOnly = true;
             this.priceTextBox.Size = new System.Drawing.Size(198, 22);
@@ -282,7 +263,7 @@
             // 
             this.panel5.Controls.Add(quantityLabel);
             this.panel5.Controls.Add(this.quantityTextBox);
-            this.panel5.Location = new System.Drawing.Point(3, 85);
+            this.panel5.Location = new System.Drawing.Point(3, 134);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(283, 35);
             this.panel5.TabIndex = 16;
@@ -290,41 +271,16 @@
             // quantityTextBox
             // 
             this.quantityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionDetailModelBindingSource, "Quantity", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.quantityTextBox.Location = new System.Drawing.Point(82, 3);
+            this.quantityTextBox.Location = new System.Drawing.Point(82, 10);
             this.quantityTextBox.Name = "quantityTextBox";
             this.quantityTextBox.Size = new System.Drawing.Size(198, 22);
             this.quantityTextBox.TabIndex = 9;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(unitLabel);
-            this.panel6.Controls.Add(this.unitComboBox);
-            this.panel6.Location = new System.Drawing.Point(3, 126);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(283, 35);
-            this.panel6.TabIndex = 17;
-            // 
-            // unitComboBox
-            // 
-            this.unitComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionDetailModelBindingSource, "Unit", true));
-            this.unitComboBox.DataSource = this.unitBindingSource;
-            this.unitComboBox.DisplayMember = "Name";
-            this.unitComboBox.FormattingEnabled = true;
-            this.unitComboBox.Location = new System.Drawing.Point(82, 1);
-            this.unitComboBox.Name = "unitComboBox";
-            this.unitComboBox.Size = new System.Drawing.Size(198, 22);
-            this.unitComboBox.TabIndex = 13;
-            this.unitComboBox.ValueMember = "Id";
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
             // 
             // panel7
             // 
             this.panel7.Controls.Add(this.amountTextBox);
             this.panel7.Controls.Add(amountLabel);
-            this.panel7.Location = new System.Drawing.Point(3, 167);
+            this.panel7.Location = new System.Drawing.Point(3, 175);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(283, 35);
             this.panel7.TabIndex = 18;
@@ -339,10 +295,31 @@
             // 
             // panel8
             // 
-            this.panel8.Location = new System.Drawing.Point(3, 208);
+            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(label1);
+            this.panel8.Location = new System.Drawing.Point(3, 44);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(283, 35);
+            this.panel8.Size = new System.Drawing.Size(283, 43);
             this.panel8.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(3, 16);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(49, 14);
+            label1.TabIndex = 1;
+            label1.Text = "Tên sp";
+            // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionDetailModelBindingSource, "ProductName", true));
+            this.textBox1.Location = new System.Drawing.Point(82, 0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(198, 40);
+            this.textBox1.TabIndex = 10;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -378,12 +355,24 @@
             this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn6.ValueMember = "Id";
             // 
+            // unitBindingSource1
+            // 
+            this.unitBindingSource1.DataSource = typeof(SaleManager.Entities.Unit);
+            // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Amount";
             this.dataGridViewTextBoxColumn5.HeaderText = "Thành tiền";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // transactionDetailModelBindingSource
+            // 
+            this.transactionDetailModelBindingSource.DataSource = typeof(SaleManager.Models.TransactionDetailModel);
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(SaleManager.Entities.Unit);
             // 
             // FrmTransactionDetail
             // 
@@ -401,8 +390,6 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelBindingSource)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -411,11 +398,13 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -436,8 +425,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox quantityTextBox;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ComboBox unitComboBox;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
@@ -449,5 +436,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
