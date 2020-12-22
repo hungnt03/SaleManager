@@ -12,8 +12,16 @@ namespace SaleManager.Views
             InitializeComponent();
             this.Load += delegate { _vm.Load(); };
             btnExport.Click += delegate { _vm.Export(); };
+            btnBack.Click += BtnBack_Click;
             _vm._source = barcodeModelBindingSource;
         }
+
+        private void BtnBack_Click(object sender, System.EventArgs e)
+        {
+            this.Owner.Show();
+            this.Close();
+        }
+
         protected override CreateParams CreateParams
         {
             get

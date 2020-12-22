@@ -27,7 +27,7 @@ namespace SaleManager.ViewModels
                 var checkedList = bs.FindAll(x => x.IsChecked);
                 foreach(var elm in checkedList)
                 {
-                    elm.BarcodeImg = b.Encode(BarcodeLib.TYPE.EAN13, elm.Barcode, Color.Black, Color.White, 160, 60);
+                    elm.BarcodeImg = b.Encode(BarcodeLib.TYPE.EAN13, elm.Barcode, Color.Black, Color.White, 180, 40);
                 }
                 _service.Export(checkedList);
             }

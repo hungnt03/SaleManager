@@ -29,27 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.barcodeModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.barcodeModelDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.barcodeModelBindingSource)).BeginInit();
+            this.barcodeModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeModelDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeModelBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // barcodeModelBindingSource
-            // 
-            this.barcodeModelBindingSource.DataSource = typeof(SaleManager.Models.BarcodeModel);
             // 
             // panel1
             // 
@@ -62,8 +57,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
+            this.flowLayoutPanel1.Controls.Add(this.btnBack);
             this.flowLayoutPanel1.Controls.Add(this.btnExport);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -72,27 +66,18 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(709, 40);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // btnBack
             // 
-            this.button1.Location = new System.Drawing.Point(631, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(550, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 34);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBack.Location = new System.Drawing.Point(631, 3);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 34);
+            this.btnBack.TabIndex = 0;
+            this.btnBack.Text = "Quay lại";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(469, 3);
+            this.btnExport.Location = new System.Drawing.Point(550, 3);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 34);
             this.btnExport.TabIndex = 2;
@@ -110,6 +95,8 @@
             // 
             // barcodeModelDataGridView
             // 
+            this.barcodeModelDataGridView.AllowUserToAddRows = false;
+            this.barcodeModelDataGridView.AllowUserToDeleteRows = false;
             this.barcodeModelDataGridView.AutoGenerateColumns = false;
             this.barcodeModelDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.barcodeModelDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -144,6 +131,10 @@
             this.dataGridViewCheckBoxColumn1.HeaderText = "IsChecked";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             // 
+            // barcodeModelBindingSource
+            // 
+            this.barcodeModelBindingSource.DataSource = typeof(SaleManager.Models.BarcodeModel);
+            // 
             // FrmBarcode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -153,11 +144,11 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmBarcode";
             this.Text = "Barcode";
-            ((System.ComponentModel.ISupportInitialize)(this.barcodeModelBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barcodeModelDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,8 +157,7 @@
         private System.Windows.Forms.BindingSource barcodeModelBindingSource;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView barcodeModelDataGridView;

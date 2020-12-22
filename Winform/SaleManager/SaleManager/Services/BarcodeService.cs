@@ -1,8 +1,11 @@
 ﻿using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using SaleManager.Models;
+using SaleManager.Utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace SaleManager.Services
 {
@@ -14,26 +17,42 @@ namespace SaleManager.Services
             {
                 Barcode = x.Barcode,
                 ProductName = x.Name
-            }).OrderBy(x=>x.ProductName).ToList();
+            }).OrderBy(x => x.ProductName).ToList();
         }
 
         public void Export(List<BarcodeModel> barcodes)
         {
-            var barcodeAlias = new Dictionary<string, List<string>>();
-            barcodeAlias.Add("A", new List<string>() { "A", "a","", "Ă", "ă", "Â", "â" });
-            barcodeAlias.Add("A", new List<string>() { "B", "b" });
+            var rowLen = 4;
+            var colLen = 3;
             ExcelPackage excelPackage = new ExcelPackage();
-            //for (char sheetName = 'A'; sheetName < 'Z'; sheetName++)
-            //{
-            //    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add(sheetName.ToString());
-
-            //}
             ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet 1");
-            var excelImage = worksheet.Drawings.AddPicture("My Logo", barcodes[0].BarcodeImg);
-            //add the image to row 20, column E
-            excelImage.SetPosition(0, 0, 0, 0);
-            FileInfo fi = new FileInfo(@"C:\磁気媒体EXP\File.xlsx");
-            excelPackage.SaveAs(fi);
+            var currRow = 1;
+            var currCol = 1;
+            foreach (var elm in barcodes)
+            {
+                if (currCol > 7)
+                {
+                    currRow += rowLen;
+                    currCol = 1;
+                }
+
+                var excelImage = worksheet.Drawings.AddPicture(elm.ProductName, elm.BarcodeImg);
+                //add the image to row 20, column E
+                excelImage.SetPosition(currRow - 1, 0, currCol - 1, 0);
+                worksheet.Cells[currRow + rowLen - 2, currCol].Value = elm.ProductName;
+                worksheet.Cells[currRow + rowLen - 2, currCol, currRow + rowLen - 2, currCol + 2].Merge = true;
+                worksheet.Cells[currRow + rowLen - 2, currCol, currRow + rowLen - 2, currCol + 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                currCol += colLen;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel Worksheets|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FileInfo fi = new FileInfo(saveFileDialog.FileName);
+                excelPackage.SaveAs(fi);
+                MessageUtil.Information("Tạo file thành công.");
+            }
         }
     }
 }
