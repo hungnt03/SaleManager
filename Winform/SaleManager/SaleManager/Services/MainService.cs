@@ -113,7 +113,6 @@ namespace SaleManager.Services
                 return false;
                 throw;
             }
-            return false;
         }
     }
 }

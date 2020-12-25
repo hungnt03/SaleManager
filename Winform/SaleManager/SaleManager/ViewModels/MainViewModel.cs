@@ -68,7 +68,7 @@ namespace SaleManager.ViewModels
             var barcode = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();//Barcode
             var unit = dgv.Rows[e.RowIndex].Cells[6].Value.ToString().ToInt();//Unit
             if (_billSource.DataSource is List<BillProductModel> b)
-            {                
+            {
                 var product = b.Find(x => x.Barcode.Equals(barcode) && x.Unit == unit);
                 if (product == null) return;
                 //QuantityUp click
@@ -94,7 +94,7 @@ namespace SaleManager.ViewModels
                 {
                     MessageUtil.Warning("Sản phẩm hoặc đơn vị chưa được đăng ký.");
                     return;
-                }                
+                }
             }
             if (_billSource.Current is BillProductModel model2)
             {
@@ -104,12 +104,14 @@ namespace SaleManager.ViewModels
             }
         }
         public void Pay()
-        {                       
+        {
             var bills = (List<BillProductModel>)_billSource.DataSource;
+            if (bills == null || bills.Count == 0) return;
+            if (MessageUtil.InformationConfirm("Xác nhận thanh toán đơn hàng.") == DialogResult.No) return;            
             var model = (MainModel)_mainSource.DataSource;
-            if (model.Payment < model.Total && 
-                MessageUtil.WarningConfirm("Khách chưa thanh toán toàn bộ tiền hàng"+ 
-                System.Environment.NewLine +"Bạn có muốn ghi nợ đơn này") == DialogResult.No) return;
+            if (model.Payment < model.Total &&
+                MessageUtil.WarningConfirm("Khách chưa thanh toán toàn bộ tiền hàng" +
+                System.Environment.NewLine + "Bạn có muốn ghi nợ đơn này") == DialogResult.No) return;
             //Pay success, refesh screen
             if (_service.Save(bills, model)) this.Load();
         }
@@ -122,7 +124,7 @@ namespace SaleManager.ViewModels
             if (_billSource.DataSource is List<BillProductModel> b)
             {
                 if (b.Count == 0) return;
-                var total = b.Sum(x=>x.Total);
+                var total = b.Sum(x => x.Total);
                 if (_mainSource.DataSource is MainModel m) m.Total = total;
             }
         }
@@ -146,7 +148,7 @@ namespace SaleManager.ViewModels
             if (_billSource.DataSource is List<BillProductModel> b)
             {
                 var bill = b.Find(x => x.Barcode.Equals(product.Barcode) && x.Unit == product.Unit);
-                
+
                 if (bill == null)
                     b.Add(new BillProductModel(product));
                 else
@@ -155,6 +157,22 @@ namespace SaleManager.ViewModels
                 _billSource.DataSource = b;
             }
         }
-
+        public void Cancel()
+        {
+            _billSource.ResetBindings(false);
+            _billSource.DataSource = new List<BillProductModel>();
+            if (_mainSource.DataSource is MainModel model)
+            {
+                model.Note = string.Empty;
+                model.Total = 0;
+                model.Payment = 0;
+                model.Payback = 0;
+            }
+        }
+        public void PushPayment(int money)
+        {
+            if (_mainSource.DataSource is MainModel model)
+                model.Payment += money;
+        }
     }
 }

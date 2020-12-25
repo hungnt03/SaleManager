@@ -857,7 +857,6 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource productModelBindingSource;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.SplitContainer splitContainer1;

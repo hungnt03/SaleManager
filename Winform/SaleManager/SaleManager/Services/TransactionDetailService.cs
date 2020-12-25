@@ -60,7 +60,7 @@ namespace SaleManager.Services
                 transaction.Commit();
                 MessageUtil.UpdateSuccess();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 transaction.Rollback();
                 MessageUtil.UpdateFailed();

@@ -90,11 +90,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.cardViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cardsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.doanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -149,7 +150,8 @@
             this.kháchHàngToolStripMenuItem,
             this.khuyếnMãiToolStripMenuItem,
             this.chuyểnĐổiToolStripMenuItem,
-            this.mãVạchToolStripMenuItem});
+            this.mãVạchToolStripMenuItem,
+            this.doanhThuToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
@@ -281,7 +283,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(744, 371);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Hoá đơn";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // dgvData
@@ -678,7 +680,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnExit);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Controls.Add(this.btnPay);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 555);
@@ -696,15 +698,15 @@
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.Location = new System.Drawing.Point(1135, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Hủy";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCancel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnCancel.Location = new System.Drawing.Point(1135, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 34);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // btnPay
             // 
@@ -732,6 +734,13 @@
             // cardsViewModelBindingSource
             // 
             this.cardsViewModelBindingSource.DataSource = typeof(SaleManager.Controls.CardsViewModel);
+            // 
+            // doanhThuToolStripMenuItem
+            // 
+            this.doanhThuToolStripMenuItem.Name = "doanhThuToolStripMenuItem";
+            this.doanhThuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doanhThuToolStripMenuItem.Text = "Doanh thu";
+            this.doanhThuToolStripMenuItem.Click += new System.EventHandler(this.doanhThuToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -801,7 +810,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnPay;
         private Controls.CardsPanel cardsPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel5;
@@ -851,6 +860,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn delDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem quảnLýChuyểnĐổiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chuyểnĐổiToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem doanhThuToolStripMenuItem;
     }
 }
 

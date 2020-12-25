@@ -263,6 +263,14 @@
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="256" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'HungTest.dbo.V_Revenue' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="V_Revenue">
+          <Property Name="CreateAt" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="DetailTotal" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="Interest" Type="int" />
+        </EntityType>-->
         <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
             <OnDelete Action="Cascade" />

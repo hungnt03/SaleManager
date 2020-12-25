@@ -35,6 +35,14 @@ namespace SaleManager
             btnPay.Click += delegate { _vm.Pay(); };
             _searchTimer.Tick += OnSearchTimerTick;
             btnExit.Click += BtnExit_Click;
+            btnCancel.Click += delegate { _vm.Cancel(); };
+            btn01.Click += delegate { _vm.PushPayment(100); };
+            btn1.Click += delegate { _vm.PushPayment(1000); };
+            btn5.Click += delegate { _vm.PushPayment(5000); };
+            btn10.Click += delegate { _vm.PushPayment(10000); };
+            btn50.Click += delegate { _vm.PushPayment(50000); };
+            btn100.Click += delegate { _vm.PushPayment(100000); };
+
 
             _vm._productSource = cardViewModelBindingSource;
             _vm._billSource = billProductModelBindingSource;
@@ -158,6 +166,13 @@ namespace SaleManager
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new FrmSupplier();
+            frm.Show(this);
+            this.Hide();
+        }
+
+        private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmRevenue();
             frm.Show(this);
             this.Hide();
         }

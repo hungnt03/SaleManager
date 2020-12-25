@@ -220,6 +220,7 @@
     <Compile Include="Services\BarcodeService.cs" />
     <Compile Include="Services\ConvertProductService.cs" />
     <Compile Include="Services\MainService.cs" />
+    <Compile Include="Services\RevenueService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\TransactionDetailService.cs" />
     <Compile Include="Services\TransactionService.cs" />
